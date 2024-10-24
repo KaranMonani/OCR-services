@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visiting Card Scanner</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="vc-scanner">
+    <header class="header">
+      <button class="back-button" onclick="window.history.back();">
+        <i class="fas fa-arrow-left" style="color: white"></i>
+      </button>
+      <h3 class="text-3xl">Visiting Card Scanner</h3>
+    </header>
+
+    <div class="container">
+      <div class="left-column">
+        <button class="button upload-button" id="upload-button">
+          <i class="fas fa-upload icon-margin"></i> Upload
+        </button>
+        <button class="button camera-button" id="scan-button">
+          <i class="fas fa-camera icon-margin"></i> Scan via Camera
+        </button>
+        <div class="separator"></div>
+        <img
+          id="uploaded-image"
+          class="uploaded-image"
+          src=""
+          alt=""
+          style="display: none"
+        />
+        <input
+          type="file"
+          id="image-input"
+          accept="image/*"
+          style="display: none"
+        />
+        <div id="generated-image-container" style="display: none">
+          <button class="button upload-button" id="final-upload-button">
+            <i
+              class="fas fa-spinner icon-margin"
+              id="loading-icon"
+              style="display: none"
+            ></i>
+            <span id="button-text">Process Image</span>
+          </button>
+        </div>
+      </div>
+      <div class="right-column">
+        <div
+          role="status"
+          id="skeleton-structure"
+          style="display: none"
+          class="skeleton-container p-4 space-y-4 border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700"
+        >
+          <div class="flex items-center justify-between">
+            <div>
+              <div
+                class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"
+              ></div>
+              <div
+                class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"
+              ></div>
+            </div>
+            <div
+              class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"
+            ></div>
+          </div>
+          <div class="flex items-center justify-between pt-4">
+            <div>
+              <div
+                class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"
+              ></div>
+              <div
+                class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"
+              ></div>
+            </div>
+            <div
+              class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"
+            ></div>
+          </div>
+          <div class="flex items-center justify-between pt-4">
+            <div>
+              <div
+                class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"
+              ></div>
+              <div
+                class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"
+              ></div>
+            </div>
+            <div
+              class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"
+            ></div>
+          </div>
+          <div class="flex items-center justify-between pt-4">
+            <div>
+              <div
+                class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"
+              ></div>
+              <div
+                class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"
+              ></div>
+            </div>
+            <div
+              class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"
+            ></div>
+          </div>
+          <div class="flex items-center justify-between pt-4">
+            <div>
+              <div
+                class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"
+              ></div>
+              <div
+                class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"
+              ></div>
+            </div>
+            <div
+              class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"
+            ></div>
+          </div>
+          <div class="flex items-center justify-between pt-4">
+            <div>
+              <div
+                class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"
+              ></div>
+              <div
+                class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"
+              ></div>
+            </div>
+            <div
+              class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"
+            ></div>
+          </div>
+          <div class="flex items-center justify-between pt-4">
+            <div>
+              <div
+                class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"
+              ></div>
+              <div
+                class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"
+              ></div>
+            </div>
+            <div
+              class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"
+            ></div>
+          </div>
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="crop-modal">
+      <div class="modal-content">
+        <div class="cropper-container">
+          <img id="cropper-image" src="" alt="Image to Crop" />
+        </div>
+        <div class="button-container">
+          <button class="button upload-button" id="crop-button">Save</button>
+          <button class="button cancel-button" id="cancel-button">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="camera-modal">
+      <div class="modal-content">
+        <button
+          class="back-button"
+          id="switch-camera-button"
+          style="position: absolute; margin: 0%; padding: 1%; background: white"
+        >
+          <i class="fas fa-sync-alt"></i>
+        </button>
+        <video id="video" width="100%" height="auto" autoplay></video>
+        <div
+          class="button-container"
+          style="margin-top: 0; display: flex; justify-content: space-between"
+        >
+          <button class="button upload-button" id="capture-button">
+            Capture
+          </button>
+          <button class="button cancel-button" id="cancel-camera-button">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
