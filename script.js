@@ -24,7 +24,6 @@ async function startCamera(cameraId) {
   }
 }
 
-// Function to switch the camera
 async function switchCamera() {
   const devices = await navigator.mediaDevices.enumerateDevices();
   const cameras = devices.filter((device) => device.kind === "videoinput");
@@ -35,7 +34,6 @@ async function switchCamera() {
   }
 }
 
-// Event listeners
 document.getElementById("upload-button").onclick = function () {
   document.getElementById("image-input").click();
 };
@@ -109,6 +107,12 @@ document.getElementById("capture-button").onclick = function () {
 
   currentStream.getTracks().forEach((track) => track.stop());
 
+  document.getElementById("uploaded-image").src = ""; 
+  document.getElementById("uploaded-image").style.display = "none"; 
+  if (cropper) {
+    cropper.destroy(); 
+  }
+
   document.getElementById("cropper-image").src = imageDataURL;
   document.getElementById("camera-modal").style.display = "none";
   document.getElementById("crop-modal").style.display = "block";
@@ -150,14 +154,12 @@ document.getElementById("capture-button").onclick = function () {
 };
 
 document.getElementById("final-upload-button").addEventListener("click", () => {
-  document.getElementById("loading-icon").style.display = "block";
-  document.getElementById("button-text").style.display = "none";
-  document.getElementById("skeleton-structure").style.display = "block";
+  document.getElementById("right-column").classList.remove("hidden");
+  document.getElementById("extracted-data").classList.remove("hidden");
+  document.getElementById("skeleton-structure").classList.remove("hidden");
+
   setTimeout(() => {
-    document.getElementById("loading-icon").style.display = "none";
-    document.getElementById("button-text").style.display = "block";
-    document.querySelectorAll(".skeleton").forEach((skeleton) => {
-      skeleton.style.display = "block";
-    });
-  }, 6000);
+    document.getElementById("skeleton-structure").classList.add("hidden");
+    document.getElementById("actual-card").classList.remove("hidden");
+  }, 1000); 
 });
