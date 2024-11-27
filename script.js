@@ -135,6 +135,8 @@ document.getElementById("capture-button").onclick = function () {
       );
     },
   });
+
+  
   document.getElementById("crop-button").onclick = function () {
     const canvas = cropper.getCroppedCanvas();
     const imageDataURL = canvas.toDataURL("image/jpeg");

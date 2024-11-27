@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis Results</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.5.3"></script>
+  </head>
+  <body>
+    <div class="container mx-auto px-4 py-8">
+      <h2 class="text-3xl font-bold mb-8">Analysis Results</h2>
+
+      <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+        <ul
+          class="flex flex-wrap -mb-px text-sm font-medium text-center"
+          id="default-styled-tab"
+          data-tabs-toggle="#default-styled-tab-content"
+          data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500"
+          data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300"
+          role="tablist"
+        >
+          <li class="me-2" role="presentation">
+            <button
+              class="inline-block p-4 border-b-2 rounded-t-lg"
+              id="profile-styled-tab"
+              data-tabs-target="#styled-profile"
+              type="button"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+            >
+              Unusual items or Reportable Observations
+            </button>
+          </li>
+          <li class="me-2" role="presentation">
+            <button
+              class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+              id="dashboard-styled-tab"
+              data-tabs-target="#styled-dashboard"
+              type="button"
+              role="tab"
+              aria-controls="dashboard"
+              aria-selected="false"
+            >
+              Comparative Analysis of Important Items
+            </button>
+          </li>
+          <li class="me-2" role="presentation">
+            <button
+              class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+              id="settings-styled-tab"
+              data-tabs-target="#styled-settings"
+              type="button"
+              role="tab"
+              aria-controls="settings"
+              aria-selected="false"
+            >
+              Normal summary report
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div id="default-styled-tab-content">
+        <div
+          class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+          id="styled-profile"
+          role="tabpanel"
+          aria-labelledby="profile-tab"
+        >
+          <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table
+              class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+            >
+              <thead
+                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+              >
+                <tr>
+                  <th scope="col" class="px-6 py-3">Points</th>
+                  <th scope="col" class="px-6 py-3">Observation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                >
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Isssuance or buy back of share capital. If there is a change
+                    in share capital it should be reported
+                  </th>
+                  <td class="px-6 py-4">Yes</td>
+                </tr>
+                <tr
+                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                >
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    If loan balance does not match with repayment schedule or
+                    bank confirmation
+                  </th>
+                  <td class="px-6 py-4">No</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-800">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    If turnover in books does not match with turnover in GSTR-1
+                    or GSTR-3B
+                  </th>
+                  <td class="px-6 py-4">Yes</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-800">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    If GST payable does not match with the challan or GSTR-3B
+                  </th>
+                  <td class="px-6 py-4">No</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-800">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    If TDS payable does not match with the challan amount
+                  </th>
+                  <td class="px-6 py-4">Yes</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-800">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    If TDS receivable does not match with the 26AS
+                  </th>
+                  <td class="px-6 py-4">No</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-800">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Balance of any creditor unchanged from previous year
+                  </th>
+                  <td class="px-6 py-4">No</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-800">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Creditor having debit balance
+                  </th>
+                  <td class="px-6 py-4">No</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-800">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Any liability balance unchanged from previous year or any
+                    liability having debit balance
+                  </th>
+                  <td class="px-6 py-4">No</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-800">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Amount of Fixed assets purchased or removed
+                  </th>
+                  <td class="px-6 py-4">No</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-800">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Any investment figure not matching with external
+                    confirmation
+                  </th>
+                  <td class="px-6 py-4">No</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-800">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Any assets having credit balance
+                  </th>
+                  <td class="px-6 py-4">No</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-800">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Any Trade Receivable or debtor balance unchanged from
+                    previous year
+                  </th>
+                  <td class="px-6 py-4">No</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+          id="styled-dashboard"
+          role="tabpanel"
+          aria-labelledby="dashboard-tab"
+        >
+          <table
+            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          >
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3">Points</th>
+                <th scope="col" class="px-6 py-3">Observation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Total Turnover compared with previous year
+                </th>
+                <td class="px-6 py-4">11.11CR</td>
+              </tr>
+              <tr
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              >
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Profit comparison with previous year
+                </th>
+                <td class="px-6 py-4">3CR</td>
+              </tr>
+              <tr class="bg-white dark:bg-gray-800">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Direct and indirect expense comparison
+                </th>
+                <td class="px-6 py-4">10%</td>
+              </tr>
+              <tr class="bg-white dark:bg-gray-800">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Top expenses in comparison to total expenses
+                </th>
+                <td class="px-6 py-4">55Lakh</td>
+              </tr>
+              <tr class="bg-white dark:bg-gray-800">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Income tax comparison with previous year
+                </th>
+                <td class="px-6 py-4">Yes</td>
+              </tr>
+              <tr class="bg-white dark:bg-gray-800">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  GST payment comparison with previous year
+                </th>
+                <td class="px-6 py-4">No</td>
+              </tr>
+              <tr class="bg-white dark:bg-gray-800">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  TDS payable comparison with previous year
+                </th>
+                <td class="px-6 py-4">No</td>
+              </tr>
+              <tr class="bg-white dark:bg-gray-800">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  TDS receivable comparison with previous year
+                </th>
+                <td class="px-6 py-4">No</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div
+          class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+          id="styled-settings"
+          role="tabpanel"
+          aria-labelledby="settings-tab"
+        >
+          <table
+            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          >
+            <thead>
+              <tr>
+                <th scope="col" class="px-6 py-3">Item</th>
+                <th scope="col" class="px-6 py-3">Observation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Month
+                </td>
+                <td class="px-6 py-4">November</td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Client Name
+                </td>
+                <td class="px-6 py-4">ADMING</td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Sales as per tally
+                </td>
+                <td class="px-6 py-4">100000</td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Sales as per GSTR 3B
+                </td>
+                <td class="px-6 py-4">1000000</td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Reason
+                </td>
+                <td class="px-6 py-4">Lorel IpsumLorel IpsumLorel IpsumLorel IpsumLorel IpsumLorel IpsumLorel Ipsum</td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  Sales as per GSTR 1
+                </td>
+                <td class="px-6 py-4">10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
