@@ -3,80 +3,294 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Analysis Results</title>
+    <title>Upload PDF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css"
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.5.3"></script>
   </head>
-  <body>
-    <div class="container mx-auto px-4 py-8">
-      <h2 class="text-3xl font-bold mb-8">Analysis Results</h2>
+  <body class="bg-gray-100">
+    <nav
+      class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 light:bg-gray-800 light:border-gray-700"
+    >
+      <div class="px-3 py-3 lg:px-5 lg:pl-3">
+        <h1></h1>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center justify-start rtl:justify-end">
+            <button
+              data-drawer-target="logo-sidebar"
+              data-drawer-toggle="logo-sidebar"
+              aria-controls="logo-sidebar"
+              type="button"
+              class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 light:text-gray-400 light:hover:bg-gray-700 light:focus:ring-gray-600"
+            >
+              <span class="sr-only">Open sidebar</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                ></path>
+              </svg>
+            </button>
+            <a href="./upload.html" class="flex ms-2 md:me-24">
+              <img src="login.svg" class="h-8 me-3" alt="Logo" />
+              <span
+                class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap light:text-white"
+                >OCR SERVICES</span
+              >
+            </a>
+          </div>
+          <div class="flex items-center">
+            <div class="flex items-center ms-3">
+              <div>
+                <button
+                  type="button"
+                  class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 light:focus:ring-gray-600"
+                  aria-expanded="false"
+                  data-dropdown-toggle="dropdown-user"
+                >
+                  <span class="sr-only">Open user menu</span>
+                  <img
+                    class="w-8 h-8 rounded-full"
+                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                    alt="user photo"
+                  />
+                </button>
+              </div>
+              <div
+                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow light:bg-gray-700 light:divide-gray-600"
+                id="dropdown-user"
+              >
+                <div class="px-4 py-3" role="none">
+                  <p class="text-sm text-gray-900 light:text-white" role="none">
+                    John Doe
+                  </p>
+                  <p
+                    class="text-sm font-medium text-gray-900 truncate light:text-gray-300"
+                    role="none"
+                  >
+                    john@admin.com
+                  </p>
+                </div>
+                <ul class="py-1" role="none">
+                  <li>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
+                      role="menuitem"
+                      >Settings</a
+                    >
+                  </li>
 
-      <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-        <ul
-          class="flex flex-wrap -mb-px text-sm font-medium text-center"
-          id="default-styled-tab"
-          data-tabs-toggle="#default-styled-tab-content"
-          data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500"
-          data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300"
-          role="tablist"
-        >
-          <li class="me-2" role="presentation">
-            <button
-              class="inline-block p-4 border-b-2 rounded-t-lg"
-              id="profile-styled-tab"
-              data-tabs-target="#styled-profile"
-              type="button"
-              role="tab"
-              aria-controls="profile"
-              aria-selected="false"
+                  <li>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
+                      role="menuitem"
+                      >Sign out</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <aside
+      id="logo-sidebar"
+      class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 light:bg-gray-800 light:border-gray-700"
+      aria-label="Sidebar"
+    >
+      <div class="h-full px-3 pb-4 overflow-y-auto bg-white light:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+          <li>
+            <a
+            type="button"
+            data-tab-target="#profile"
+
+              href="#"
+              class="menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
             >
-              Unusual items or Reportable Observations
-            </button>
+              <svg
+                class="w-5 h-5 text-gray-500 transition duration-75 light:text-gray-400 group-hover:text-gray-900 light:group-hover:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 21"
+              >
+                <path
+                  d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"
+                />
+                <path
+                  d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"
+                />
+              </svg>
+              <span class="ms-3">Unusual items</span>
+            </a>
           </li>
-          <li class="me-2" role="presentation">
-            <button
-              class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-              id="dashboard-styled-tab"
-              data-tabs-target="#styled-dashboard"
-              type="button"
-              role="tab"
-              aria-controls="dashboard"
-              aria-selected="false"
+          <li>
+            <a
+            type="button"
+            data-tab-target="#comparitive"
+              href="#"
+              class="menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
             >
-              Comparative Analysis of Important Items
-            </button>
+              <svg
+                class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 light:text-gray-400 group-hover:text-gray-900 light:group-hover:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"
+                />
+              </svg>
+              <span class="flex-1 ms-3 whitespace-nowrap">Comparative Analysis</span>
+             
+            </a>
           </li>
-          <li class="me-2" role="presentation">
-            <button
-              class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-              id="settings-styled-tab"
-              data-tabs-target="#styled-settings"
-              type="button"
-              role="tab"
-              aria-controls="settings"
-              aria-selected="false"
+          <li>
+            <a
+            type="button"
+            data-tab-target="#normal"
+              href="#"
+              class="menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
             >
-              Normal summary report
-            </button>
+              <svg
+                class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 light:text-gray-400 group-hover:text-gray-900 light:group-hover:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"
+                />
+              </svg>
+              <span class="flex-1 ms-3 whitespace-nowrap">Normal Summary</span>
+              
+            </a>
           </li>
         </ul>
       </div>
-      <div id="default-styled-tab-content">
-        <div
-          class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-          id="styled-profile"
-          role="tabpanel"
-          aria-labelledby="profile-tab"
-        >
-          <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    </aside>
+
+    <div class="sm:ml-64">
+      <div class="p-4 rounded-lg light:border-gray-700 mt-14">
+        <div class="flex mb-4 rounded bg-gray-50 light:bg-gray-800">
+          <nav
+            class="flex px-5 py-3 text-gray-700 rounded-lg bg-gray-50 light:bg-gray-800 light:border-gray-700"
+            aria-label="Breadcrumb"
+          >
+          <ol
+              class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
+            >
+              <li class="inline-flex items-center">
+                <a
+                  href="./upload.html"
+                  class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 light:text-gray-400 light:hover:text-white"
+                >
+                  <svg
+                    class="w-3 h-3 me-2.5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
+                    />
+                  </svg>
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <div class="flex items-center">
+                  <svg
+                    class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 6 10"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m1 9 4-4-4-4"
+                    />
+                  </svg>
+                  <a
+                    href="#"
+                    class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 light:text-gray-400 light:hover:text-white"
+                    >Observations</a
+                  >
+                </div>
+              </li>
+              <li>
+                <div class="flex items-center">
+                  <svg
+                    class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 6 10"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m1 9 4-4-4-4"
+                    />
+                  </svg>
+                  <a
+                    href="#"
+                    class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 light:text-gray-400 light:hover:text-white"
+                    >Unusual items or Reportable Observations</a
+                  >
+                </div>
+              </li>
+            </ol>
+            
+            
+            
+          </nav>
+          <button id="dropdownBottomButton" data-dropdown-toggle="dropdownBottom" data-dropdown-placement="bottom" class="me-3 mb-3 md:mb-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Export To PDF 
+            
+            </button>
+            
+            <!-- Dropdown menu -->
+            
+        </div>
+
+        <div class="md:flex">
+                  <div
+            id="tab-content"
+            class="p-6 bg-gray-50 text-medium text-gray-500 rounded-lg w-full"
+          >
+            <div id="profile" class="tab-content">
+              <h3 class="text-lg font-bold text-gray-900 mb-2">Unusual items or Reportable Observations</h3>
+             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table
-              class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+              class="w-full text-sm text-left rtl:text-right text-gray-500 light:text-gray-400"
             >
               <thead
-                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+                class="text-xs text-gray-700 uppercase bg-gray-50 light:bg-gray-700 light:text-gray-400"
               >
                 <tr>
                   <th scope="col" class="px-6 py-3">Points</th>
@@ -85,11 +299,11 @@
               </thead>
               <tbody>
                 <tr
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  class="bg-white border-b light:bg-gray-800 light:border-gray-700"
                 >
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     Isssuance or buy back of share capital. If there is a change
                     in share capital it should be reported
@@ -97,114 +311,114 @@
                   <td class="px-6 py-4">Yes</td>
                 </tr>
                 <tr
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  class="bg-white border-b light:bg-gray-800 light:border-gray-700"
                 >
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     If loan balance does not match with repayment schedule or
                     bank confirmation
                   </th>
                   <td class="px-6 py-4">No</td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800">
+                <tr class="bg-white light:bg-gray-800">
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     If turnover in books does not match with turnover in GSTR-1
                     or GSTR-3B
                   </th>
                   <td class="px-6 py-4">Yes</td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800">
+                <tr class="bg-white light:bg-gray-800">
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     If GST payable does not match with the challan or GSTR-3B
                   </th>
                   <td class="px-6 py-4">No</td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800">
+                <tr class="bg-white light:bg-gray-800">
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     If TDS payable does not match with the challan amount
                   </th>
                   <td class="px-6 py-4">Yes</td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800">
+                <tr class="bg-white light:bg-gray-800">
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     If TDS receivable does not match with the 26AS
                   </th>
                   <td class="px-6 py-4">No</td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800">
+                <tr class="bg-white light:bg-gray-800">
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     Balance of any creditor unchanged from previous year
                   </th>
                   <td class="px-6 py-4">No</td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800">
+                <tr class="bg-white light:bg-gray-800">
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     Creditor having debit balance
                   </th>
                   <td class="px-6 py-4">No</td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800">
+                <tr class="bg-white light:bg-gray-800">
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     Any liability balance unchanged from previous year or any
                     liability having debit balance
                   </th>
                   <td class="px-6 py-4">No</td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800">
+                <tr class="bg-white light:bg-gray-800">
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     Amount of Fixed assets purchased or removed
                   </th>
                   <td class="px-6 py-4">No</td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800">
+                <tr class="bg-white light:bg-gray-800">
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     Any investment figure not matching with external
                     confirmation
                   </th>
                   <td class="px-6 py-4">No</td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800">
+                <tr class="bg-white light:bg-gray-800">
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     Any assets having credit balance
                   </th>
                   <td class="px-6 py-4">No</td>
                 </tr>
-                <tr class="bg-white dark:bg-gray-800">
+                <tr class="bg-white light:bg-gray-800">
                   <th
                     scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                   >
                     Any Trade Receivable or debtor balance unchanged from
                     previous year
@@ -213,19 +427,52 @@
                 </tr>
               </tbody>
             </table>
+            </div>
           </div>
-        </div>
-        <div
-          class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-          id="styled-dashboard"
-          role="tabpanel"
-          aria-labelledby="dashboard-tab"
-        >
-          <table
-            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+          <div id="comparitive" class="tab-content hidden">
+            <h3 class="text-lg font-bold text-gray-900 mb-2">
+              Comparative Analysis
+            </h3>
+            
+            <div id="accordion-open" data-accordion="open">
+              <h2 id="accordion-open-heading-1">
+                <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 light:focus:ring-gray-800 light:border-gray-700 light:text-gray-400 hover:bg-dark-100 light:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-open-body-1" aria-expanded="true" aria-controls="accordion-open-body-1">
+                  <span class="flex items-center"><svg class="w-5 h-5 me-2 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                    What is Comparative Analysis?</span>
+                  <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+                  </svg>
+                </button>
+              </h2>
+              <div id="accordion-open-body-1" class="hidden" aria-labelledby="accordion-open-heading-1">
+                <div class="p-5 border border-b-0 border-gray-200 light:border-gray-700 light:bg-gray-900">
+                  <p class="mb-2 text-gray-500 light:text-gray-400">A comparative analysis is a systematic approach used to evaluate and compare two or more entities, variables, or options12345. It involves identifying similarities and differences between the subjects and drawing conclusions based on those observations.</p>
+                </div>
+              </div>
+
+            </div>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="flex items-center justify-center rounded bg-gray-50 light:bg-gray-800">
+                <canvas id="myChart1" width="400" height="200"></canvas>
+              </div>
+              <div class="flex items-center justify-center rounded bg-gray-50 light:bg-gray-800">
+                <canvas id="myChart2" width="400" height="200"></canvas>
+              </div>
+           </div>
+           
+  
+           
+          </div>
+
+          <div id="normal" class="tab-content hidden">
+            <h3 class="text-lg font-bold text-gray-900 mb-2">
+              Normal Summery
+            </h3>
+            <table
+            class="w-full text-sm text-left rtl:text-right text-gray-500 light:text-gray-400"
           >
             <thead
-              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+              class="text-xs text-gray-700 uppercase bg-gray-50 light:bg-gray-700 light:text-gray-400"
             >
               <tr>
                 <th scope="col" class="px-6 py-3">Points</th>
@@ -234,152 +481,157 @@
             </thead>
             <tbody>
               <tr
-                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                class="bg-white border-b light:bg-gray-800 light:border-gray-700"
               >
                 <th
                   scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                 >
-                  Total Turnover compared with previous year
+                 Month
                 </th>
-                <td class="px-6 py-4">11.11CR</td>
+                <td class="px-6 py-4">November</td>
               </tr>
               <tr
-                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                class="bg-white border-b light:bg-gray-800 light:border-gray-700"
               >
                 <th
                   scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                 >
-                  Profit comparison with previous year
+                  Client Name
                 </th>
-                <td class="px-6 py-4">3CR</td>
+                <td class="px-6 py-4">Admin</td>
               </tr>
-              <tr class="bg-white dark:bg-gray-800">
+              <tr class="bg-white light:bg-gray-800">
                 <th
                   scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                 >
-                  Direct and indirect expense comparison
+                Sales as per tally
                 </th>
                 <td class="px-6 py-4">10%</td>
               </tr>
-              <tr class="bg-white dark:bg-gray-800">
+              <tr class="bg-white light:bg-gray-800">
                 <th
                   scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                 >
-                  Top expenses in comparison to total expenses
+                  Sales as per GSTR 3B
                 </th>
                 <td class="px-6 py-4">55Lakh</td>
               </tr>
-              <tr class="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Income tax comparison with previous year
-                </th>
-                <td class="px-6 py-4">Yes</td>
-              </tr>
-              <tr class="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  GST payment comparison with previous year
-                </th>
-                <td class="px-6 py-4">No</td>
-              </tr>
-              <tr class="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  TDS payable comparison with previous year
-                </th>
-                <td class="px-6 py-4">No</td>
-              </tr>
-              <tr class="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  TDS receivable comparison with previous year
-                </th>
-                <td class="px-6 py-4">No</td>
-              </tr>
+             
             </tbody>
           </table>
-        </div>
-        <div
-          class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-          id="styled-settings"
-          role="tabpanel"
-          aria-labelledby="settings-tab"
-        >
-          <table
-            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
-          >
-            <thead>
-              <tr>
-                <th scope="col" class="px-6 py-3">Item</th>
-                <th scope="col" class="px-6 py-3">Observation</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Month
-                </td>
-                <td class="px-6 py-4">November</td>
-              </tr>
-              <tr>
-                <td
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Client Name
-                </td>
-                <td class="px-6 py-4">ADMING</td>
-              </tr>
-              <tr>
-                <td
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Sales as per tally
-                </td>
-                <td class="px-6 py-4">100000</td>
-              </tr>
-              <tr>
-                <td
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Sales as per GSTR 3B
-                </td>
-                <td class="px-6 py-4">1000000</td>
-              </tr>
-              <tr>
-                <td
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Reason
-                </td>
-                <td class="px-6 py-4">Lorel IpsumLorel IpsumLorel IpsumLorel IpsumLorel IpsumLorel IpsumLorel Ipsum</td>
-              </tr>
-              <tr>
-                <td
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Sales as per GSTR 1
-                </td>
-                <td class="px-6 py-4">10</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          </div>
+        </div>  
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuItems = document.querySelectorAll(".menu-item");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        // Show Profile tab by default
+        const defaultTab = document.querySelector(
+          '.menu-item[data-tab-target="#profile"]'
+        );
+        defaultTab.classList.add("text-white", "bg-blue-700");
+        const defaultIcon = defaultTab.querySelector("svg");
+        defaultIcon.classList.replace("text-gray-500", "text-white");
+        document.querySelector("#profile").classList.remove("hidden");
+
+        menuItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            // Remove active state from all buttons
+            menuItems.forEach((menu) => {
+              menu.classList.remove("text-white", "bg-blue-700");
+              menu.classList.add(
+                "text-gray-500",
+                "bg-gray-50",
+                "hover:bg-gray-100"
+              );
+
+              const icon = menu.querySelector("svg");
+              icon.classList.replace("text-white", "text-gray-500");
+            });
+
+            // Add active state to clicked button
+            this.classList.add("text-white", "bg-blue-700");
+            this.classList.remove(
+              "text-gray-500",
+              "bg-gray-50",
+              "hover:bg-gray-100"
+            );
+
+            const activeIcon = this.querySelector("svg");
+            activeIcon.classList.replace("text-gray-500", "text-white");
+
+            // Hide all tab content
+            tabContents.forEach((content) => content.classList.add("hidden"));
+
+            // Show targeted tab content
+            const targetId = this.getAttribute("data-tab-target");
+            document.querySelector(targetId).classList.remove("hidden");
+          });
+        });
+      });
+
+
+      // Get the chart contexts
+var ctx1 = document.getElementById('myChart1').getContext('2d');
+var ctx2 = document.getElementById('myChart2').getContext('2d');
+
+// Chart 1: Bar Chart
+var chart1 = new Chart(ctx1, {
+    type: 'bar',
+    data: {
+        labels: ['Product A', 'Product B', 'Product C'],
+        datasets: [{
+            label: 'Sales 2023',
+            data: [12, 19, 3],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+        }, {
+            label: 'Sales 2024',
+            data: [25, 15, 10],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Chart 1  2: Line Chart
+var chart2 = new Chart(ctx2, {
+    type: 'line',
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'Website Traffic',
+            data: [120, 190, 300, 250, 400, 350, 500],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
   </body>
 </html>

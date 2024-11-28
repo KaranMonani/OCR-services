@@ -1,66 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <div id="loading-screen" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center">
-        <div class="loader"></div>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div
+      id="loading-screen"
+      class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center"
+    >
+      <div class="loader"></div>
     </div>
-    <div class="flex items-center justify-center h-screen bg-gray-100">
-        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-            <h2 class="text-2xl font-bold mb-6">Login</h2>
-            <form>
-                <div class="mb-4">
-                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
-                    <input type="email" id="email" class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:border-blue-500" placeholder="Enter your email" value="demo@example.com">
-                </div>
-                <div class="mb-4">
-                    <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                    <input type="password" id="password" class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:border-blue-500" placeholder="Enter your password" value="password123">
-                </div>
-                <button type="submit" id="loginButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-full">Login</button>
-            </form>
+    <!-- <div class="flex items-center justify-center h-screen bg-gray-100">
+      <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <div class="flex flex-col">
+          <img
+            src="login.jpg"
+            alt="Company Logo"
+            class="w-full rounded-t-lg mb-4"
+          />
+          <h2 class="text-2xl font-bold mb-6">Login</h2>
+          <form>
+            <div class="mb-4">
+              <label
+                for="email"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:border-blue-500"
+                placeholder="Enter your email"
+                value="demo@example.com"
+              />
+            </div>
+            <div class="mb-4">
+              <label
+                for="password"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="password"
+                class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:border-blue-500"
+                placeholder="Enter your password"
+                value="password123"
+              />
+            </div>
+            <button
+              type="submit"
+              id="loginButton"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-full"
+            >
+              Login
+            </button>
+          </form>
         </div>
+      </div> -->
+      <section class="bg-gray-50 light:bg-gray-900">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 light:text-white">
+                <img class="w-8 h-8 mr-2" src="login.svg" alt="logo">
+                Authentication
+            </a>
+            <div class="w-full bg-white rounded-lg shadow light:border md:mt-0 sm:max-w-md xl:p-0 light:bg-gray-800 light:border-gray-700">
+                <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl light:text-white">
+                        Sign in to your account
+                    </h1>
+                    <form class="space-y-4 md:space-y-6" action="#">
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 light:text-white">Your email</label>
+                            <input type="email" name="email" id="email" value="demo@example.com" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500" placeholder="name@company.com" required="">
+                        </div>
+                        <div>
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 light:text-white">Password</label>
+                            <input type="password" name="password" id="password" value="demo@example.com" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500" required="">
+                        </div>
+                        <button
+                        type="submit"
+                        id="loginButton"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-full"
+                      >
+                        Login
+                      </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </section>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
     <script>
-        const loginButton = document.getElementById('loginButton');
-        const loadingScreen = document.getElementById('loading-screen');
+      const loginButton = document.getElementById("loginButton");
+      const loadingScreen = document.getElementById("loading-screen");
 
-        loginButton.addEventListener('click', (event) => {
-            event.preventDefault();
+      loginButton.addEventListener("click", (event) => {
+        event.preventDefault();
 
-            // Show the loading screen
-            loadingScreen.classList.remove('hidden');
+        // Show the loading screen
+        loadingScreen.classList.remove("hidden");
 
-            // Simulate authentication and redirection
-            setTimeout(() => {
-                // Replace 'success.html' with your actual success page
-                window.location.href = '/login/upload.html';
-            }, 1500);
-        });
+        // Simulate authentication and redirection
+        setTimeout(() => {
+          // Replace 'success.html' with your actual success page
+          window.location.href = "upload.html";
+        }, 1500);
+      });
     </script>
     <style>
-        #loading-screen {
-            z-index: 9999;
-        }
+      #loading-screen {
+        z-index: 9999;
+      }
 
-        .loader {
-            border: 10px solid #f3f3f3; /* Light grey */
-            border-top: 10px solid #3498db; /* Blue */
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 2s linear infinite;
-        }
+      .loader {
+        border: 10px solid #f3f3f3; /* Light grey */
+        border-top: 10px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 2s linear infinite;
+      }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
         }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
-</body>
+  </body>
 </html>
