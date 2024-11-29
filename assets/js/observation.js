@@ -4,14 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebarToggleIcon = document.getElementById("sidebar-toggle-icon");
     const rightPanel = document.getElementById("right-panel");
 
-    // Initialize with collapsed sidebar (only icons are visible)
     sidebar.classList.add("collapsed");
 
-    // Toggle the sidebar collapse when the button is clicked
     collapseBtn.addEventListener("click", () => {
       sidebar.classList.toggle("collapsed");
 
-      // Change the toggle button icon (rotate arrow)
       if (sidebar.classList.contains("collapsed")) {
         sidebarToggleIcon.classList.replace(
           "fa-chevron-left",
@@ -28,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuItems = document.querySelectorAll(".menu-item");
   const tabContents = document.querySelectorAll(".tab-content");
 
-  // Show Profile tab by default
   const defaultTab = document.querySelector(
     '.menu-item[data-tab-target="#profile"]'
   );
@@ -121,16 +117,16 @@ var chart2 = new Chart(ctx2, {
 });
 
 const profitComparisonLineChart = new Chart(ctx3, {
-  type: "line", // Using line chart instead of bar chart
+  type: "line",
   data: {
     labels: ["2023", "2024"],
     datasets: [
       {
         label: "Profit ($)",
-        data: [500000, 650000], // Example values: 2023 profit and 2024 profit
+        data: [500000, 650000],
         fill: false,
         borderColor: "rgba(75, 192, 192, 1)",
-        tension: 0.1, // Smooth curve
+        tension: 0.1,
         borderWidth: 2,
       },
     ],
@@ -146,13 +142,13 @@ const profitComparisonLineChart = new Chart(ctx3, {
 });
 
 const expenseComparisonDoughnutChart = new Chart(ctx4, {
-  type: "doughnut", // Using doughnut chart
+  type: "doughnut",
   data: {
     labels: ["Direct Expenses", "Indirect Expenses"],
     datasets: [
       {
         label: "Expense ($)",
-        data: [350000, 150000], // Example values: Direct expenses and Indirect expenses
+        data: [350000, 150000],
         backgroundColor: [
           "rgba(75, 192, 192, 0.2)",
           "rgba(153, 102, 255, 0.2)",
@@ -171,7 +167,7 @@ const expenseComparisonDoughnutChart = new Chart(ctx4, {
       tooltip: {
         callbacks: {
           label: function (tooltipItem) {
-            return tooltipItem.label + ": $" + tooltipItem.raw.toLocaleString(); // Format values with commas
+            return tooltipItem.label + ": $" + tooltipItem.raw.toLocaleString();
           },
         },
       },

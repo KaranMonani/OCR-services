@@ -4,14 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebarToggleIcon = document.getElementById("sidebar-toggle-icon");
   const rightPanel = document.getElementById("right-panel");
 
-  // Initialize with collapsed sidebar (only icons are visible)
   sidebar.classList.add("collapsed");
 
-  // Toggle the sidebar collapse when the button is clicked
   collapseBtn.addEventListener("click", () => {
     sidebar.classList.toggle("collapsed");
 
-    // Change the toggle button icon (rotate arrow)
     if (sidebar.classList.contains("collapsed")) {
       sidebarToggleIcon.classList.replace(
         "fa-chevron-left",
@@ -28,11 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuItems = document.querySelectorAll(".menu-item");
   const tabContents = document.querySelectorAll(".tab-content");
 
-  // Get the sidebar buttons and menu button
-  const sidebarButtons = document.querySelectorAll(".sidebar-button"); // Assuming these have the 'sidebar-button' class
-  const lastButton = document.querySelector(".menu-button"); // Last button (in the menu)
+  const sidebarButtons = document.querySelectorAll(".sidebar-button");
+  const lastButton = document.querySelector(".menu-button");
 
-  // Show Profile tab by default (first sidebar button behavior)
   const defaultTab = document.querySelector(
     '.sidebar-button[data-tab-target="#detail"]'
   );
@@ -41,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
   defaultIcon.classList.replace("text-gray-500", "text-white");
   document.querySelector("#detail").classList.remove("hidden");
 
-  // Function to remove active classes from sidebar buttons
   const removeSidebarActiveClass = () => {
     sidebarButtons.forEach((btn) => {
       btn.classList.remove("text-white", "bg-custom-blue");
