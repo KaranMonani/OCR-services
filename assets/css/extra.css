@@ -1,0 +1,218 @@
+body.vc-scanner {
+    background-color: #e2e8f0;
+    margin: 0;
+    font-family: Arial, sans-serif ;
+    overflow: hidden; 
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: row; 
+    height: calc(100vh - 60px); 
+    flex-wrap: nowrap; 
+    overflow: hidden; 
+  }
+  
+  .left-column {
+    flex: 0 0 40%; 
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; 
+    min-width: 0; 
+  }
+  
+  .right-column {
+    flex: 0 0 60%; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: #f7fafc;
+    overflow-y: auto; 
+    padding: 20px; 
+    min-width: 0; 
+  }
+  
+  .skeleton-container {
+    width: 100%; 
+    max-width: 800px; 
+  }
+  
+  .uploaded-image {
+    max-width: 200px; 
+    max-height: 200px; 
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+    transition:
+      background-color 0.3s,
+      transform 0.3s,
+      box-shadow 0.3s;
+    width: 100%;
+  }
+  
+  .upload-button {
+    background-color: #38a169;
+  }
+  
+  .upload-button:hover {
+    background-color: #2f855a;
+  }
+  
+  .cancel-button {
+    background-color: #e53e3e;
+  }
+  
+  .cancel-button:hover {
+    background-color: #c53030;
+  }
+  
+  .camera-button {
+    background-color: #3182ce;
+  }
+  
+  .camera-button:hover {
+    background-color: #2b6cb0;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    padding: 20px;
+    color: white;
+    background-color: #2672d5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #4a5568;
+    margin-right: 10px; 
+  }
+  
+  .icon-margin {
+    margin-right: 10px; 
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #4a5568;
+  }
+  
+  .close-button:hover {
+    color: #2f855a;
+  }
+  
+  .video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column; 
+      height: auto; 
+    }
+  
+    .left-column,
+    .right-column {
+      flex: 1; 
+      width: 100%; 
+      padding: 10px; 
+    }
+  
+    .button {
+      font-size: 14px; 
+    }
+  }
+  
+  /* Skeleton Effect */
+  .skeleton {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    height: 20px;
+    margin: 10px 0;
+    animation: shimmer 1.5s infinite linear;
+    display: none; 
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: 200px 0;
+    }
+  }
+  
+  .skeleton-text {
+    width: 100%;
+    height: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .skeleton-title {
+    width: 60%;
+    height: 30px;
+    margin-bottom: 20px;
+  }
+  
+  /* Center the card in the right-column for mobile devices */
+  @media (max-width: 768px) {
+    .right-column {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }

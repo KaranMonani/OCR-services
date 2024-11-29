@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account Analysis</title>
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div
+      id="loading-screen"
+      class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center"
+    >
+      <div class="loader"></div>
+    </div>
+
+    <nav
+      class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 light:bg-gray-800 light:border-gray-700"
+    >
+      <div class="px-3 py-3 lg:px-5 lg:pl-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center justify-start rtl:justify-end">
+            <button
+              data-drawer-target="logo-sidebar"
+              data-drawer-toggle="logo-sidebar"
+              aria-controls="logo-sidebar"
+              type="button"
+              class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 light:text-gray-400 light:hover:bg-gray-700 light:focus:ring-gray-600"
+            >
+              <span class="sr-only">Open sidebar</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                ></path>
+              </svg>
+            </button>
+            <a href="./dashboard.html" class="flex ms-2 md:me-24">
+              <img src="./assets/img/login.svg" class="h-8 me-3" alt="Logo" />
+              <span
+                class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap light:text-white"
+                >OCR SERVICES</span
+              >
+            </a>
+          </div>
+          <div class="flex items-center">
+            <div class="flex items-center ms-3">
+              <div>
+                <button
+                  type="button"
+                  class="flex items-center text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 light:focus:ring-gray-600"
+                  aria-expanded="false"
+                  data-dropdown-toggle="dropdown-user"
+                >
+                  <span class="sr-only">Open user menu</span>
+                  <div
+                    id="initial-icon"
+                    class="flex items-center justify-center w-8 h-8 text-white bg-custom-blue rounded-full"
+                  ></div>
+                  <span id="user-name" class="ml-2 text-gray-900 font-medium">
+                    John Doe
+                  </span>
+                </button>
+              </div>
+
+              <div
+                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow light:bg-gray-700 light:divide-gray-600"
+                id="dropdown-user"
+              >
+                <div class="px-4 py-3" role="none">
+                  <p class="text-sm text-gray-900 light:text-white" role="none">
+                    John Doe
+                  </p>
+                  <p
+                    class="text-sm font-medium text-gray-900 truncate light:text-gray-300"
+                    role="none"
+                  >
+                    John@admin.com
+                  </p>
+                </div>
+                <ul class="py-1" role="none">
+                  <li>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
+                      role="menuitem"
+                    >
+                      Settings
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
+                      role="menuitem"
+                    >
+                      Sign out
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <aside
+      id="logo-sidebar"
+      class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-all duration-300 bg-white border-r border-gray-200 sm:translate-x-0 light:bg-gray-800 light:border-gray-700"
+      aria-label="Sidebar"
+    >
+      <div class="h-full px-3 pb-4 overflow-y-auto bg-white light:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+          <!-- Dashboard Item -->
+          <li>
+            <a
+              href="#"
+              type="button"
+              data-tab-target="#detail"
+              class="sidebar-button menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+            >
+              <svg
+                class="w-5 h-5 text-gray-500 transition duration-75 light:text-gray-400 group-hover:text-gray-900 light:group-hover:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 21"
+              >
+                <path
+                  d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"
+                />
+                <path
+                  d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"
+                />
+              </svg>
+              <span class="ms-3">Dashboard</span>
+            </a>
+          </li>
+
+          <!-- Upload Document Item -->
+          <li>
+            <a
+              href="#"
+              type="button"
+              data-tab-target="#upload"
+              class="sidebar-button menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+            >
+              <svg
+                class="w-5 h-5 text-gray-500 transition duration-75 light:text-gray-400 group-hover:text-gray-900 light:group-hover:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 3a1 1 0 0 1 .78.375l4 5a1 1 0 1 1-1.56 1.25L13 6.85V14a1 1 0 1 1-2 0V6.85L8.78 9.626a1 1 0 1 1-1.56-1.25l4-5A1 1 0 0 1 12 3ZM9 14v-1H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4v1a3 3 0 1 1-6 0Zm8 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+
+              <span class="ms-3">Upload Document</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Collapse Button -->
+      <button
+        id="collapse-btn"
+        class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-custom-blue text-white p-3 rounded-full"
+      >
+        <i id="sidebar-toggle-icon" class="fas fa-chevron-left"></i>
+        <!-- Initial Icon -->
+      </button>
+    </aside>
+
+    <!-- <aside
+      id="logo-sidebar"
+      class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 light:bg-gray-800 light:border-gray-700"
+      aria-label="Sidebar"
+    >
+      <div class="h-full px-3 pb-4 overflow-y-auto bg-white light:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+          <li>
+            <a
+              href="#"
+              type="button"
+              data-tab-target="#detail"
+              class="sidebar-button menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+            >
+              <svg
+                class="w-5 h-5 text-gray-500 transition duration-75 light:text-gray-400 group-hover:text-gray-900 light:group-hover:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 21"
+              >
+                <path
+                  d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"
+                />
+                <path
+                  d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"
+                />
+              </svg>
+              <span class="ms-3">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              type="button"
+              data-tab-target="#upload"
+              class="sidebar-button menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+            >
+              <svg
+                class="w-5 h-5 text-gray-500 transition duration-75 light:text-gray-400 group-hover:text-gray-900 light:group-hover:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 3a1 1 0 0 1 .78.375l4 5a1 1 0 1 1-1.56 1.25L13 6.85V14a1 1 0 1 1-2 0V6.85L8.78 9.626a1 1 0 1 1-1.56-1.25l4-5A1 1 0 0 1 12 3ZM9 14v-1H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4v1a3 3 0 1 1-6 0Zm8 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+
+              <span class="ms-3">Upload Document</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside> -->
+
+    <div id="right-panel" class="p-4 pt-20 lg:ml-10 transition-all" >
+      <div class="flex h-screen">
+        <div
+          id="tab-content"
+          class="p-6 bg-gray-50 text-medium text-gray-500 rounded-lg w-full"
+        >
+          <div id="detail" class="tab-content">
+            <div class="mb-4">
+              <div class="flex items-center justify-between">
+                <!-- Text Section -->
+                <h2 class="text-lg font-semibold text-custom-blue">
+                  <b> Projects </b>
+                  <p class="text-sm text-gray-500">
+                    Manage your projects, collaborate, and develop client
+                    deliverables with AI-assisted application.
+                  </p>
+                </h2>
+                <!-- Button -->
+                <button
+                  type="button"
+                  data-tab-target="#upload"
+                  class="menu-button flex items-center px-4 py-2 text-sm text-white bg-custom-blue rounded hover:bg-custom-blue focus:ring-2 focus:ring-blue-400 space-x-2 no-style-change"
+                >
+                  <!-- Button Text -->
+                  <span>Upload Document To Analyse</span>
+
+                  <!-- Icon -->
+                  <svg
+                    class="w-6 h-6 text-white"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <hr />
+            <br />
+            <table id="selection-table">
+              <thead>
+                <tr>
+                  <th>
+                    <span class="flex items-center">
+                      Project
+                      <svg
+                        class="w-4 h-4 ms-1"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m8 15 4 4 4-4m0-6-4-4-4 4"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                  <th>
+                    <span class="flex items-center">
+                      Engagement Type
+                      <svg
+                        class="w-4 h-4 ms-1"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m8 15 4 4 4-4m0-6-4-4-4 4"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                  <th>
+                    <span class="flex items-center">
+                      Service Line
+                      <svg
+                        class="w-4 h-4 ms-1"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m8 15 4 4 4-4m0-6-4-4-4 4"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                  <th>
+                    <span class="flex items-center">
+                      SBU
+                      <svg
+                        class="w-4 h-4 ms-1"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m8 15 4 4 4-4m0-6-4-4-4 4"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                  <th>
+                    <span class="flex items-center">
+                      Last Updated
+                      <svg
+                        class="w-4 h-4 ms-1"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m8 15 4 4 4-4m0-6-4-4-4 4"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                  <th>
+                    <span class="flex items-center">
+                      User
+                      <svg
+                        class="w-4 h-4 ms-1"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m8 15 4 4 4-4m0-6-4-4-4 4"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                  <th>
+                    <span class="flex items-center">
+                      Status
+                      <svg
+                        class="w-4 h-4 ms-1"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m8 15 4 4 4-4m0-6-4-4-4 4"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                  <th>
+                    <span class="flex items-center">
+                      Project Actions
+                      <svg
+                        class="w-4 h-4 ms-1"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m8 15 4 4 4-4m0-6-4-4-4 4"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project A</td>
+                  <td>Consulting</td>
+                  <td>Technology</td>
+                  <td>North America</td>
+                  <td>2023/08/15</td>
+                  <td>John Doe</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project B</td>
+                  <td>Research</td>
+                  <td>Healthcare</td>
+                  <td>Europe</td>
+                  <td>2023/09/01</td>
+                  <td>Jane Smith</td>
+                  <td>Completed</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project C</td>
+                  <td>Strategy</td>
+                  <td>Finance</td>
+                  <td>Asia</td>
+                  <td>2023/07/20</td>
+                  <td>Bob Johnson</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project D</td>
+                  <td>Consulting</td>
+                  <td>Marketing</td>
+                  <td>North America</td>
+                  <td>2023/10/10</td>
+                  <td>Alice Brown</td>
+                  <td>On Hold</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project E</td>
+                  <td>Implementation</td>
+                  <td>Operations</td>
+                  <td>Europe</td>
+                  <td>2023/06/30</td>
+                  <td>Chris Williams</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project F</td>
+                  <td>Research</td>
+                  <td>Healthcare</td>
+                  <td>Asia</td>
+                  <td>2023/05/25</td>
+                  <td>Mary Davis</td>
+                  <td>Completed</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project G</td>
+                  <td>Consulting</td>
+                  <td>Technology</td>
+                  <td>Europe</td>
+                  <td>2023/04/18</td>
+                  <td>James Wilson</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project H</td>
+                  <td>Strategy</td>
+                  <td>Finance</td>
+                  <td>North America</td>
+                  <td>2023/03/12</td>
+                  <td>Patricia Garcia</td>
+                  <td>On Hold</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project I</td>
+                  <td>Implementation</td>
+                  <td>Operations</td>
+                  <td>Europe</td>
+                  <td>2023/02/22</td>
+                  <td>Michael Lee</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project J</td>
+                  <td>Consulting</td>
+                  <td>Technology</td>
+                  <td>Asia</td>
+                  <td>2023/01/14</td>
+                  <td>Sarah Martinez</td>
+                  <td>Completed</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project K</td>
+                  <td>Research</td>
+                  <td>Healthcare</td>
+                  <td>North America</td>
+                  <td>2022/11/30</td>
+                  <td>David Thomas</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project L</td>
+                  <td>Strategy</td>
+                  <td>Marketing</td>
+                  <td>Europe</td>
+                  <td>2022/10/15</td>
+                  <td>Laura Taylor</td>
+                  <td>On Hold</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project M</td>
+                  <td>Consulting</td>
+                  <td>Finance</td>
+                  <td>Asia</td>
+                  <td>2022/09/08</td>
+                  <td>Daniel Anderson</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project N</td>
+                  <td>Research</td>
+                  <td>Healthcare</td>
+                  <td>North America</td>
+                  <td>2022/08/03</td>
+                  <td>Emma Moore</td>
+                  <td>Completed</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project O</td>
+                  <td>Strategy</td>
+                  <td>Marketing</td>
+                  <td>Europe</td>
+                  <td>2022/07/20</td>
+                  <td>Olivia Harris</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project P</td>
+                  <td>Consulting</td>
+                  <td>Technology</td>
+                  <td>North America</td>
+                  <td>2022/06/10</td>
+                  <td>Liam Clark</td>
+                  <td>On Hold</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project Q</td>
+                  <td>Research</td>
+                  <td>Healthcare</td>
+                  <td>Europe</td>
+                  <td>2022/05/18</td>
+                  <td>James Evans</td>
+                  <td>Active</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                >
+                  <td>Project R</td>
+                  <td>Implementation</td>
+                  <td>Operations</td>
+                  <td>Asia</td>
+                  <td>2022/04/30</td>
+                  <td>Charlotte Scott</td>
+                  <td>Completed</td>
+                  <td class="text-center">
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                        />
+                      </svg>
+                    </button>
+                    <button type="button" class="project-action-button">
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onclick="loadService('./account-analysis-result.html')"
+                      class="project-action-button"
+                    >
+                      <svg
+                        class="w-6 h-6 text-gray-400 light:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                        />
+                        <path
+                          stroke="currentColor"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="upload" class="tab-content hidden">
+            <div class="p-4">
+              <div class="flex items-baseline justify-center h-screen">
+                <div
+                  class="rounded-lg border-gray-300 light:border-gray-600 p-4 w-full max-w-2xl bg-white shadow-md"
+                >
+                  <div class="mb-4">
+                    <div class="flex items-center justify-between">
+                      <h2
+                        class="text-lg font-bold text-custom-blue mb-4 text-center"
+                      >
+                        UPLOAD DOCUMENTS TO ANALYSE
+                      </h2>
+                    </div>
+                    <hr />
+                    <br />
+                    <form
+                      action="/upload"
+                      class="dropzone border-2 border-gray-200 border-dashed flex flex-col items-center justify-center h-48"
+                      id="pdf-dropzone"
+                    >
+                      <div class="dz-message text-gray-500">
+                        <div class="dz-message text-gray-500">
+                          Drag and drop your PDF or Excel files here, or click
+                          to upload (up to 10 files).
+                        </div>
+                      </div>
+                    </form>
+
+                    <div class="flex justify-end mt-4">
+                      <button
+                        type="submit"
+                        id="analyzeButton"
+                        class="max-w-40 bg-custom-blue hover:bg-custom-blue text-white font-bold py-2 px-4 rounded-full"
+                      >
+                        Analyze
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
+      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+      <script src="assets/js/account.js"></script>
+      <script src="assets/js/script.js"></script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1003 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visiting Card Scanner</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM3g0v1e8Qz5s1gG7R2K5g5b5y6fL4h8W4x5a"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="vc-scanner">
+    <header class="header">
+      <button class="back-button" onclick="window.history.back();">
+        <i class="fas fa-arrow-left" style="color: white"></i>
+      </button>
+      <h3 class="text-3xl">Visiting Card Scanner</h3>
+    </header>
+
+    <div class="container">
+      <div class="left-column">
+        <button class="button upload-button" id="upload-button">
+          <i class="fas fa-upload icon-margin"></i> Upload
+        </button>
+        <button class="button camera-button" id="scan-button">
+          <i class="fas fa-camera icon-margin"></i> Scan via Camera
+        </button>
+        <div class="separator"></div>
+        <img
+          id="uploaded-image"
+          class="uploaded-image"
+          src=""
+          alt=""
+          style="display: none"
+        />
+        <input
+          type="file"
+          id="image-input"
+          accept="image/*"
+          style="display: none"
+        />
+        <div id="generated-image-container" style="display: none">
+          <button class="button upload-button" id="final-upload-button">
+            <i
+              class="fas fa-spinner icon-margin"
+              id="loading-icon"
+              style="display: none"
+            ></i>
+            <span id="button-text">Process Image</span>
+          </button>
+        </div>
+      </div>
+      <div class="right-column hidden" id="right-column">
+        <div
+          id="extracted-data"
+          class="p-4 border border-gray-200 rounded-lg shadow hidden"
+        >
+          <h4 class="text-xl font-bold">Extracted Information</h4>
+          <hr />
+          <br />
+          <div
+            id="skeleton-structure"
+            class="skeleton-container hidden p-4 border border-gray-200 rounded-lg shadow animate-pulse dark:divide-gray-700 dark:border-gray-700"
+          >
+            <br />
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="flex flex-col items-center">
+                <div
+                  class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600"
+                ></div>
+                <div
+                  class="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+              </div>
+
+              <div class="flex flex-col items-center">
+                <div
+                  class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600"
+                ></div>
+                <div
+                  class="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+              </div>
+
+              <div class="flex flex-col items-center">
+                <div
+                  class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600"
+                ></div>
+                <div
+                  class="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+              </div>
+              <div class="flex flex-col items-center">
+                <div
+                  class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600"
+                ></div>
+                <div
+                  class="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+              </div>
+
+              <div class="flex flex-col items-center">
+                <div
+                  class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600"
+                ></div>
+                <div
+                  class="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray -700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+              </div>
+              <div class="flex flex-col items-center">
+                <div
+                  class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600"
+                ></div>
+                <div
+                  class="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+              </div>
+              <div class="flex flex-col items-center">
+                <div
+                  class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600"
+                ></div>
+                <div
+                  class="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-1"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-1"
+                ></div>
+              </div>
+            </div>
+            <span class="sr-only">Loading...</span>
+          </div>
+
+          <div id="actual-card" class="hidden mt-4 w-full">
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"
+            >
+              <div
+                class="w-full max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              >
+                <div class="flex justify-end px-4 pt-4">
+                  <button
+                    id="dropdownButton1"
+                    data-dropdown-toggle="dropdown1"
+                    class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                    type="button"
+                  >
+                    <span class="sr-only">Open dropdown</span>
+                    <svg
+                      class="w-5 h-5"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 16 3"
+                    >
+                      <path
+                        d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z M14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    id="dropdown1"
+                    class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                  >
+                    <ul class="py-2" aria-labelledby="dropdownButton1">
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Edit</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Export CSV</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Export Excel</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Delete</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center pb-10">
+                  <div
+                    class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-blue-500 text-white text-3xl font-bold"
+                  >
+                    J
+                  </div>
+                  <h5
+                    class="mb-1 text-lg font-medium text-gray-900 dark:text-white"
+                  >
+                    John Doe
+                  </h5>
+                  <span class="text-sm text-gray-500 dark:text-gray-400"
+                    >Software Engineer</span
+                  >
+                  <div class="mt-4 text-sm px-4">
+                    <p><strong>Company:</strong> Tech Solutions</p>
+                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>Phone:</strong> (123) 456-7890</p>
+                    <p><strong>Address:</strong> 123 Main St, Anytown, USA</p>
+                    <p><strong>Twitter:</strong> @johndoe</p>
+                    <p><strong>LinkedIn:</strong> linkedin.com/in/johndoe</p>
+                    <p>
+                      <strong>Website:</strong>
+                      <a
+                        href="https://example.com"
+                        class="text-blue-600 hover:underline"
+                        >example.com</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="w-full max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              >
+                <div class="flex justify-end px-4 pt-4">
+                  <button
+                    id="dropdownButton2"
+                    data-dropdown-toggle="dropdown2"
+                    class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                    type="button"
+                  >
+                    <span class="sr-only">Open dropdown</span>
+                    <svg
+                      class="w-5 h-5"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 16 3"
+                    >
+                      <path
+                        d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    id=" dropdown2"
+                    class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                  >
+                    <ul class="py-2" aria-labelledby="dropdownButton2">
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Edit</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Export CSV</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Export Excel</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Delete</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center pb-10">
+                  <div
+                    class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-blue-500 text-white text-3xl font-bold"
+                  >
+                    J
+                  </div>
+                  <h5
+                    class="mb-1 text-lg font-medium text-gray-900 dark:text-white"
+                  >
+                    John Doe
+                  </h5>
+                  <span class="text-sm text-gray-500 dark:text-gray-400"
+                    >Software Engineer</span
+                  >
+                  <div class="mt-4 text-sm px-4">
+                    <p><strong>Company:</strong> Tech Solutions</p>
+                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>Phone:</strong> (123) 456-7890</p>
+                    <p><strong>Address:</strong> 123 Main St, Anytown, USA</p>
+                    <p><strong>Twitter:</strong> @johndoe</p>
+                    <p><strong>LinkedIn:</strong> linkedin.com/in/johndoe</p>
+                    <p>
+                      <strong>Website:</strong>
+                      <a
+                        href="https://example.com"
+                        class="text-blue-600 hover:underline"
+                        >example.com</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="w-full max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              >
+                <div class="flex justify-end px-4 pt-4">
+                  <button
+                    id="dropdownButton3"
+                    data-dropdown-toggle="dropdown3"
+                    class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                    type="button"
+                  >
+                    <span class="sr-only">Open dropdown</span>
+                    <svg
+                      class="w-5 h-5"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 16 3"
+                    >
+                      <path
+                        d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    id="dropdown3"
+                    class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                  >
+                    <ul class="py-2" aria-labelledby="dropdownButton3">
+                      <li>
+                        <a href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Edit</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Export CSV</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Export Excel</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Delete</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center pb-10">
+                  <div
+                    class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-blue-500 text-white text-3xl font-bold"
+                  >
+                    J
+                  </div>
+                  <h5
+                    class="mb-1 text-lg font-medium text-gray-900 dark:text-white"
+                  >
+                    John Doe
+                  </h5>
+                  <span class="text-sm text-gray-500 dark:text-gray-400"
+                    >Software Engineer</span
+                  >
+                  <div class="mt-4 text-sm px-4">
+                    <p><strong>Company:</strong> Tech Solutions</p>
+                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>Phone:</strong> (123) 456-7890</p>
+                    <p><strong>Address:</strong> 123 Main St, Anytown, USA</p>
+                    <p><strong>Twitter:</strong> @johndoe</p>
+                    <p><strong>LinkedIn:</strong> linkedin.com/in/johndoe</p>
+                    <p>
+                      <strong>Website:</strong>
+                      <a
+                        href="https://example.com"
+                        class="text-blue-600 hover:underline"
+                        >example.com</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="w-full max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              >
+                <div class="flex justify-end px-4 pt-4">
+                  <button
+                    id="dropdownButton4"
+                    data-dropdown-toggle="dropdown4"
+                    class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                    type="button"
+                  >
+                    <span class="sr-only">Open dropdown</span>
+                    <svg
+                      class="w-5 h-5"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 16 3"
+                    >
+                      <path
+                        d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    id="dropdown4"
+                    class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                  >
+                    <ul class="py-2" aria-labelledby="dropdownButton4">
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Edit</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Export CSV</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Export Excel</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Delete</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center pb-10">
+                  <div
+                    class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-blue-500 text-white text-3xl font-bold"
+                  >
+                    J
+                  </div>
+                  <h5
+                    class="mb-1 text-lg font-medium text-gray-900 dark:text-white"
+                  >
+                    John Doe
+                  </h5>
+                  <span class="text-sm text-gray-500 dark:text-gray-400"
+                    >Software Engineer</span
+                  >
+                  <div class="mt-4 text-sm px-4">
+                    <p><strong>Company:</strong> Tech Solutions</p>
+                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>Phone:</strong> (123) 456-7890</p>
+                    <p><strong>Address:</strong> 123 Main St, Anytown, USA</p>
+                    <p><strong>Twitter:</strong> @johndoe</p>
+                    <p><strong>LinkedIn:</strong> linkedin.com/in/johndoe</p>
+                    <p>
+                      <strong>Website:</strong>
+                      <a
+                        href="https://example.com"
+                        class="text-blue-600 hover:underline"
+                        >example.com</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="w-full max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              >
+                <div class="flex justify-end px-4 pt-4">
+                  <button
+                    id="dropdownButton5"
+                    data-dropdown-toggle="dropdown5"
+                    class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                    type="button"
+                  >
+                    <span class="sr-only">Open dropdown</span>
+                    <svg
+                      class="w-5 h-5"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 16 3"
+                    >
+                      <path
+                        d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    id="dropdown5"
+                    class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                  >
+                    <ul class="py-2" aria-labelledby="dropdownButton5">
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Edit</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Export CSV</a
+                        >
+                      </li>
+                      < li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Export Excel</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Delete</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center pb-10">
+                  <div
+                    class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-blue-500 text-white text-3xl font-bold"
+                  >
+                    J
+                  </div>
+                  <h5
+                    class="mb-1 text-lg font-medium text-gray-900 dark:text-white"
+                  >
+                    John Doe
+                  </h5>
+                  <span class="text-sm text-gray-500 dark:text-gray-400"
+                    >Software Engineer</span
+                  >
+                  <div class="mt-4 text-sm px-4">
+                    <p><strong>Company:</strong> Tech Solutions</p>
+                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>Phone:</strong> (123) 456-7890</p>
+                    <p><strong>Address:</strong> 123 Main St, Anytown, USA</p>
+                    <p><strong>Twitter:</strong> @johndoe</p>
+                    <p><strong>LinkedIn:</strong> linkedin.com/in/johndoe</p>
+                    <p>
+                      <strong>Website:</strong>
+                      <a
+                        href="https://example.com"
+                        class="text-blue-600 hover:underline"
+                        >example.com</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="w-full max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              >
+                <div class="flex justify-end px-4 pt-4">
+                  <button
+                    id="dropdownButton6"
+                    data-dropdown-toggle="dropdown6"
+                    class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                    type="button"
+                  >
+                    <span class="sr-only">Open dropdown</span>
+                    <svg
+                      class="w-5 h-5"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 16 3"
+                    >
+                      <path
+                        d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    id="dropdown6"
+                    class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                  >
+                    <ul class="py-2" aria-labelledby="dropdownButton6">
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Edit</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Export CSV</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Export Excel</a
+                        >
+                      </li >
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          >Delete</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center pb-10">
+                  <div
+                    class="w-24 h-24 mb-3 flex items-center justify-center rounded-full bg-blue-500 text-white text-3xl font-bold"
+                  >
+                    J
+                  </div>
+                  <h5
+                    class="mb-1 text-lg font-medium text-gray-900 dark:text-white"
+                  >
+                    John Doe
+                  </h5>
+                  <span class="text-sm text-gray-500 dark:text-gray-400"
+                    >Software Engineer</span
+                  >
+                  <div class="mt-4 text-sm px-4">
+                    <p><strong>Company:</strong> Tech Solutions</p>
+                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>Phone:</strong> (123) 456-7890</p>
+                    <p><strong>Address:</strong> 123 Main St, Anytown, USA</p>
+                    <p><strong>Twitter:</strong> @johndoe</p>
+                    <p><strong>LinkedIn:</strong> linkedin.com/in/johndoe</p>
+                    <p>
+                      <strong>Website:</strong>
+                      <a
+                        href="https://example.com"
+                        class="text-blue-600 hover:underline"
+                        >example.com</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="crop-modal">
+      <div class="modal-content">
+        <div class="cropper-container">
+          <img id="cropper-image" src="" alt="Image to Crop" />
+        </div>
+        <div class="button-container">
+          <button class="button upload-button" id="crop-button">Save</button>
+          <button class="button cancel-button" id="cancel-button">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="camera-modal">
+      <div class="modal-content">
+        <button
+          class="back-button"
+          id="switch-camera-button"
+          style="position: absolute; margin: 0%; padding: 1%; background: white"
+        >
+          <i class="fas fa-sync-alt"></i>
+        </button>
+        <video id="video" width="100%" height="auto" autoplay></video>
+        <div
+          class="button-container"
+          style="margin-top: 0; display: flex; justify-content: space-between"
+        >
+          <button class="button upload-button" id="capture-button">
+            Capture
+          </button>
+          <button class="button cancel-button" id="cancel-camera-button">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div
+      id="loading-screen"
+      class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center"
+    >
+      <div class="loader"></div>
+    </div>
+    <nav
+      class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 light:bg-gray-800 light:border-gray-700"
+    >
+      <div class="px-3 py-3 lg:px-5 lg:pl-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center justify-start rtl:justify-end">
+            <button
+              data-drawer-target="logo-sidebar"
+              data-drawer-toggle="logo-sidebar"
+              aria-controls="logo-sidebar"
+              type="button"
+              class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 light:text-gray-400 light:hover:bg-gray-700 light:focus:ring-gray-600"
+            >
+              <span class="sr-only">Open sidebar</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                ></path>
+              </svg>
+            </button>
+            <a href="./index.html" class="flex ms-2 md:me-24">
+              <img src="./assets/img/login.svg" class="h-8 me-3" alt="Logo" />
+              <span
+                class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap light:text-white"
+                >OCR SERVICES</span
+              >
+            </a>
+          </div>
+          <div class="flex items-center">
+            <div class="flex items-center ms-3">
+              <div>
+                <button
+                  type="button"
+                  class="flex items-center text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 light:focus:ring-gray-600"
+                  aria-expanded="false"
+                  data-dropdown-toggle="dropdown-user"
+                >
+                  <span class="sr-only">Open user menu</span>
+                  <div
+                    id="initial-icon"
+                    class="flex items-center justify-center w-8 h-8 text-white bg-custom-blue rounded-full"
+                  ></div>
+                  <span id="user-name" class="ml-2 text-gray-900 font-medium">
+                    John Doe
+                  </span>
+                </button>
+              </div>
+
+              <div
+                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow light:bg-gray-700 light:divide-gray-600"
+                id="dropdown-user"
+              >
+                <div class="px-4 py-3" role="none">
+                  <p class="text-sm text-gray-900 light:text-white" role="none">
+                    John Doe
+                  </p>
+                  <p
+                    class="text-sm font-medium text-gray-900 truncate light:text-gray-300"
+                    role="none"
+                  >
+                    John@admin.com
+                  </p>
+                </div>
+                <ul class="py-1" role="none">
+                  <li>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
+                      role="menuitem"
+                    >
+                      Settings
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
+                      role="menuitem"
+                    >
+                      Sign out
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
+    <script src="./assets/js/script.js">
+     
+    </script>
+  </body>
+</html>

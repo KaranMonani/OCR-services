@@ -3,10 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Upload PDF</title>
+    <title>Account Analysis Result</title>
+    <link href="./assets/css/style.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
       rel="stylesheet"
@@ -42,8 +46,8 @@
                 ></path>
               </svg>
             </button>
-            <a href="./upload.html" class="flex ms-2 md:me-24">
-              <img src="login.svg" class="h-8 me-3" alt="Logo" />
+            <a href="./account-analysis.html" class="flex ms-2 md:me-24">
+              <img src="./assets/img/login.svg" class="h-8 me-3" alt="Logo" />
               <span
                 class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap light:text-white"
                 >OCR SERVICES</span
@@ -55,18 +59,24 @@
               <div>
                 <button
                   type="button"
-                  class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 light:focus:ring-gray-600"
+                  class="flex items-center text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 light:focus:ring-gray-600"
                   aria-expanded="false"
                   data-dropdown-toggle="dropdown-user"
                 >
                   <span class="sr-only">Open user menu</span>
-                  <img
-                    class="w-8 h-8 rounded-full"
-                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                    alt="user photo"
-                  />
+                  <!-- Dynamic Initials Avatar -->
+                  <div
+                    class="flex items-center justify-center w-8 h-8 text-white bg-custom-blue rounded-full"
+                  >
+                    J
+                  </div>
+                  <!-- Full Name -->
+                  <span class="ml-2 text-gray-900 light:text-white font-medium">
+                    John Doe
+                  </span>
                 </button>
               </div>
+
               <div
                 class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow light:bg-gray-700 light:divide-gray-600"
                 id="dropdown-user"
@@ -79,7 +89,7 @@
                     class="text-sm font-medium text-gray-900 truncate light:text-gray-300"
                     role="none"
                   >
-                    john@admin.com
+                    John@admin.com
                   </p>
                 </div>
                 <ul class="py-1" role="none">
@@ -88,17 +98,18 @@
                       href="#"
                       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
                       role="menuitem"
-                      >Settings</a
                     >
+                      Settings
+                    </a>
                   </li>
-
                   <li>
                     <a
                       href="#"
                       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
                       role="menuitem"
-                      >Sign out</a
                     >
+                      Sign out
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -109,85 +120,59 @@
     </nav>
 
     <aside
-      id="logo-sidebar"
-      class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 light:bg-gray-800 light:border-gray-700"
-      aria-label="Sidebar"
-    >
-      <div class="h-full px-3 pb-4 overflow-y-auto bg-white light:bg-gray-800">
-        <ul class="space-y-2 font-medium">
-          <li>
-            <a
-              type="button"
-              data-tab-target="#profile"
-              href="#"
-              class="menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
-            >
-              <svg
-                class="w-5 h-5 text-gray-500 transition duration-75 light:text-gray-400 group-hover:text-gray-900 light:group-hover:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 22 21"
-              >
-                <path
-                  d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"
-                />
-                <path
-                  d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"
-                />
-              </svg>
-              <span class="ms-3">Unusual items</span>
-            </a>
-          </li>
-          <li>
-            <a
-              type="button"
-              data-tab-target="#comparitive"
-              href="#"
-              class="menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
-            >
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 light:text-gray-400 group-hover:text-gray-900 light:group-hover:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"
-                />
-              </svg>
-              <span class="flex-1 ms-3 whitespace-nowrap"
-                >Comparative Analysis</span
-              >
-            </a>
-          </li>
-          <li>
-            <a
-              type="button"
-              data-tab-target="#normal"
-              href="#"
-              class="menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
-            >
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 light:text-gray-400 group-hover:text-gray-900 light:group-hover:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"
-                />
-              </svg>
-              <span class="flex-1 ms-3 whitespace-nowrap">Normal Summary</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </aside>
+    id="logo-sidebar"
+    class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 light:bg-gray-800 light:border-gray-700"
+    aria-label="Sidebar"
+  >
+    <div class="h-full px-3 pb-4 overflow-y-auto bg-white light:bg-gray-800">
+      <ul class="space-y-2 font-medium">
+        <li>
+          <a
+            type="button"
+            data-tab-target="#profile"
+            href="#"
+            class="menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+          >
+            <i class="fa-solid fa-sitemap"></i>
+            <span class="ms-3 sidebar-text">Unusual items</span>
+          </a>
+        </li>
+        <li>
+          <a
+            type="button"
+            data-tab-target="#comparitive"
+            href="#"
+            class="menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+          >
+            <i class="fa-solid fa-chart-simple"></i>
+            <span class="flex-1 ms-3 sidebar-text whitespace-nowrap">Comparative Analysis</span>
+          </a>
+        </li>
+        <li>
+          <a
+            type="button"
+            data-tab-target="#normal"
+            href="#"
+            class="menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+          >
+            <i class="fa-solid fa-list-check"></i>
+            <span class="flex-1 ms-3 sidebar-text whitespace-nowrap">Normal Summary</span>
+          </a>
+        </li>
+      </ul>
+    </div>
 
-    <div class="sm:ml-64">
+    <!-- Collapse Button -->
+    <button
+      id="collapse-btn"
+      class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-custom-blue text-white p-3 rounded-full"
+    >
+      <i id="sidebar-toggle-icon" class="fas fa-chevron-left"></i>
+    </button>
+  </aside>
+
+
+    <div id="right-panel" class="p-4 pt-20 lg:ml-10 transition-all">
       <div class="p-4 rounded-lg light:border-gray-700 mt-14">
         <div
           class="flex mb-4 rounded bg-gray-50 light:bg-gray-800 justify-between items-center"
@@ -201,7 +186,7 @@
             >
               <li class="inline-flex items-center">
                 <a
-                  href="./upload.html"
+                  href="./account-analysis.html"
                   class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 light:text-gray-400 light:hover:text-white"
                 >
                   <svg
@@ -238,7 +223,7 @@
                   <a
                     href="#"
                     class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 light:text-gray-400 light:hover:text-white"
-                    >Observations</a
+                    >Account Analysis</a
                   >
                 </div>
               </li>
@@ -273,7 +258,7 @@
             id="dropdownBottomButton"
             data-dropdown-toggle="dropdownBottom"
             data-dropdown-placement="bottom"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center light:bg-blue-700 light:hover:bg-blue-700 light:focus:ring-blue-800"
+            class="text-white bg-custom-blue hover:bg-custom-blue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center light:bg-custom-blue light:hover:bg-custom-blue light:focus:ring-blue-800"
             type="button"
           >
             Export To PDF
@@ -467,7 +452,7 @@
                 <h2 id="accordion-open-heading-1">
                   <button
                     type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 light:focus:ring-gray-800 light:border-gray-700 light:text-gray-400 light:hover:bg-gray-800 gap-3"
+                    class="flex bg-custom-blue items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 light:focus:ring-gray-800 light:border-gray-700 light:text-gray-400 light:hover:bg-custom-blue bg-custom-blue gap-3"
                     data-accordion-target="#accordion-open-body-1"
                     aria-expanded="true"
                     aria-controls="accordion-open-body-1"
@@ -538,7 +523,7 @@
                 <h2 id="accordion-open-heading-2">
                   <button
                     type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 light:focus:ring-gray-800 light:border-gray-700 light:text-gray-400 light:hover:bg-gray-800 gap-3"
+                    class="flex items-center bg-custom-blue justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 light:focus:ring-gray-800 light:border-gray-700 light:text-gray-400 light:hover:bg-custom-blue gap-3"
                     data-accordion-target="#accordion-open-body-2"
                     aria-expanded="false"
                     aria-controls="accordion-open-body-2"
@@ -616,7 +601,7 @@
                 <h2 id="accordion-open-heading-3">
                   <button
                     type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 light:focus:ring-gray-800 light:border-gray-700 light:text-gray-400 light:hover:bg-gray-800 gap-3"
+                    class="flex bg-custom-blue items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 light:focus:ring-gray-800 light:border-gray-700 light:text-gray-400 light:hover:bg-custom-blue gap-3"
                     data-accordion-target="#accordion-open-body-3"
                     aria-expanded="false"
                     aria-controls="accordion-open-body-3"
@@ -981,196 +966,8 @@
           </div>
         </div>
       </div>
-      <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const menuItems = document.querySelectorAll(".menu-item");
-          const tabContents = document.querySelectorAll(".tab-content");
-
-          // Show Profile tab by default
-          const defaultTab = document.querySelector(
-            '.menu-item[data-tab-target="#profile"]'
-          );
-          defaultTab.classList.add("text-white", "bg-blue-700");
-          const defaultIcon = defaultTab.querySelector("svg");
-          defaultIcon.classList.replace("text-gray-500", "text-white");
-          document.querySelector("#profile").classList.remove("hidden");
-
-          menuItems.forEach((item) => {
-            item.addEventListener("click", function () {
-              // Remove active state from all buttons
-              menuItems.forEach((menu) => {
-                menu.classList.remove("text-white", "bg-blue-700");
-                menu.classList.add(
-                  "text-gray-500",
-                  "bg-gray-50",
-                  "hover:bg-gray-100"
-                );
-
-                const icon = menu.querySelector("svg");
-                icon.classList.replace("text-white", "text-gray-500");
-              });
-
-              // Add active state to clicked button
-              this.classList.add("text-white", "bg-blue-700");
-              this.classList.remove(
-                "text-gray-500",
-                "bg-gray-50",
-                "hover:bg-gray-100"
-              );
-
-              const activeIcon = this.querySelector("svg");
-              activeIcon.classList.replace("text-gray-500", "text-white");
-
-              // Hide all tab content
-              tabContents.forEach((content) => content.classList.add("hidden"));
-
-              // Show targeted tab content
-              const targetId = this.getAttribute("data-tab-target");
-              document.querySelector(targetId).classList.remove("hidden");
-            });
-          });
-        });
-
-        // Get the chart contexts
-        var ctx1 = document.getElementById("myChart1").getContext("2d");
-        var ctx2 = document.getElementById("myChart2").getContext("2d");
-        const ctx3 = document
-          .getElementById("profitComparisonChart")
-          .getContext("2d");
-        const ctx4 = document
-          .getElementById("expenseComparisonChart")
-          .getContext("2d");
-
-        // Chart 1: Bar Chart
-        var chart1 = new Chart(ctx1, {
-          type: "bar",
-          data: {
-            labels: ["Product A", "Product B", "Product C"],
-            datasets: [
-              {
-                label: "Sales 2023",
-                data: [12, 19, 3],
-                backgroundColor: "rgba(255, 99, 132, 0.2)",
-                borderColor: "rgba(255, 99, 132, 1)",
-                borderWidth: 1,
-              },
-              {
-                label: "Sales 2024",
-                data: [25, 15, 10],
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
-                borderColor: "rgba(54, 162, 235, 1)",
-                borderWidth: 1,
-              },
-            ],
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-              },
-            },
-          },
-        });
-
-        // Chart 1  2: Line Chart
-        var chart2 = new Chart(ctx2, {
-          type: "line",
-          data: {
-            labels: [
-              "January",
-              "February",
-              "March",
-              "April",
-              "May",
-              "June",
-              "July",
-            ],
-            datasets: [
-              {
-                label: "Website Traffic",
-                data: [120, 190, 300, 250, 400, 350, 500],
-                backgroundColor: "rgba(75, 192, 192, 0.2)",
-                borderColor: "rgba(75, 192, 192, 1)",
-                borderWidth: 1,
-              },
-            ],
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-              },
-            },
-          },
-        });
-
-        const profitComparisonLineChart = new Chart(ctx3, {
-          type: "line", // Using line chart instead of bar chart
-          data: {
-            labels: ["2023", "2024"],
-            datasets: [
-              {
-                label: "Profit ($)",
-                data: [500000, 650000], // Example values: 2023 profit and 2024 profit
-                fill: false,
-                borderColor: "rgba(75, 192, 192, 1)",
-                tension: 0.1, // Smooth curve
-                borderWidth: 2,
-              },
-            ],
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-              },
-            },
-            responsive: true,
-          },
-        });
-
-        const expenseComparisonDoughnutChart = new Chart(ctx4, {
-          type: "doughnut", // Using doughnut chart
-          data: {
-            labels: ["Direct Expenses", "Indirect Expenses"],
-            datasets: [
-              {
-                label: "Expense ($)",
-                data: [350000, 150000], // Example values: Direct expenses and Indirect expenses
-                backgroundColor: [
-                  "rgba(75, 192, 192, 0.2)",
-                  "rgba(153, 102, 255, 0.2)",
-                ],
-                borderColor: [
-                  "rgba(75, 192, 192, 1)",
-                  "rgba(153, 102, 255, 1)",
-                ],
-                borderWidth: 1,
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                position: "top",
-              },
-              tooltip: {
-                callbacks: {
-                  label: function (tooltipItem) {
-                    return (
-                      tooltipItem.label +
-                      ": $" +
-                      tooltipItem.raw.toLocaleString()
-                    ); // Format values with commas
-                  },
-                },
-              },
-            },
-          },
-        });
-      </script>
       <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+      <script src="./assets/js/observation.js"></script>
     </div>
   </body>
 </html>

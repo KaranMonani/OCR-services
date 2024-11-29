@@ -1,0 +1,170 @@
+/* Theme Color */
+
+.bg-custom-blue {
+  background-color: #002b49 !important;
+}
+
+.text-custom-blue {
+  color: #002b49 !important;
+}
+
+.border-custom-blue {
+  border-color: #002b49 !important;
+}
+
+/* Loading CSS */
+
+#loading-screen {
+  z-index: 9999;
+}
+
+.loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #002b49;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dashboard CSS */
+.services-card {
+  width: 80%;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  justify-content: flex-start; /* Align top */
+  min-height: 80vh; /* Ensure it takes up most of the vertical space */
+  padding-bottom: 50px; /* Space for footer */
+  background-color: #f4f4f4; /* Light background for the card */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #002b49; /* Change this color as per your theme */
+  margin-bottom: 30px;
+}
+
+.icon-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Adjust space between icons */
+}
+
+.icon {
+  border-radius: 12px;
+  width: 110px; /* Adjusted size for better padding */
+  height: 110px; /* Adjusted size for better padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #002b49;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+}
+
+.icon:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.icon i {
+  font-size: 40px;
+  color: white;
+}
+
+.icon-label {
+  font-size: 13px;
+  font-weight: normal;
+  color: white;
+  margin-top: 10px;
+}
+
+
+/* Account Analysis CSS*/
+/* Initially collapsed state */
+#logo-sidebar {
+  width: 4rem; /* Collapsed width */
+  transition: all 0.3s ease-in-out;
+}
+
+/* When collapsed, hide text */
+#logo-sidebar.collapsed .sidebar-button span {
+  display: none;
+}
+
+/* Sidebar will expand when not collapsed */
+#logo-sidebar:not(.collapsed) {
+  width: 16rem; /* Expanded width */
+}
+
+/* Arrow toggle icon */
+#collapse-btn {
+  transition: transform 0.3s ease-in-out;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#logo-sidebar.collapsed #collapse-btn i {
+  transform: rotate(180deg); /* Arrow pointing right when collapsed */
+}
+
+#logo-sidebar:not(.collapsed) #collapse-btn i {
+  transform: rotate(0deg); /* Arrow pointing left when expanded */
+}
+
+/* Rotate arrow animation */
+#collapse-btn i {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* When sidebar is collapsed, hide text */
+#logo-sidebar.collapsed .sidebar-text {
+  transform: translateX(-9999px);  /* Move text off-screen */
+  transition: transform 0.3s ease;
+}
+
+/* When sidebar is expanded, show text */
+#logo-sidebar:not(.collapsed) .sidebar-text {
+  transform: translateX(0);  /* Move text back into view */
+  transition: transform 0.3s ease;
+}
+
+/* Ensure the sidebar's content transitions smoothly */
+#logo-sidebar {
+  transition: transform 0.3s ease;
+}
+
+#right-panel {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* When sidebar is collapsed, the right panel adjusts */
+#logo-sidebar.collapsed + #right-panel {
+  margin-left: 2.5rem; /* This is ml-10 */
+}
+
+/* When sidebar is expanded, the right panel adjusts */
+#logo-sidebar:not(.collapsed) + #right-panel {
+  margin-left: 16rem; /* This is ml-64 */
+}
+
