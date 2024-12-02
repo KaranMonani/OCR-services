@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Restaurant Analysis</title>
+    <title>Account Analysis</title>
     <link href="./assets/css/style.css" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -179,7 +179,7 @@
                 />
               </svg>
 
-              <span class="ms-3">Upload Menu</span>
+              <span class="ms-3">Upload Visiting Card</span>
             </a>
           </li>
         </ul>
@@ -192,7 +192,7 @@
         <i id="sidebar-toggle-icon" class="fas fa-chevron-left"></i>
       </button>
     </aside>
-    <div id="right-panel" class="p-4 pt-20 lg:ml-10 transition-all">
+    <div id="right-panel" class="p-4 pt-20 lg:ml-10 transition-all" >
       <div class="flex h-screen">
         <div
           id="tab-content"
@@ -216,7 +216,7 @@
                   class="menu-button flex items-center px-4 py-2 text-sm text-white bg-custom-blue rounded hover:bg-custom-blue focus:ring-2 focus:ring-blue-400 space-x-2 no-style-change"
                 >
                   <!-- Button Text -->
-                  <span>Upload Menu To Analyse</span>
+                  <span>Upload Visiting Card To Analyse</span>
 
                   <!-- Icon -->
                   <svg
@@ -246,7 +246,7 @@
                 <tr>
                   <th>
                     <span class="flex items-center">
-                      Upload ID
+                      Project
                       <svg
                         class="w-4 h-4 ms-1"
                         aria-hidden="true"
@@ -268,7 +268,7 @@
                   </th>
                   <th>
                     <span class="flex items-center">
-                      Restaurant Name
+                      Engagement Type
                       <svg
                         class="w-4 h-4 ms-1"
                         aria-hidden="true"
@@ -290,7 +290,7 @@
                   </th>
                   <th>
                     <span class="flex items-center">
-                      Menu Type
+                      Service Line
                       <svg
                         class="w-4 h-4 ms-1"
                         aria-hidden="true"
@@ -312,7 +312,7 @@
                   </th>
                   <th>
                     <span class="flex items-center">
-                      File Format
+                      SBU
                       <svg
                         class="w-4 h-4 ms-1"
                         aria-hidden="true"
@@ -334,7 +334,29 @@
                   </th>
                   <th>
                     <span class="flex items-center">
-                      Upload Date
+                      Last Updated
+                      <svg
+                        class="w-4 h-4 ms-1"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m8 15 4 4 4-4m0-6-4-4-4 4"
+                        />
+                      </svg>
+                    </span>
+                  </th>
+                  <th>
+                    <span class="flex items-center">
+                      User
                       <svg
                         class="w-4 h-4 ms-1"
                         aria-hidden="true"
@@ -357,28 +379,6 @@
                   <th>
                     <span class="flex items-center">
                       Status
-                      <svg
-                        class="w-4 h-4 ms-1"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="m8 15 4 4 4-4m0-6-4-4-4 4"
-                        />
-                      </svg>
-                    </span>
-                  </th>
-                  <th>
-                    <span class="flex items-center">
-                      Extracted Items
                       <svg
                         class="w-4 h-4 ms-1"
                         aria-hidden="true"
@@ -474,7 +474,7 @@
                     </button>
                     <button
                       type="button"
-                      onclick="loadService('./restaurant-analysis-result.html')"
+                      onclick="loadService('./account-analysis-result.html')"
                       class="project-action-button"
                     >
                       <svg
@@ -551,7 +551,7 @@
                     </button>
                     <button
                       type="button"
-                      onclick="loadService('./restaurant-analysis-result.html')"
+                      onclick="loadService('./account-analysis-result.html')"
                       class="project-action-button"
                     >
                       <svg
@@ -1823,7 +1823,7 @@
                       <h2
                         class="text-lg font-bold text-custom-blue mb-4 text-center"
                       >
-                        UPLOAD MENU TO ANALYSE
+                        UPLOAD VISITING CARD TO ANALYSE
                       </h2>
                     </div>
                     <hr />
@@ -1835,8 +1835,8 @@
                     >
                       <div class="dz-message text-gray-500">
                         <div class="dz-message text-gray-500">
-                          Drag and drop your JPG, JPEG, PNG or PDF files here,
-                          or click to upload <br />(up to 10 files).
+                          Drag and drop your PDF or Excel files here, or click
+                          to upload (up to 10 files).
                         </div>
                       </div>
                     </form>
@@ -1860,7 +1860,7 @@
 
       <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
       <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-      <script src="assets/js/menu.js"></script>
+      <script src="assets/js/account.js"></script>
       <script src="assets/js/script.js"></script>
     </div>
   </body>
