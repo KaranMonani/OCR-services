@@ -3,18 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Account Analysis Result</title>
-    <link href="./assets/css/style.css" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Unusual Items Observation</title>
+    <link href="../assets/css/style.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
     />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
-      rel="stylesheet"
-    />
+    <script src="../assets/js/charts.js"></script>
+    <script src="../assets/js/tailwindcss.js"></script>
   </head>
   <body class="bg-gray-100">
     <nav
@@ -46,8 +42,8 @@
                 ></path>
               </svg>
             </button>
-            <a href="./account-analysis.html" class="flex ms-2 md:me-24">
-              <img src="./assets/img/login.svg" class="h-8 me-3" alt="Logo" />
+            <a href="./account-dashboard.html" class="flex ms-2 md:me-24">
+              <img src="../assets/img/login.svg" class="h-8 me-3" alt="Logo" />
               <span
                 class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap light:text-white"
                 >OCR SERVICES</span
@@ -64,13 +60,11 @@
                   data-dropdown-toggle="dropdown-user"
                 >
                   <span class="sr-only">Open user menu</span>
-                  <!-- Dynamic Initials Avatar -->
                   <div
                     class="flex items-center justify-center w-8 h-8 text-white bg-custom-blue rounded-full"
                   >
                     J
                   </div>
-                  <!-- Full Name -->
                   <span class="ml-2 text-gray-900 light:text-white font-medium">
                     John Doe
                   </span>
@@ -120,55 +114,54 @@
     </nav>
 
     <aside
-    id="logo-sidebar"
-    class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 light:bg-gray-800 light:border-gray-700"
-    aria-label="Sidebar"
-  >
-    <div class="h-full px-3 pb-4 overflow-y-auto bg-white light:bg-gray-800">
-      <ul class="space-y-2 font-medium">
-        <li>
-          <a
-            type="button"
-            data-tab-target="#profile"
-            href="#"
-            class="menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
-          >
-            <i class="fa-solid fa-sitemap"></i>
-            <span class="ms-3 sidebar-text">Unusual items</span>
-          </a>
-        </li>
-        <li>
-          <a
-            type="button"
-            data-tab-target="#comparitive"
-            href="#"
-            class="menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
-          >
-            <i class="fa-solid fa-chart-simple"></i>
-            <span class="flex-1 ms-3 sidebar-text whitespace-nowrap">Comparative Analysis</span>
-          </a>
-        </li>
-        <li>
-          <a
-            type="button"
-            data-tab-target="#normal"
-            href="#"
-            class="menu-item flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
-          >
-            <i class="fa-solid fa-list-check"></i>
-            <span class="flex-1 ms-3 sidebar-text whitespace-nowrap">Normal Summary</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <button
-      id="collapse-btn"
-      class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-custom-blue text-white p-3 rounded-full"
+      id="logo-sidebar"
+      class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 light:bg-gray-800 light:border-gray-700"
+      aria-label="Sidebar"
     >
-      <i id="sidebar-toggle-icon" class="fas fa-chevron-left"></i>
-    </button>
-  </aside>
+      <div class="h-full px-3 pb-4 overflow-hidden bg-white light:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+          <li>
+            <button
+              type="button"
+              class="bg-custom-blue sidebar-button flex items-center p-2 text-white rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+            >
+              <i class="fa-solid fa-chart-pie"></i>
+              <span class="ms-3 sidebar-text">Unusual items</span>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              onclick="window.location.href='./comparative-analysis.html'"
+              class="flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+            >
+              <i class="fa-solid fa-chart-simple"></i>
+              <span class="flex-1 ms-3 sidebar-text whitespace-nowrap"
+                >Comparative Analysis</span
+              >
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              onclick="window.location.href='./normal-summary.html'"
+              class="flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+            >
+              <i class="fa-solid fa-list-check"></i>
+              <span class="flex-1 ms-3 sidebar-text whitespace-nowrap"
+                >Normal Summary</span
+              >
+            </button>
+          </li>
+        </ul>
+      </div>
+      <button
+        id="collapse-btn"
+        class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-custom-blue text-white p-3 rounded-full"
+      >
+        <i id="sidebar-toggle-icon" class="fas fa-chevron-left"></i>
+      </button>
+    </aside>
     <div id="right-panel" class="p-4 pt-20 lg:ml-10 transition-all">
       <div class="p-4 rounded-lg light:border-gray-700">
         <div
@@ -183,7 +176,7 @@
             >
               <li class="inline-flex items-center">
                 <a
-                  href="./account-analysis.html"
+                  href="./account-dashboard.html"
                   class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 light:text-gray-400 light:hover:text-white"
                 >
                   <svg
@@ -218,7 +211,6 @@
                     />
                   </svg>
                   <a
-                    href="#"
                     class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 light:text-gray-400 light:hover:text-white"
                     >Account Analysis</a
                   >
@@ -242,7 +234,6 @@
                     />
                   </svg>
                   <a
-                    href="#"
                     class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 light:text-gray-400 light:hover:text-white"
                     >Unusual items or Reportable Observations</a
                   >
@@ -261,185 +252,181 @@
             Export To PDF
           </button>
         </div>
-
         <div class="md:flex">
           <div
-            id="tab-content"
             class="p-6 bg-gray-50 text-medium text-gray-500 rounded-lg w-full"
           >
-            <div id="profile" class="tab-content">
-              <h3 class="text-lg font-bold text-gray-900 mb-2">
-                Unusual items or Reportable Observations
-              </h3>
-              <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table
-                  class="w-full text-sm text-left rtl:text-right text-gray-500 light:text-gray-400"
+            <h3 class="text-lg font-bold text-gray-900 mb-2">
+              Unusual items or Reportable Observations
+            </h3>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+              <table
+                class="w-full text-sm text-left rtl:text-right text-gray-500 light:text-gray-400"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-gray-50 light:bg-gray-700 light:text-gray-400"
                 >
-                  <thead
-                    class="text-xs text-gray-700 uppercase bg-gray-50 light:bg-gray-700 light:text-gray-400"
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
                   >
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                    <th scope="col" class="px-6 py-3">Points</th>
+                    <th scope="col" class="px-6 py-3">Observation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th scope="col" class="px-6 py-3">Points</th>
-                      <th scope="col" class="px-6 py-3">Observation</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                      Isssuance or buy back of share capital. If there is a
+                      change in share capital it should be reported
+                    </th>
+                    <td class="px-6 py-4">Yes</td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        Isssuance or buy back of share capital. If there is a
-                        change in share capital it should be reported
-                      </th>
-                      <td class="px-6 py-4">Yes</td>
-                    </tr>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                      If loan balance does not match with repayment schedule or
+                      bank confirmation
+                    </th>
+                    <td class="px-6 py-4">No</td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        If loan balance does not match with repayment schedule
-                        or bank confirmation
-                      </th>
-                      <td class="px-6 py-4">No</td>
-                    </tr>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                      If turnover in books does not match with turnover in
+                      GSTR-1 or GSTR-3B
+                    </th>
+                    <td class="px-6 py-4">Yes</td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        If turnover in books does not match with turnover in
-                        GSTR-1 or GSTR-3B
-                      </th>
-                      <td class="px-6 py-4">Yes</td>
-                    </tr>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                      If GST payable does not match with the challan or GSTR-3B
+                    </th>
+                    <td class="px-6 py-4">No</td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        If GST payable does not match with the challan or
-                        GSTR-3B
-                      </th>
-                      <td class="px-6 py-4">No</td>
-                    </tr>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                      If TDS payable does not match with the challan amount
+                    </th>
+                    <td class="px-6 py-4">Yes</td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        If TDS payable does not match with the challan amount
-                      </th>
-                      <td class="px-6 py-4">Yes</td>
-                    </tr>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                      If TDS receivable does not match with the 26AS
+                    </th>
+                    <td class="px-6 py-4">No</td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        If TDS receivable does not match with the 26AS
-                      </th>
-                      <td class="px-6 py-4">No</td>
-                    </tr>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                      Balance of any creditor unchanged from previous year
+                    </th>
+                    <td class="px-6 py-4">No</td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        Balance of any creditor unchanged from previous year
-                      </th>
-                      <td class="px-6 py-4">No</td>
-                    </tr>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                      Creditor having debit balance
+                    </th>
+                    <td class="px-6 py-4">No</td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        Creditor having debit balance
-                      </th>
-                      <td class="px-6 py-4">No</td>
-                    </tr>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                      Any liability balance unchanged from previous year or any
+                      liability having debit balance
+                    </th>
+                    <td class="px-6 py-4">No</td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        Any liability balance unchanged from previous year or
-                        any liability having debit balance
-                      </th>
-                      <td class="px-6 py-4">No</td>
-                    </tr>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                      Amount of Fixed assets purchased or removed
+                    </th>
+                    <td class="px-6 py-4">No</td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        Amount of Fixed assets purchased or removed
-                      </th>
-                      <td class="px-6 py-4">No</td>
-                    </tr>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                      Any investment figure not matching with external
+                      confirmation
+                    </th>
+                    <td class="px-6 py-4">No</td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        Any investment figure not matching with external
-                        confirmation
-                      </th>
-                      <td class="px-6 py-4">No</td>
-                    </tr>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                      Any assets having credit balance
+                    </th>
+                    <td class="px-6 py-4">No</td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b light:bg-gray-800 light:border-gray-700"
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        Any assets having credit balance
-                      </th>
-                      <td class="px-6 py-4">No</td>
-                    </tr>
-                    <tr
-                      class="bg-white border-b light:bg-gray-800 light:border-gray-700"
-                    >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white"
-                      >
-                        Any Trade Receivable or debtor balance unchanged from
-                        previous year
-                      </th>
-                      <td class="px-6 py-4">No</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                      Any Trade Receivable or debtor balance unchanged from
+                      previous year
+                    </th>
+                    <td class="px-6 py-4">No</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+
             <div id="comparitive" class="tab-content hidden">
               <h3 class="text-lg font-bold text-gray-900 mb-2">
                 Comparative Analysis
@@ -964,7 +951,7 @@
         </div>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-      <script src="./assets/js/observation.js"></script>
+      <script src="../assets/js/observation.js"></script>
     </div>
   </body>
 </html>

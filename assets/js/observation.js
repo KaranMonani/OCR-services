@@ -21,41 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       }
     });
-
-  const menuItems = document.querySelectorAll(".menu-item");
-  const tabContents = document.querySelectorAll(".tab-content");
-
-  const defaultTab = document.querySelector(
-    '.menu-item[data-tab-target="#profile"]'
-  );
-
-  defaultTab.classList.add("text-white", "bg-custom-blue");
-  const defaultIcon = defaultTab.querySelector("i");
-  defaultIcon.classList.replace("text-gray-500", "text-white");
-  document.querySelector("#profile").classList.remove("hidden");
-
-  menuItems.forEach((item) => {
-    item.addEventListener("click", function () {
-      menuItems.forEach((menu) => {
-        menu.classList.remove("text-white", "bg-custom-blue");
-        menu.classList.add("text-gray-500", "bg-gray-50", "hover:bg-gray-100");
-
-        const icon = menu.querySelector("i");
-        icon.classList.replace("text-white", "text-gray-500");
-      });
-
-      this.classList.add("text-white", "bg-custom-blue");
-      this.classList.remove("text-gray-500", "bg-gray-50", "hover:bg-gray-100");
-
-      const activeIcon = this.querySelector("i");
-      activeIcon.classList.replace("text-gray-500", "text-white");
-
-      tabContents.forEach((content) => content.classList.add("hidden"));
-
-      const targetId = this.getAttribute("data-tab-target");
-      document.querySelector(targetId).classList.remove("hidden");
-    });
-  });
 });
 
 var ctx1 = document.getElementById("myChart1").getContext("2d");

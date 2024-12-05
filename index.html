@@ -4,15 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
-    <link
-      href="./assets/css/style.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
-      rel="stylesheet"
-    />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <script src="./assets/js/tailwindcss.js"></script>
   </head>
   <body>
     <div
@@ -41,7 +34,7 @@
             >
               Sign in to your account
             </h1>
-            <form class="space-y-4 md:space-y-6" action="#">
+            <form id="loginForm" class="space-y-4 md:space-y-6">
               <div>
                 <label
                   for="email"
@@ -52,11 +45,17 @@
                   type="email"
                   name="email"
                   id="email"
-                  value="demo@example.com"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
                   placeholder="name@company.com"
-                  required=""
+                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
+                  required
                 />
+                <p
+                  id="emailError"
+                  class="hidden mt-2 text-sm text-red-600 dark:text-red-500"
+                >
+                  <span class="font-medium">Oh, snap!</span> Please enter a
+                  valid email.
+                </p>
               </div>
               <div>
                 <label
@@ -68,25 +67,44 @@
                   type="password"
                   name="password"
                   id="password"
-                  value="demo@example.com"
                   placeholder="••••••••"
                   class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500"
-                  required=""
+                  required
                 />
+                <p
+                  id="passwordError"
+                  class="hidden mt-2 text-sm text-red-600 dark:text-red-500"
+                >
+                  <span class="font-medium">Oh, snap!</span> Password must be at
+                  least 8 characters.
+                </p>
               </div>
+              <a
+                href="#"
+                class="text-sm text-blue-600 hover:underline light:text-blue-500 block text-right"
+                >Forgot Password?</a
+              >
               <button
                 type="submit"
                 id="loginButton"
-                class="bg-custom-blue hover:bg-custom-blue text-white font-bold py-2 px-4 rounded-full w-full"
+                class="bg-custom-blue hover:bg-custom-blue text-white font-bold py-2 px-4 w-full"
               >
                 Login
+              </button>
+              <button
+                type="button"
+                id="registerButton"
+                class="bg-custom-blue hover:bg-custom-blue text-white font-bold py-2 px-4 w-full"
+              >
+                Register
               </button>
             </form>
           </div>
         </div>
       </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
+    <script src="./assets/js/flowbite.min.js"></script>
     <script src="./assets/js/login.js"></script>
   </body>
 </html>

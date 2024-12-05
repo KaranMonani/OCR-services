@@ -4,16 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link href="./assets/css/style.css" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
-    />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <script src="../assets/js/tailwindcss.js"></script>
   </head>
   <body>
     <div
@@ -50,8 +42,8 @@
                 ></path>
               </svg>
             </button>
-            <a href="./index.html" class="flex ms-2 md:me-24">
-              <img src="./assets/img/login.svg" class="h-8 me-3" alt="Logo" />
+            <a href="../index.html" class="flex ms-2 md:me-24">
+              <img src="../assets/img/login.svg" class="h-8 me-3" alt="Logo" />
               <span
                 class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap light:text-white"
                 >OCR SERVICES</span
@@ -126,40 +118,51 @@
       />
       <div class="icon-container">
         <div
-          class="icon bg-custom-blue"
+          class="icon"
           id="visiting-card-icon"
-          onclick="loadService('account-analysis.html')"
+          onclick="loadService('../account-analysis/account-dashboard.html')"
         >
-          <i class="fa-solid fa-magnifying-glass-chart"></i>
-          <div class="icon-label text-white text-center">Account Analysis</div>
+          <img
+            src="../assets/img/homepage/accounting-book.png"
+            alt="Account Analysis"
+            style="width: 45px; height: 45px"
+          />
+          <div class="icon-label text-custom-blue text-center">
+            Account Analysis
+          </div>
         </div>
         <div
-          class="icon bg-custom-blue"
+          class="icon"
           id="document-icon"
-          onclick="loadService('visitng-card-analysis.html')"
+          onclick="loadService('../visiting-card-analysis/visiting-card-analysis.html')"
         >
-          <i class="fa-solid fa-id-card"></i>
-          <div class="icon-label text-white text-center">
+          <img
+            src="../assets/img/homepage/identity-card.png"
+            alt="Account Analysis"
+            style="width: 45px; height: 45px"
+          />
+          <div class="icon-label text-custom-blue text-center">
             Visiting Card Analysis
           </div>
         </div>
         <div
-          class="icon bg-custom-blue"
+          class="icon"
           id="resume-icon"
-          onclick="loadService('restaurant-analysis.html')"
+          onclick="loadService('../restaurant-menu-analysis/restaurant-dashboard.html')"
         >
-          <i class="fa-solid fa-chart-bar"></i>
-          <div class="icon-label text-white text-center">
+          <img
+            src="../assets/img/homepage/menu.png"
+            alt="Account Analysis"
+            style="width: 45px; height: 45px"
+          />
+          <div class="icon-label text-custom-blue text-center">
             Restaurant Menu Analysis
           </div>
         </div>
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-
-    <script src="./assets/js/script.js">
-     
-    </script>
+    <script src="../assets/js/flowbite.min.js"></script>
+    <script src="../assets/js/script.js"></script>
   </body>
 </html>

@@ -4,21 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link href="./assets/css/style.css" rel="stylesheet" />
-    <link href="./assets/css/vcard.css" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
-      rel="stylesheet"
-    />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/vcard.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/cropper.min.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
     />
+    <script src="../assets/js/tailwindcss.js"></script>
   </head>
   <body>
     <div
@@ -55,8 +48,8 @@
                 ></path>
               </svg>
             </button>
-            <a href="./index.html" class="flex ms-2 md:me-24">
-              <img src="./assets/img/login.svg" class="h-8 me-3" alt="Logo" />
+            <a href="../dashboard/dashboard.html" class="flex ms-2 md:me-24">
+              <img src="../assets/img/login.svg" class="h-8 me-3" alt="Logo" />
               <span
                 class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap light:text-white"
                 >OCR SERVICES</span
@@ -126,10 +119,16 @@
     </nav>
     <div class="container pt-20">
       <div class="left-column">
-        <button class="button upload-button text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800" id="upload-button">
+        <button
+          class="button upload-button text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 light:bg-blue-600 light:hover:bg-blue-700 light:focus:ring-blue-800"
+          id="upload-button"
+        >
           <i class="fas fa-upload icon-margin"></i> Upload
         </button>
-        <button class="button camera-button text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 light:bg-green-600 light:hover:bg-green-700 light:focus:ring-green-800" id="scan-button">
+        <button
+          class="button camera-button text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 light:bg-green-600 light:hover:bg-green-700 light:focus:ring-green-800"
+          id="scan-button"
+        >
           <i class="fas fa-camera icon-margin"></i> Scan via Camera
         </button>
         <div class="separator"></div>
@@ -147,7 +146,10 @@
           style="display: none"
         />
         <div id="generated-image-container" style="display: none">
-          <button class="button upload-button text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 light:bg-purple-600 light:hover:bg-purple-700 light:focus:ring-purple-900" id="final-upload-button">
+          <button
+            class="button upload-button text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 light:bg-purple-600 light:hover:bg-purple-700 light:focus:ring-purple-900"
+            id="final-upload-button"
+          >
             <i
               class="fas fa-spinner icon-margin"
               id="loading-icon"
@@ -926,20 +928,33 @@
             <img id="cropper-image" src="" alt="Image to Crop" />
           </div>
           <div class="button-container">
-            <button class="button upload-button text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 light:bg-green-600 light:hover:bg-green-700 light:focus:ring-green-800" id="crop-button">Save</button>
-            <button class="button cancel-button text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 light:bg-red-600 light:hover:bg-red-700 light:focus:ring-red-900" id="cancel-button">
+            <button
+              class="button upload-button text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 light:bg-green-600 light:hover:bg-green-700 light:focus:ring-green-800"
+              id="crop-button"
+            >
+              Save
+            </button>
+            <button
+              class="button cancel-button text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 light:bg-red-600 light:hover:bg-red-700 light:focus:ring-red-900"
+              id="cancel-button"
+            >
               Cancel
             </button>
           </div>
         </div>
       </div>
-  
+
       <div class="modal" id="camera-modal">
         <div class="modal-content">
           <button
             class="back-button"
             id="switch-camera-button"
-            style="position: absolute; margin: 0%; padding: 1%; background: white"
+            style="
+              position: absolute;
+              margin: 0%;
+              padding: 1%;
+              background: white;
+            "
           >
             <i class="fas fa-sync-alt"></i>
           </button>
@@ -948,10 +963,16 @@
             class="button-container"
             style="margin-top: 0; display: flex; justify-content: space-between"
           >
-            <button class="button upload-button text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 light:bg-green-600 light:hover:bg-green-700 light:focus:ring-green-800" id="capture-button">
+            <button
+              class="button upload-button text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 light:bg-green-600 light:hover:bg-green-700 light:focus:ring-green-800"
+              id="capture-button"
+            >
               Capture
             </button>
-            <button class="button cancel-button text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 light:bg-red-600 light:hover:bg-red-700 light:focus:ring-red-900" id="cancel-camera-button">
+            <button
+              class="button cancel-button text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 light:bg-red-600 light:hover:bg-red-700 light:focus:ring-red-900"
+              id="cancel-camera-button"
+            >
               Cancel
             </button>
           </div>
@@ -959,9 +980,9 @@
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
-    <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/vcard.js"></script>
+    <script src="../assets/js/flowbite.min.js"></script>
+    <script src="../assets/js/cropper.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/vcard.js"></script>
   </body>
 </html>

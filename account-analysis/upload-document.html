@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account Analysis</title>
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div
+      id="loading-screen"
+      class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center"
+    >
+      <div class="loader"></div>
+    </div>
+
+    <nav
+      class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 light:bg-gray-800 light:border-gray-700"
+    >
+      <div class="px-3 py-3 lg:px-5 lg:pl-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center justify-start rtl:justify-end">
+            <button
+              data-drawer-target="logo-sidebar"
+              data-drawer-toggle="logo-sidebar"
+              aria-controls="logo-sidebar"
+              type="button"
+              class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 light:text-gray-400 light:hover:bg-gray-700 light:focus:ring-gray-600"
+            >
+              <span class="sr-only">Open sidebar</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                ></path>
+              </svg>
+            </button>
+            <a href="./dashboard.html" class="flex ms-2 md:me-24">
+              <img src="../assets/img/login.svg" class="h-8 me-3" alt="Logo" />
+              <span
+                class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap light:text-white"
+                >OCR SERVICES</span
+              >
+            </a>
+          </div>
+          <div class="flex items-center">
+            <div class="flex items-center ms-3">
+              <div>
+                <button
+                  type="button"
+                  class="flex items-center text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 light:focus:ring-gray-600"
+                  aria-expanded="false"
+                  data-dropdown-toggle="dropdown-user"
+                >
+                  <span class="sr-only">Open user menu</span>
+                  <div
+                    id="initial-icon"
+                    class="flex items-center justify-center w-8 h-8 text-white bg-custom-blue rounded-full"
+                  ></div>
+                  <span id="user-name" class="ml-2 text-gray-900 font-medium">
+                    John Doe
+                  </span>
+                </button>
+              </div>
+
+              <div
+                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow light:bg-gray-700 light:divide-gray-600"
+                id="dropdown-user"
+              >
+                <div class="px-4 py-3" role="none">
+                  <p class="text-sm text-gray-900 light:text-white" role="none">
+                    John Doe
+                  </p>
+                  <p
+                    class="text-sm font-medium text-gray-900 truncate light:text-gray-300"
+                    role="none"
+                  >
+                    John@admin.com
+                  </p>
+                </div>
+                <ul class="py-1" role="none">
+                  <li>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
+                      role="menuitem"
+                    >
+                      Settings
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
+                      role="menuitem"
+                    >
+                      Sign out
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <aside
+      id="logo-sidebar"
+      class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-all duration-300 bg-white border-r border-gray-200 sm:translate-x-0 light:bg-gray-800 light:border-gray-700"
+      aria-label="Sidebar"
+    >
+      <div class="h-full px-3 pb-4 overflow-y-auto bg-white light:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+          <li>
+            <button
+              type="button"
+              onclick="window.location.href ='./account-dashboard.html'"
+              class="sidebar-button flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+            >
+              <svg
+                class="w-5 h-5 text-gray-500 transition duration-75 light:text-gray-400 group-hover:text-gray-900 light:group-hover:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 21"
+              >
+                <path
+                  d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"
+                />
+                <path
+                  d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"
+                />
+              </svg>
+              <span class="ms-3">Dashboard</span>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="bg-custom-blue sidebar-button flex items-center p-2 text-white rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+            >
+              <svg
+                class="w-5 h-5 text-white transition duration-75 light:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 3a1 1 0 0 1 .78.375l4 5a1 1 0 1 1-1.56 1.25L13 6.85V14a1 1 0 1 1-2 0V6.85L8.78 9.626a1 1 0 1 1-1.56-1.25l4-5A1 1 0 0 1 12 3ZM9 14v-1H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-4v1a3 3 0 1 1-6 0Zm8 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+
+              <span class="ms-3">Upload Document</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <button
+        id="collapse-btn"
+        class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-custom-blue text-white p-3 rounded-full"
+      >
+        <i id="sidebar-toggle-icon" class="fas fa-chevron-left"></i>
+      </button>
+    </aside>
+    <div id="right-panel" class="p-4 pt-20 lg:ml-10 transition-all">
+      <div class="flex h-screen">
+        <div class="p-6 bg-gray-50 text-medium text-gray-500 rounded-lg w-full">
+          <div id="upload">
+            <div class="p-4">
+              <div class="flex items-baseline justify-center h-screen">
+                <div
+                  class="rounded-lg border-gray-300 light:border-gray-600 p-4 w-full max-w-2xl bg-white shadow-md"
+                >
+                  <div class="mb-4">
+                    <div class="flex items-center justify-between">
+                      <h2
+                        class="text-lg font-bold text-custom-blue mb-4 text-center"
+                      >
+                        UPLOAD DOCUMENTS TO ANALYSE
+                      </h2>
+                    </div>
+                    <hr />
+                    <br />
+                    <form
+                      action="/upload"
+                      class="dropzone border-2 border-gray-200 border-dashed flex flex-col items-center justify-center h-48"
+                      id="pdf-dropzone"
+                    >
+                      <div class="dz-message text-gray-500">
+                        <div class="dz-message text-gray-500">
+                          Drag and drop your PDF or Excel files here, or click
+                          to upload (up to 10 files).
+                        </div>
+                      </div>
+                    </form>
+
+                    <div class="flex justify-end mt-4">
+                      <button
+                        type="submit"
+                        id="analyzeButton"
+                        class="max-w-40 bg-custom-blue hover:bg-custom-blue text-white font-bold py-2 px-4 rounded-full"
+                      >
+                        Analyze
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
+      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+      <script src="../assets/js/account.js"></script>
+      <script src="../assets/js/script.js"></script>
+    </div>
+  </body>
+</html>

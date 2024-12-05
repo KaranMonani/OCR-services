@@ -1,4 +1,4 @@
-// Common JS
+
 function loadService(serviceName) {
   document.getElementById("loading-screen").style.display = "flex";
   setTimeout(() => {
