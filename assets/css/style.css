@@ -12,6 +12,11 @@
   border-color: #002b49 !important;
 }
 
+/* Datatable Custom Table */
+.datatable-selector {
+  padding: 4%;
+}
+
 /* Loading CSS */
 
 #loading-screen {
@@ -77,7 +82,9 @@
   /* color: #002b49; */
   /* background-color: #002b49; */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
   cursor: pointer;
   padding: 10px;
   text-align: center;
@@ -99,7 +106,6 @@
   color: #002b49;
   margin-top: 10px;
 }
-
 
 /* Account Analysis CSS*/
 /* Initially collapsed state */
@@ -141,13 +147,13 @@
 
 /* When sidebar is collapsed, hide text */
 #logo-sidebar.collapsed .sidebar-text {
-  transform: translateX(-9999px);  /* Move text off-screen */
+  transform: translateX(-9999px); /* Move text off-screen */
   transition: transform 0.3s ease;
 }
 
 /* When sidebar is expanded, show text */
 #logo-sidebar:not(.collapsed) .sidebar-text {
-  transform: translateX(0);  /* Move text back into view */
+  transform: translateX(0); /* Move text back into view */
   transition: transform 0.3s ease;
 }
 
@@ -169,4 +175,3 @@
 #logo-sidebar:not(.collapsed) + #right-panel {
   margin-left: 16rem; /* This is ml-64 */
 }
-

@@ -1,64 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const sidebar = document.getElementById("logo-sidebar");
-  const collapseBtn = document.getElementById("collapse-btn");
-  const sidebarToggleIcon = document.getElementById("sidebar-toggle-icon");
-  const rightPanel = document.getElementById("right-panel");
-
-  sidebar.classList.add("collapsed");
-
-  collapseBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("collapsed");
-
-    if (sidebar.classList.contains("collapsed")) {
-      sidebarToggleIcon.classList.replace(
-        "fa-chevron-left",
-        "fa-chevron-right"
-      );
-    } else {
-      sidebarToggleIcon.classList.replace(
-        "fa-chevron-right",
-        "fa-chevron-left"
-      );
-    }
-  });
-
-const menuItems = document.querySelectorAll(".menu-item");
-const tabContents = document.querySelectorAll(".tab-content");
-
-const defaultTab = document.querySelector(
-  '.menu-item[data-tab-target="#specials"]'
-);
-
-defaultTab.classList.add("text-white", "bg-custom-blue");
-const defaultIcon = defaultTab.querySelector("i");
-defaultIcon.classList.replace("text-gray-500", "text-white");
-document.querySelector("#specials").classList.remove("hidden");
-
-menuItems.forEach((item) => {
-  item.addEventListener("click", function () {
-    menuItems.forEach((menu) => {
-      menu.classList.remove("text-white", "bg-custom-blue");
-      menu.classList.add("text-gray-500", "bg-gray-50", "hover:bg-gray-100");
-
-      const icon = menu.querySelector("i");
-      icon.classList.replace("text-white", "text-gray-500");
-    });
-
-    this.classList.add("text-white", "bg-custom-blue");
-    this.classList.remove("text-gray-500", "bg-gray-50", "hover:bg-gray-100");
-
-    const activeIcon = this.querySelector("i");
-    activeIcon.classList.replace("text-gray-500", "text-white");
-
-    tabContents.forEach((content) => content.classList.add("hidden"));
-
-    const targetId = this.getAttribute("data-tab-target");
-    document.querySelector(targetId).classList.remove("hidden");
-  });
-});
-});
-
-
 if (document.getElementById("export-table") && typeof simpleDatatables.DataTable !== 'undefined') {
 
   const exportCustomCSV = function(dataTable, userOptions = {}) {
@@ -105,7 +44,7 @@ if (document.getElementById("export-table") && typeof simpleDatatables.DataTable
                       "<select class='" + options.classes.selector + "'></select> " + options.labels.perPage +
                   "</label>" +
               "</div>" : ""
-          ) + "<button id='exportDropdownButton' type='button' class='flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 sm:w-auto'>" +
+          ) + "<button id='exportDropdownButton' type='button' class='flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 sm:w-auto'>" +
           "Export as" +
           "<svg class='-me-0.5 ms-1.5 h-4 w-4' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'>" +
               "<path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m19 9-7 7-7-7' />" +
@@ -164,7 +103,6 @@ if (document.getElementById("export-table") && typeof simpleDatatables.DataTable
   const $exportButton = document.getElementById("exportDropdownButton");
   const $exportDropdownEl = document.getElementById("exportDropdown");
   const dropdown = new Dropdown($exportDropdownEl, $exportButton);
-  console.log(dropdown)
 
   document.getElementById("export-csv").addEventListener("click", () => {
       simpleDatatables.exportCSV(table, {

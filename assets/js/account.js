@@ -59,8 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
   //     document.querySelector(targetId).classList.remove("hidden");
   //   });
   // });
-
-
 });
 
 if (
@@ -130,29 +128,30 @@ if (
 
 const analyzeButton = document.getElementById("analyzeButton");
 const loadingScreen = document.getElementById("loading-screen");
+if (analyzeButton) {
+  analyzeButton.addEventListener("click", (event) => {
+    event.preventDefault();
 
-analyzeButton.addEventListener("click", (event) => {
-  event.preventDefault();
+    loadingScreen.classList.remove("hidden");
 
-  loadingScreen.classList.remove("hidden");
+    setTimeout(() => {
+      window.location.href = "../account-analysis/account-observations.html";
+    }, 2000);
+  });
 
-  setTimeout(() => {
-    window.location.href = "../account-analysis/account-observations.html";
-  }, 2000);
-});
-
-Dropzone.options.pdfDropzone = {
-  paramName: "file",
-  maxFilesize: 5,
-  acceptedFiles: ".pdf,.xls, .xlsx",
-  uploadMultiple: true,
-  parallelUploads: 10,
-  init: function () {
-    this.on("successmultiple", function (files, response) {
-      console.log("Successfully uploaded:", files);
-    });
-    this.on("errormultiple", function (files, response) {
-      console.error("Error uploading:", files);
-    });
-  },
-};
+  Dropzone.options.pdfDropzone = {
+    paramName: "file",
+    maxFilesize: 5,
+    acceptedFiles: ".pdf,.xls, .xlsx",
+    uploadMultiple: true,
+    parallelUploads: 10,
+    init: function () {
+      this.on("successmultiple", function (files, response) {
+        console.log("Successfully uploaded:", files);
+      });
+      this.on("errormultiple", function (files, response) {
+        console.error("Error uploading:", files);
+      });
+    },
+  };
+}
