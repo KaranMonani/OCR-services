@@ -65,7 +65,7 @@ body {
     width: 100%;
     max-width: 8.5in;
     height: 11in;
-    margin: 20px auto;
+    /* margin: 20px auto; */
     background: url("../img/img.jpg") no-repeat center center;
     background-size: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -236,7 +236,7 @@ th {
     width: 100%;
     max-width: 8.5in;
     height: 11in;
-    margin: 20px auto;
+    /* margin: 20px auto; */
     background: url("../img/ty.jpg") no-repeat center center;
     background-size: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
