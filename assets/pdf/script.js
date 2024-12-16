@@ -88,7 +88,7 @@ function generatePDF() {
       filename: "Business_Report.pdf",
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: {
-        scale: window.devicePixelRatio,
+        scale: 1,
         y: 0,
         x: 0,
         scrollY: 0,
