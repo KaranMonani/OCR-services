@@ -78,3 +78,21 @@ var salesChart = new Chart(ctx, {
         }
     }
 });
+
+
+document.getElementById('generate-pdf').addEventListener('click', function() {
+  // Select the element you want to convert to PDF
+  const element = document.querySelector('.letter-wrapper'); // Adjust the selector as needed
+
+  // Options for the PDF
+  const options = {
+      margin: 1,
+      filename: 'document.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+
+  // Generate the PDF
+  html2pdf().from(element).set(options).save();
+});
