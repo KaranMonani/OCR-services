@@ -99,7 +99,7 @@ function generatePDF() {
         unit: "in",
         format: [8.5, 11],
         orientation: "portrait",
-        precision: 32,
+        precision: 0,
       },
     })
     .save();
