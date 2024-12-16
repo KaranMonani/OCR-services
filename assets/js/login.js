@@ -10,7 +10,6 @@ loginForm.addEventListener("submit", (event) => {
 
   let isValid = true;
 
-  // Validate email
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
     emailInput.classList.add(
       "bg-red-50",
@@ -32,7 +31,6 @@ loginForm.addEventListener("submit", (event) => {
     emailError.classList.add("hidden");
   }
 
-  // Validate password
   if (passwordInput.value.length < 8) {
     passwordInput.classList.add(
       "bg-red-50",
@@ -54,7 +52,6 @@ loginForm.addEventListener("submit", (event) => {
     passwordError.classList.add("hidden");
   }
 
-  // If valid, show loader and redirect
   if (isValid) {
     loadingScreen.classList.remove("hidden");
 

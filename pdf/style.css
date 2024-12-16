@@ -1,0 +1,282 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+}
+
+.letter-wrapper {
+    width: 100%;
+    max-width: 8.5in;
+    height: 11in;
+    margin: 20px auto;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+
+.section-header {
+    background-color: #002b49;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.section-logo {
+    width: 20%;
+    height: auto;
+}
+
+.company-logo {
+    background-color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24%;
+    height: 8%;
+    z-index: 2;
+}
+
+.home-page {
+    position: relative;
+    width: 100%;
+    max-width: 8.5in;
+    height: 11in;
+    margin: 20px auto;
+    background: url("../assets/img/img.jpg") no-repeat center center;
+    background-size: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.home-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 43, 73, 0.7);
+    z-index: 1;
+}
+
+.title-section {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    color: white;
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.year {
+    font-size: 4rem;
+    margin: 0;
+}
+
+.report-title {
+    font-size: 3rem;
+    margin: 10px 0;
+}
+
+.prepared-by {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.prepared-for {
+    font-size: 1.5rem;
+    color: white;
+    margin: 20px 0;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+}
+
+.divider {
+    width: 50%;
+    border: 1px solid white;
+    margin: 20px 0;
+}
+
+.footer {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    text-align: right;
+    color: #ffffff;
+    z-index: 999;
+}
+
+.footer .social {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.footer .social i {
+    font-size: 1.5rem;
+    color: #002b49;
+}
+
+.footer .contact-info {
+    font-size: 0.9rem;
+}
+
+.footer .contact-info div {
+    margin: 5px 0;
+}
+
+@media print {
+    body {
+        margin: 0;
+    }
+    .letter-wrapper {
+        box-shadow: none;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.content {
+    margin-top: 20px;
+    padding: 2%;
+}
+
+th {
+    background-color: #002b49;
+    color: white;
+}
+
+.chart-container {
+    margin-top: 20px;
+    width: 100%;
+    height: 400px;
+}
+
+.description {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+#turnoverChart {
+    max-width: 800px;
+    width: 100% !important;
+    height: 400px !important;
+    margin-left: -5%;
+}
+
+#profitChart {
+    max-width: 800px;
+    width: 100% !important;
+    height: 400px !important;
+    margin-left: -5%;
+}
+
+#salesChart {
+    max-width: 800px;
+    width: 100% !important;
+    height: 400px !important;
+    margin-left: -5%;
+}
+
+.thank-you-page {
+    position: relative;
+    width: 100%;
+    max-width: 8.5in;
+    height: 11in;
+    margin: 20px auto;
+    background: url("../assets/img/ty.jpg") no-repeat center center;
+    background-size: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.thank-you-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 43, 73, 0.7);
+    z-index: 1;
+}
+
+.thank-you {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    text-align: center;
+}
+
+.thank-you-message {
+    font-size: 4rem;
+    margin: 0;
+}
+
+.prepared-by {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.thank-you-logo {
+    background-color: white;
+    width: 60%;
+    height: auto;
+    margin-top: 20px;
+    padding: 2%;
+}

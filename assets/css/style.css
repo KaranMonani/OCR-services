@@ -49,10 +49,10 @@
   background-color: #ffffff;
   border-radius: 15px;
   padding: 20px;
-  justify-content: flex-start; /* Align top */
-  min-height: 80vh; /* Ensure it takes up most of the vertical space */
-  padding-bottom: 50px; /* Space for footer */
-  background-color: #f4f4f4; /* Light background for the card */
+  justify-content: flex-start;
+  min-height: 80vh;
+  padding-bottom: 50px;
+  background-color: #f4f4f4;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -60,7 +60,7 @@
   text-align: center;
   font-size: 24px;
   font-weight: bold;
-  color: #002b49; /* Change this color as per your theme */
+  color: #002b49;
   margin-bottom: 30px;
 }
 
@@ -68,19 +68,17 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px; /* Adjust space between icons */
+  gap: 20px;
 }
 
 .icon {
   border-radius: 12px;
-  width: 110px; /* Adjusted size for better padding */
-  height: 110px; /* Adjusted size for better padding */
+  width: 110px;
+  height: 110px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* color: #002b49; */
-  /* background-color: #002b49; */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition:
     transform 0.3s,
@@ -107,24 +105,19 @@
   margin-top: 10px;
 }
 
-/* Account Analysis CSS*/
-/* Initially collapsed state */
 #logo-sidebar {
-  width: 4rem; /* Collapsed width */
+  width: 4rem;
   transition: all 0.3s ease-in-out;
 }
 
-/* When collapsed, hide text */
 #logo-sidebar.collapsed .sidebar-button span {
   display: none;
 }
 
-/* Sidebar will expand when not collapsed */
 #logo-sidebar:not(.collapsed) {
-  width: 16rem; /* Expanded width */
+  width: 16rem;
 }
 
-/* Arrow toggle icon */
 #collapse-btn {
   transition: transform 0.3s ease-in-out;
   position: absolute;
@@ -133,31 +126,27 @@
 }
 
 #logo-sidebar.collapsed #collapse-btn i {
-  transform: rotate(180deg); /* Arrow pointing right when collapsed */
+  transform: rotate(180deg);
 }
 
 #logo-sidebar:not(.collapsed) #collapse-btn i {
-  transform: rotate(0deg); /* Arrow pointing left when expanded */
+  transform: rotate(0deg);
 }
 
-/* Rotate arrow animation */
 #collapse-btn i {
   transition: transform 0.3s ease-in-out;
 }
 
-/* When sidebar is collapsed, hide text */
 #logo-sidebar.collapsed .sidebar-text {
-  transform: translateX(-9999px); /* Move text off-screen */
+  transform: translateX(-9999px);
   transition: transform 0.3s ease;
 }
 
-/* When sidebar is expanded, show text */
 #logo-sidebar:not(.collapsed) .sidebar-text {
-  transform: translateX(0); /* Move text back into view */
+  transform: translateX(0);
   transition: transform 0.3s ease;
 }
 
-/* Ensure the sidebar's content transitions smoothly */
 #logo-sidebar {
   transition: transform 0.3s ease;
 }
@@ -166,12 +155,10 @@
   transition: margin-left 0.3s ease-in-out;
 }
 
-/* When sidebar is collapsed, the right panel adjusts */
 #logo-sidebar.collapsed + #right-panel {
-  margin-left: 2.5rem; /* This is ml-10 */
+  margin-left: 2.5rem;
 }
 
-/* When sidebar is expanded, the right panel adjusts */
 #logo-sidebar:not(.collapsed) + #right-panel {
-  margin-left: 16rem; /* This is ml-64 */
+  margin-left: 16rem;
 }

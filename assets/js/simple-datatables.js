@@ -1,9 +1,3 @@
-/**
- * Minified by jsDelivr using Terser v5.19.2.
- * Original file: /npm/simple-datatables@9.0.3/dist/umd/simple-datatables.js
- *
- * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
- */
 !(function (t) {
   if ("object" == typeof exports && "undefined" != typeof module)
     module.exports = t();

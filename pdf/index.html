@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Report</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <!-- Title Page -->
+    <div class="letter-wrapper home-page">
+      <img
+        src="../assets/img/logo.jpeg"
+        alt="Company Logo"
+        class="company-logo"
+      />
+      <div class="title-section">
+        <h2 class="year">2025</h2>
+        <h1 class="report-title">ANNUAL REPORT</h1>
+        <hr class="divider" />
+        <p class="prepared-by">Global Business Solution</p>
+        <br />
+        <br />
+        <p class="prepared-for">
+          Prepared For <br />
+          Vimal Rughani
+        </p>
+      </div>
+
+      <!-- Footer Section of title page -->
+      <div class="footer">
+        <div class="social">
+          <a href="https://www.facebook.com" target="_blank"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="https://www.twitter.com" target="_blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="https://www.linkedin.com" target="_blank"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a href="https://www.instagram.com" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+        <div class="contact-info">
+          <div>📞 Mobile: +91-97260 67737</div>
+          <div>🌐 Website: www.himanjali.com</div>
+          <div>✉️ Email: hello@himanjali.com</div>
+          <div>
+            🏢 Address: The Landmark, A-406,<br />
+            opp. Kansar Hotel, Kudasan,<br />
+            Gandhinagar, Gujarat 382421
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Observations Section -->
+    <div class="letter-wrapper">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Reportable</h2>
+          <h2 class="section-title">Observations</h2>
+        </div>
+        <img
+          src="../assets/img/logo.jpeg"
+          alt="Company Logo"
+          class="section-logo"
+        />
+      </div>
+      <div class="content">
+        <table>
+          <thead>
+            <tr>
+              <th>Observation</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Issuance or buy-back of share capital.</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Loan balance mismatch with repayment schedule.</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Turnover mismatches between books and GSTR-1/GSTR-3B.</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>
+                Input tax credit discrepancies with electronic credit ledger.
+              </td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Fixed assets purchased or removed not accounted.</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Balance discrepancies with external confirmations.</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Inadequate documentation for expense claims.</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Inventory valuation discrepancies.</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Non-compliance with regulatory filings.</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Unrecorded liabilities affecting financial statements.</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Related party transactions not disclosed.</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>BALANCE OF ANY CREDITOR UNCHANGED FROM PREVIOUS YEAR</td>
+              <td>₹ 50,000</td>
+            </tr>
+            <tr>
+              <td>CREDITOR HAVING DEBIT BALANCE</td>
+              <td>₹ 5,00,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Comparative Analysis: Turnover -->
+    <div class="letter-wrapper">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Turnover</h2>
+          <h2 class="section-title">Comparison</h2>
+        </div>
+        <img
+          src="../assets/img/logo.jpeg"
+          alt="Company Logo"
+          class="section-logo"
+        />
+      </div>
+      <div class="chart-container">
+        <canvas id="turnoverChart"></canvas>
+      </div>
+      <div class="content">
+        <div style="font-weight: bold; margin-bottom: 10px">Summary:</div>
+        <div style="font-size: 1.2rem">
+          The turnover analysis indicates a steady growth in sales over the past
+          year. The data shows that the company has successfully increased its
+          market share, which is reflected in the upward trend of the monthly
+          turnover figures.
+        </div>
+        <div style="font-size: 1.2rem; margin-top: 10px">
+          Additionally, the comparison with the previous year highlights the
+          effectiveness of the marketing strategies implemented. The company is
+          well-positioned to continue this growth trajectory in the upcoming
+          year.
+        </div>
+        <div style="font-size: 1.2rem; margin-top: 10px">
+          This chart illustrates the turnover comparison for the previous year
+          across the months.
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparative Analysis: Profit -->
+    <div class="letter-wrapper">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Profit</h2>
+          <h2 class="section-title">Comparison</h2>
+        </div>
+        <img
+          src="../assets/img/logo.jpeg"
+          alt="Company Logo"
+          class="section-logo"
+        />
+      </div>
+      <div class="chart-container">
+        <canvas id="profitChart"></canvas>
+      </div>
+      <div class="content">
+        <div style="font-weight: bold; margin-bottom: 10px">Summary:</div>
+        <div style="font-size: 1.2rem">
+          The profit comparison analysis indicates a steady growth in
+          profitability over the past year. The data shows that the company has
+          successfully increased its profit margins, which is reflected in the
+          upward trend of the monthly profit figures.
+        </div>
+        <div style="font-size: 1.2rem; margin-top: 10px">
+          Additionally, the comparison with the previous year highlights the
+          effectiveness of the cost-cutting measures implemented. The company is
+          well-positioned to continue this growth trajectory in the upcoming
+          year.
+        </div>
+        <div style="font-size: 1.2rem; margin-top: 10px">
+          This chart illustrates the profit comparison for the previous year
+          across the months.
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparative Analysis -->
+    <div class="letter-wrapper">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Comparative</h2>
+          <h2 class="section-title">Analysis</h2>
+        </div>
+        <img
+          src="../assets/img/logo.jpeg"
+          alt="Company Logo"
+          class="section-logo"
+        />
+      </div>
+      <div class="chart-container">
+        <canvas id="salesChart"></canvas>
+      </div>
+      <div class="content">
+        <div style="font-weight: bold; margin-bottom: 10px">Summary:</div>
+        <div style="font-size: 1.2rem">
+          The profit comparison analysis indicates a steady growth in
+          profitability over the past year. The data shows that the company has
+          successfully increased its profit margins, which is reflected in the
+          upward trend of the monthly profit figures.
+        </div>
+        <div style="font-size: 1.2rem; margin-top: 10px">
+          Additionally, the comparison with the previous year highlights the
+          effectiveness of the cost-cutting measures implemented. The company is
+          well-positioned to continue this growth trajectory in the upcoming
+          year.
+        </div>
+        <div style="font-size: 1.2rem; margin-top: 10px">
+          This chart illustrates the profit comparison for the previous year
+          across the months.
+        </div>
+      </div>
+    </div>
+
+    <!-- Report Summary Section -->
+    <div class="letter-wrapper">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Report Summary</h2>
+        </div>
+        <img
+          src="../assets/img/logo.jpeg"
+          alt="Company Logo"
+          class="section-logo"
+        />
+      </div>
+      <div class="content" style="margin-top: 20px">
+        <table>
+          <thead>
+            <tr>
+              <th>Record</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Financial statements prepared and reviewed.</td>
+              <td>Completed</td>
+            </tr>
+            <tr>
+              <td>Tax returns filed for the previous year.</td>
+              <td>Completed</td>
+            </tr>
+            <tr>
+              <td>Internal controls assessment conducted.</td>
+              <td>Pending</td>
+            </tr>
+            <tr>
+              <td>Audit findings discussed with management.</td>
+              <td>Completed</td>
+            </tr>
+            <tr>
+              <td>Compliance with regulatory requirements verified.</td>
+              <td>Completed</td>
+            </tr>
+            <tr>
+              <td>Management letter issued to the board.</td>
+              <td>Pending</td>
+            </tr>
+            <tr>
+              <td>Budget variance analysis completed.</td>
+              <td>Completed</td>
+            </tr>
+            <tr>
+              <td>Cash flow projections prepared.</td>
+              <td>Completed</td>
+            </tr>
+            <tr>
+              <td>Risk assessment report finalized.</td>
+              <td>Pending</td>
+            </tr>
+            <tr>
+              <td>Stakeholder feedback collected.</td>
+              <td>Completed</td>
+            </tr>
+            <tr>
+              <td>Future action plan developed.</td>
+              <td>Pending</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Thank You Page -->
+    <div class="letter-wrapper thank-you-page">
+      <div class="thank-you">
+        <h1 class="thank-you-message">Thank You!</h1>
+        <p class="prepared-by">Prepared By</p>
+        <img
+          src="../assets/img/logo1.png"
+          alt="Company Logo"
+          class="thank-you-logo"
+        />
+      </div>
+      <div class="footer">
+        <div class="social">
+          <a href="https://www.facebook.com" target="_blank"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="https://www.twitter.com" target="_blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="https://www.linkedin.com" target="_blank"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a href="https://www.instagram.com" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+        <div class="contact-info">
+          <div>📞 Mobile: +91-97260 67737</div>
+          <div>🌐 Website: www.himanjali.com</div>
+          <div>✉️ Email: hello@himanjali.com</div>
+          <div>
+            🏢 Address: The Landmark, A-406,<br />
+            opp. Kansar Hotel, Kudasan,<br />
+            Gandhinagar, Gujarat 382421
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

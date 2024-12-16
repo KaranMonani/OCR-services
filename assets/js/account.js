@@ -22,43 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // const tabContents = document.querySelectorAll(".tab-content");
-
-  // const sidebarButtons = document.querySelectorAll(".sidebar-button");
-
-  // const defaultTab = document.querySelector(
-  //   '.sidebar-button[data-tab-target="#detail"]'
-  // );
-
-  // defaultTab.classList.add("text-white", "bg-custom-blue");
-  // const defaultIcon = defaultTab.querySelector("svg");
-  // defaultIcon.classList.replace("text-gray-500", "text-white");
-  // document.querySelector("#detail").classList.remove("hidden");
-
-  // const removeSidebarActiveClass = () => {
-  //   sidebarButtons.forEach((btn) => {
-  //     btn.classList.remove("text-white", "bg-custom-blue");
-  //     btn.classList.add("text-gray-500", "bg-gray-50", "hover:bg-gray-100");
-
-  //     const icon = btn.querySelector("svg");
-  //     icon.classList.replace("text-white", "text-gray-500");
-  //   });
-  // };
-
-  // sidebarButtons.forEach((item) => {
-  //   item.addEventListener("click", function () {
-  //     removeSidebarActiveClass();
-
-  //     this.classList.add("text-white", "bg-custom-blue");
-  //     this.classList.remove("text-gray-500", "bg-gray-50", "hover:bg-gray-100");
-  //     const activeIcon = this.querySelector("svg");
-  //     activeIcon.classList.replace("text-gray-500", "text-white");
-
-  //     tabContents.forEach((content) => content.classList.add("hidden"));
-  //     const targetId = this.getAttribute("data-tab-target");
-  //     document.querySelector(targetId).classList.remove("hidden");
-  //   });
-  // });
 });
 
 if (

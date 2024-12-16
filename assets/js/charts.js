@@ -1,15 +1,3 @@
-/**
- * Skipped minification because the original files appears to be already minified.
- * Original file: /npm/chart.js@4.4.7/dist/chart.umd.js
- *
- * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
- */
-/*!
- * Chart.js v4.4.7
- * https://www.chartjs.org
- * (c) 2024 Chart.js Contributors
- * Released under the MIT License
- */
 !(function (t, e) {
   "object" == typeof exports && "undefined" != typeof module
     ? (module.exports = e())
@@ -513,12 +501,7 @@
     }
   }
   var xt = new bt();
-  /*!
-   * @kurkle/color v0.3.2
-   * https://github.com/kurkle/color#readme
-   * (c) 2023 Jukka Kurkela
-   * Released under the MIT License
-   */ function _t(t) {
+ function _t(t) {
     return (t + 0.5) | 0;
   }
   const yt = (t, e, i) => Math.max(Math.min(t, i), e);
