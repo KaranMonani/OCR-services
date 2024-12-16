@@ -1,6 +1,4 @@
-const turnoverCtx = document
-  .getElementById("turnoverChart")
-  .getContext("2d");
+const turnoverCtx = document.getElementById("turnoverChart").getContext("2d");
 new Chart(turnoverCtx, {
   type: "bar",
   data: {
@@ -57,38 +55,52 @@ new Chart(profitCtx, {
   },
 });
 
-var ctx = document.getElementById('salesChart').getContext('2d');
+var ctx = document.getElementById("salesChart").getContext("2d");
 var salesChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May'],
-        datasets: [{
-            label: 'Sales',
-            data: [12, 19, 3, 5, 2],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-        }]
+  type: "bar",
+  data: {
+    labels: ["January", "February", "March", "April", "May"],
+    datasets: [
+      {
+        label: "Sales",
+        data: [12, 19, 3, 5, 2],
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderColor: "rgba(75, 192, 192, 1)",
+        borderWidth: 1,
+      },
+    ],
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
     },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
+  },
 });
 
 function generatePDF() {
   const element = document.body; // or specify a specific section
   html2pdf()
-      .from(element)
-      .set({
-          margin: 0,
-          filename: 'Business_Report.pdf',
-          image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: { scale: 1, scrollY: 0  },
-          jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-      })
-      .save();
+    .from(element)
+    .set({
+      margin: 0,
+      filename: "Business_Report.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: {
+        scale: window.devicePixelRatio,
+        y: 0,
+        x: 0,
+        scrollY: 0,
+        scrollX: 0,
+        windowWidth: 800,
+      },
+      jsPDF: {
+        unit: "in",
+        format: [8.5, 11],
+        orientation: "portrait",
+        precision: 32,
+      },
+    })
+    .save();
 }
