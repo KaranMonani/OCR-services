@@ -61,7 +61,7 @@ body {
     max-width: 8.5in;
     height: 11in;
     margin: 20px auto;
-    background: url("../assets/img/img.jpg") no-repeat center center;
+    background: url("/assets/img/img.jpg") no-repeat center center;
     background-size: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -231,7 +231,7 @@ th {
     max-width: 8.5in;
     height: 11in;
     margin: 20px auto;
-    background: url("../assets/img/ty.jpg") no-repeat center center;
+    background: url("/assets/img/ty.jpg") no-repeat center center;
     background-size: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
