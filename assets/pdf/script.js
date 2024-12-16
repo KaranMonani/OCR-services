@@ -84,7 +84,7 @@ function generatePDF() {
   html2pdf()
       .from(element)
       .set({
-          margin: 0.5,
+          margin: 0,
           filename: 'Business_Report.pdf',
           image: { type: 'jpeg', quality: 0.98 },
           html2canvas: { scale: 2 },
