@@ -10,9 +10,9 @@ body {
 
 .letter-wrapper {
     width: 100%;
-    max-width: 800px;
+    max-width: 8.5in;
     height: 11in;
-    margin: auto;
+    margin: 20px auto;
     background: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -279,20 +279,4 @@ th {
     height: auto;
     margin-top: 20px;
     padding: 2%;
-}
-
-
-.generate-pdf-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 20px;
-}
-
-.generate-pdf-button:hover {
-    background-color: #0056b3;
 }

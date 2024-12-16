@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="../assets/pdf/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../assets/pdf/script.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   </head>
   <body>
-    <button id="generate-pdf" class="generate-pdf-button">Generate PDF</button>
+    <button onclick="generatePDF()">Download PDF</button>
 
     <!-- Title Page -->
     <div class="letter-wrapper home-page">
