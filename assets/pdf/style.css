@@ -8,6 +8,11 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+.container {
+    margin: 0;
+    padding: 0;
+}
+
 .letter-wrapper {
     width: 100%;
     max-width: 8.5in;

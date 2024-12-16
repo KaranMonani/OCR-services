@@ -88,18 +88,18 @@ function generatePDF() {
       filename: "Business_Report.pdf",
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: {
-        scale: 1,
+        scale: 2,
         y: 0,
         x: 0,
         scrollY: 0,
         scrollX: 0,
-        windowWidth: 800,
+        windowWidth: document.body.scrollWidth,
       },
       jsPDF: {
         unit: "in",
-        format: [8.5, 11],
+        format: "letter",
         orientation: "portrait",
-        precision: 0,
+        precision: 2,
       },
     })
     .save();
