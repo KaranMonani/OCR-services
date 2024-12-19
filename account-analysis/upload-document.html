@@ -56,7 +56,7 @@
                 ></path>
               </svg>
             </button>
-            <a href="./dashboard.html" class="flex ms-2 md:me-24">
+            <a href="./account-dashboard.html" class="flex ms-2 md:me-24">
               <img src="../assets/img/login.svg" class="h-8 me-3" alt="Logo" />
               <span
                 class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap light:text-white"
@@ -193,55 +193,77 @@
       <div class="flex h-screen">
         <div class="p-6 bg-gray-50 text-medium text-gray-500 rounded-lg w-full">
           <div id="upload">
-            <div class="p-4">
-              <div class="flex items-baseline justify-center h-screen">
+            <div
+              class="rounded-lg border-gray-300 light:border-gray-600 p-4 w-full max-w-2xl bg-white shadow-md"
+            >
+              <div class="mb-4">
+                <div class="flex items-center justify-between">
+                  <h2
+                    class="text-lg font-bold text-custom-blue mb-4 text-center"
+                  >
+                    UPLOAD FILES
+                  </h2>
+                </div>
                 <div
-                  class="rounded-lg border-gray-300 light:border-gray-600 p-4 w-full max-w-2xl bg-white shadow-md"
+                  class="dropzone border-2 border-gray-200 border-dashed flex flex-col items-center justify-center h-48 mb-6"
+                  id="pdf-dropzone"
                 >
-                  <div class="mb-4">
-                    <div class="flex items-center justify-between">
-                      <h2
-                        class="text-lg font-bold text-custom-blue mb-4 text-center"
-                      >
-                        UPLOAD DOCUMENTS TO ANALYSE
-                      </h2>
-                    </div>
-                    <hr />
-                    <br />
-                    <form
-                      action="/upload"
-                      class="dropzone border-2 border-gray-200 border-dashed flex flex-col items-center justify-center h-48"
-                      id="pdf-dropzone"
+                  <i class="fas fa-upload text-custom-blue text-3xl mb-2"></i>
+                  <div class="text-gray-500 text-center">
+                    Drag your file(s) here to upload <br />
+                    <span class="block text-gray-400 text-sm mt-2"> OR </span>
+                    <button
+                      id="browse-files"
+                      type="button"
+                      class="text-custom-blue font-bold border border-custom-blue py-1 px-3 rounded mt-2"
                     >
-                      <div class="dz-message text-gray-500">
-                        <div class="dz-message text-gray-500">
-                          Drag and drop your PDF or Excel files here, or click
-                          to upload (up to 10 files).
-                        </div>
-                      </div>
-                    </form>
-
-                    <div class="flex justify-end mt-4">
-                      <button
-                        type="submit"
-                        id="analyzeButton"
-                        class="max-w-40 bg-custom-blue hover:bg-custom-blue text-white font-bold py-2 px-4 rounded-full"
-                      >
-                        Analyze
-                      </button>
-                    </div>
+                      Browse files
+                    </button>
                   </div>
+                  <input
+                    id="file-input"
+                    type="file"
+                    class="hidden"
+                    multiple
+                    accept=".pdf,.doc,.xlsx"
+                  />
+                </div>
+
+                <div class="flex justify-between text-gray-400 text-xs">
+                  <span>Supported file formats: .xls, .pdf</span>
+                  <span>Max files: 5 Files</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        <div
+          class="p-6 rounded-lg border-gray-300 light:border-gray-600 p-4 w-full max-w-2xl bg-white shadow-md"
+        >
+          <div class="file-list mt-4">
+            <ul id="file-list" class="space-y-3"></ul>
+          </div>
+          <div class="text-right mt-8">
+            <button
+              id="analyze-button"
+              type="button"
+              class="hidden bg-custom-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+            >
+              Analyze File(s)
+            </button>
+          </div>
 
-      <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
-      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-      <script src="../assets/js/account.js"></script>
-      <script src="../assets/js/script.js"></script>
+          <div
+            id="error-message"
+            class="fixed right-0 top-10 mt-5 mr-5 bg-red-500 text-white px-4 py-2 rounded shadow-lg transform translate-x-full opacity-0 transition duration-300"
+          >
+            Please select a category for uploaded files.
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="../assets/js/account.js"></script>
+    <script src="../assets/js/script.js"></script>
   </body>
 </html>
