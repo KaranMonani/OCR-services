@@ -8,8 +8,8 @@ class FileInstance {
     this.file = file;
     this.selectedCategory = null;
     this.categories = categories;
-    this.updateCategoryAvailability = updateCategoryAvailability; // Function to update category availability
-    this.updateAnalyzeButtonVisibility = updateAnalyzeButtonVisibility; // Function to update Analyze button visibility
+    this.updateCategoryAvailability = updateCategoryAvailability;
+    this.updateAnalyzeButtonVisibility = updateAnalyzeButtonVisibility;
   }
 
   createListItem() {
@@ -55,17 +55,15 @@ class FileInstance {
   }
 
   handleCategoryChange(selectedValue) {
-    // Re-enable previously selected category if changing selection
     if (this.selectedCategory) {
       console.log(`Re-enabling category: ${this.selectedCategory}`);
-      this.updateCategoryAvailability(this.selectedCategory, true); // Re-enable the category
+      this.updateCategoryAvailability(this.selectedCategory, true); 
     }
 
-    // Disable the newly selected category
     if (selectedValue) {
       console.log(`Disabling category: ${selectedValue}`);
       this.selectedCategory = selectedValue;
-      this.updateCategoryAvailability(selectedValue, false); // Disable the category
+      this.updateCategoryAvailability(selectedValue, false);
     } else {
       this.selectedCategory = null;
     }
@@ -74,10 +72,10 @@ class FileInstance {
   removeListItem(listItem) {
     if (this.selectedCategory) {
       console.log(`Removing category: ${this.selectedCategory}`);
-      this.updateCategoryAvailability(this.selectedCategory, true); // Re-enable the category
+      this.updateCategoryAvailability(this.selectedCategory, true);
     }
     listItem.remove();
-    this.updateAnalyzeButtonVisibility(); // Update the visibility of the Analyze button
+    this.updateAnalyzeButtonVisibility();
   }
 }
 
@@ -90,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const errorMessage = document.getElementById("error-message");
   const analyzeButton = document.getElementById("analyze-button");
   const loadingScreen = document.getElementById("loading-screen");
-  const maxFiles = 5; // Maximum number of files allowed
+  const maxFiles = 5;
 
   const categories = [
     "Tax Document",
@@ -100,10 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "Bank Statement",
   ];
 
-  // Global state to track selected categories
   const selectedCategories = new Set();
 
-  // Function to update category availability
   function updateCategoryAvailability(category, isAvailable) {
     console.log(
       `Updating availability for category: ${category}, Available: ${isAvailable}`
@@ -113,13 +109,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const options = select.querySelectorAll("option");
       options.forEach((option) => {
         if (option.value === category) {
-          option.disabled = !isAvailable; // Enable or disable based on isAvailable
+          option.disabled = !isAvailable;
         }
       });
     });
   }
 
-  // Function to update Analyze button visibility
   function updateAnalyzeButtonVisibility() {
     if (fileList.children.length > 0) {
       analyzeButton.classList.remove("hidden");
@@ -128,19 +123,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Browse Files Trigger
   if (fileInput) {
     document
       .getElementById("browse-files")
       .addEventListener("click", () => fileInput.click());
 
-    // Handle File Upload
     fileInput.addEventListener("change", (event) => {
       const files = event.target.files;
-      // Check if adding files exceeds the limit
       if (fileList.children.length + files.length > maxFiles) {
         alert(`You can only upload up to ${maxFiles} files.`);
-        fileInput.value = ""; // Clear the input
+        fileInput.value = ""; 
         return;
       }
 
@@ -155,14 +147,11 @@ document.addEventListener("DOMContentLoaded", () => {
         fileList.appendChild(listItem);
       }
 
-      // Clear input after adding files
       fileInput.value = "";
 
-      // Update Analyze button visibility
       updateAnalyzeButtonVisibility();
     });
 
-    // Analyze Button Validation
     analyzeButton.addEventListener("click", () => {
       let allValid = true;
       const selectElements = fileList.querySelectorAll("select");
@@ -173,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
       if (!allValid) {
-        // Show animated error message
         errorMessage.classList.remove("opacity-0", "translate-x-full");
         setTimeout(() => {
           errorMessage.classList.add("opacity-0", "translate-x-full");
