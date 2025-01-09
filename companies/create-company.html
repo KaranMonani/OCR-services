@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Dashboard</title>
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <link href="../assets/css/flowbite.min.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div
+      id="loading-screen"
+      class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center"
+    >
+      <div class="loader"></div>
+    </div>
+
+    <nav
+      class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 light:bg-gray-800 light:border-gray-700"
+    >
+      <div class="px-3 py-3 lg:px-5 lg:pl-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center justify-start rtl:justify-end">
+            <button
+              data-drawer-target="logo-sidebar"
+              data-drawer-toggle="logo-sidebar"
+              aria-controls="logo-sidebar"
+              type="button"
+              class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 light:text-gray-400 light:hover:bg-gray-700 light:focus:ring-gray-600"
+            >
+              <span class="sr-only">Open sidebar</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                ></path>
+              </svg>
+            </button>
+            <a href="../dashboard/dashboard.html" class="flex ms-2 md:me-24">
+              <img src="../assets/img/login.svg" class="h-8 me-3" alt="Logo" />
+              <span
+                class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap light:text-white"
+                >OCR SERVICES</span
+              >
+            </a>
+          </div>
+          <div class="flex items-center">
+            <div class="flex items-center ms-3">
+              <div>
+                <button
+                  type="button"
+                  class="flex items-center text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 light:focus:ring-gray-600"
+                  aria-expanded="false"
+                  data-dropdown-toggle="dropdown-user"
+                >
+                  <span class="sr-only">Open user menu</span>
+                  <div
+                    id="initial-icon"
+                    class="flex items-center justify-center w-8 h-8 text-white bg-custom-blue rounded-full"
+                  ></div>
+                  <span id="user-name" class="ml-2 text-gray-900 font-medium">
+                    John Doe
+                  </span>
+                </button>
+              </div>
+
+              <div
+                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow light:bg-gray-700 light:divide-gray-600"
+                id="dropdown-user"
+              >
+                <div class="px-4 py-3" role="none">
+                  <p class="text-sm text-gray-900 light:text-white" role="none">
+                    John Doe
+                  </p>
+                  <p
+                    class="text-sm font-medium text-gray-900 truncate light:text-gray-300"
+                    role="none"
+                  >
+                    John@admin.com
+                  </p>
+                </div>
+                <ul class="py-1" role="none">
+                  <li>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
+                      role="menuitem"
+                    >
+                      Settings
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
+                      role="menuitem"
+                    >
+                      Sign out
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="right-panel" class="p-4 pt-10 lg:ml-10 transition-all">
+      <div class="flex h-screen">
+        <div class="p-6 bg-gray-50 text-medium text-gray-500 rounded-lg w-full">
+          <div class="mb-4">
+            <div class="flex items-center justify-between">
+              <h2 class="text-lg font-semibold text-custom-blue">
+                <b> Create Company </b>
+                <p class="text-sm text-gray-500">
+                  Manage your companies, and develop client deliverables with
+                  AI-assisted application.
+                </p>
+              </h2>
+            </div>
+          </div>
+          <hr />
+          <br />
+          <form id="create-company-form">
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+              <div>
+                <label
+                  for="name"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="cin"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >CIN</label
+                >
+                <input
+                  type="text"
+                  id="cin"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="gst"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >GST</label
+                >
+                <input
+                  type="text"
+                  id="gst"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="address_1"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Address 1</label
+                >
+                <textarea
+                  id="address_1"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  required
+                ></textarea>
+              </div>
+              <div>
+                <label
+                  for="address_2"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Address 2</label
+                >
+                <textarea
+                  id="address_2"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                ></textarea>
+              </div>
+              <div class="grid gap-6 mb-6 md:grid-cols-4">
+                <div>
+                  <label
+                    for="country"
+                    class="block mb-2 text-sm font-medium text-gray-900"
+                    >Country</label
+                  >
+                  <select
+                    id="country"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  ></select>
+                </div>
+                <div>
+                  <label
+                    for="state"
+                    class="block mb-2 text-sm font-medium text-gray-900"
+                    >State</label
+                  >
+                  <select
+                    id="state"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  ></select>
+                </div>
+                <div>
+                  <label
+                    for="city"
+                    class="block mb-2 text-sm font-medium text-gray-900"
+                    >City</label
+                  >
+                  <select
+                    id="city"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  ></select>
+                </div>
+                <div>
+                  <label
+                    for="pincode"
+                    class="block mb-2 text-sm font-medium text-gray-900"
+                    >Pincode</label
+                  >
+                  <input
+                    type="text"
+                    id="pincode"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    required
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="mobile"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Mobile</label
+                >
+                <input
+                  type="number"
+                  id="mobile"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="phone"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Phone</label
+                >
+                <input
+                  type="number"
+                  id="phone"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                />
+              </div>
+              <div>
+                <label
+                  for="website"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                  >Website</label
+                >
+                <input
+                  type="text"
+                  id="website"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                />
+              </div>
+            </div>
+            <button id="createCompany"
+              type="submit"
+              class="text-white bg-custom-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            >
+              Create
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/simple-datatables.js"></script>
+    <script src="../assets/js/flowbite.min.js"></script>
+    <script src="../assets/js/company.js"></script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

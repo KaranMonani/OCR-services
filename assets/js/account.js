@@ -56,12 +56,10 @@ class FileInstance {
 
   handleCategoryChange(selectedValue) {
     if (this.selectedCategory) {
-      console.log(`Re-enabling category: ${this.selectedCategory}`);
-      this.updateCategoryAvailability(this.selectedCategory, true); 
+      this.updateCategoryAvailability(this.selectedCategory, true);
     }
 
     if (selectedValue) {
-      console.log(`Disabling category: ${selectedValue}`);
       this.selectedCategory = selectedValue;
       this.updateCategoryAvailability(selectedValue, false);
     } else {
@@ -71,7 +69,6 @@ class FileInstance {
 
   removeListItem(listItem) {
     if (this.selectedCategory) {
-      console.log(`Removing category: ${this.selectedCategory}`);
       this.updateCategoryAvailability(this.selectedCategory, true);
     }
     listItem.remove();
@@ -89,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const analyzeButton = document.getElementById("analyze-button");
   const loadingScreen = document.getElementById("loading-screen");
   const maxFiles = 5;
+  const fileInstances = []; // Store FileInstance objects
 
   const categories = [
     "Tax Document",
@@ -101,9 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectedCategories = new Set();
 
   function updateCategoryAvailability(category, isAvailable) {
-    console.log(
-      `Updating availability for category: ${category}, Available: ${isAvailable}`
-    );
     const selectElements = document.querySelectorAll(".category-select");
     selectElements.forEach((select) => {
       const options = select.querySelectorAll("option");
@@ -132,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const files = event.target.files;
       if (fileList.children.length + files.length > maxFiles) {
         alert(`You can only upload up to ${maxFiles} files.`);
-        fileInput.value = ""; 
+        fileInput.value = "";
         return;
       }
 
@@ -145,6 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         const listItem = fileInstance.createListItem();
         fileList.appendChild(listItem);
+        fileInstances.push(fileInstance); // Add to collection
       }
 
       fileInput.value = "";
@@ -152,26 +148,87 @@ document.addEventListener("DOMContentLoaded", () => {
       updateAnalyzeButtonVisibility();
     });
 
-    analyzeButton.addEventListener("click", () => {
-      let allValid = true;
-      const selectElements = fileList.querySelectorAll("select");
+    // Analyze Button UI Testing
+    // analyzeButton.addEventListener("click", () => {
+    //   const formData = new FormData();
+    //   let allValid = true;
+    //   Array.from(fileList.children).forEach((listItem, index) => {
+    //     const fileInstance = fileInstances[index]; // Retrieve from collection
+    //     const category = listItem.querySelector("select").value;
 
-      selectElements.forEach((select) => {
-        if (!select.value) {
+    //     if (!category) {
+    //       allValid = false;
+    //       return;
+    //     }
+
+    //     formData.append(`files[${index}]`, fileInstance.file);
+    //     formData.append(`categories[${index}]`, category);
+    //   });
+
+    //   formData.forEach((value, key) => {
+    //     console.log(`${key}:`, value);
+    //   });
+
+    //   if (!allValid) {
+    //     errorMessage.classList.remove("opacity-0", "translate-x-full");
+    //     setTimeout(() => {
+    //       errorMessage.classList.add("opacity-0", "translate-x-full");
+    //     }, 3000);
+    //   } else {
+    //     loadingScreen.classList.remove("hidden");
+    //     setTimeout(() => {
+    //       window.location.href =
+    //         "../account-analysis/account-observations.html";
+    //     }, 2000);
+    //   }
+    // });
+
+    // Send Files to Django server
+    analyzeButton.addEventListener("click", async () => {
+      const formData = new FormData();
+      let allValid = true;
+
+      Array.from(fileList.children).forEach((listItem, index) => {
+        const fileInstance = fileInstances[index];
+        const category = listItem.querySelector("select").value;
+
+        if (!category) {
           allValid = false;
+          return;
         }
+
+        formData.append(`files[${index}]`, fileInstance.file);
+        formData.append(`categories[${index}]`, category);
       });
+
       if (!allValid) {
         errorMessage.classList.remove("opacity-0", "translate-x-full");
         setTimeout(() => {
           errorMessage.classList.add("opacity-0", "translate-x-full");
         }, 3000);
-      } else {
-        loadingScreen.classList.remove("hidden");
-        setTimeout(() => {
-          window.location.href =
-            "../account-analysis/account-observations.html";
-        }, 2000);
+        return;
+      }
+
+      try {
+        const response = await fetch("/upload/", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          console.log("Upload successful:", result);
+          loadingScreen.classList.remove("hidden");
+          setTimeout(() => {
+            window.location.href =
+              "../account-analysis/account-observations.html";
+          }, 2000);
+        } else {
+          const errorData = await response.json();
+          alert("Failed to upload files. Please try again.");
+        }
+      } catch (error) {
+        alert("A network error occurred. Please check your connection.");
       }
     });
   }
