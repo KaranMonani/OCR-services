@@ -119,7 +119,45 @@
         </div>
       </div>
     </nav>
+    <aside
+    id="logo-sidebar"
+    class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-all duration-300 bg-white border-r border-gray-200 sm:translate-x-0 light:bg-gray-800 light:border-gray-700"
+    aria-label="Sidebar"
+  >
+    <div class="h-full px-3 pb-4 overflow-y-auto bg-white light:bg-gray-800">
+      <ul class="space-y-2 font-medium">
+        <li>
+          <button
+            type="button"
+            class="sidebar-button w-full bg-custom-blue text-white flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+          >
+            <svg
+              class="w-5 h-5 text-white transition duration-75 light:text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 22 21"
+            >
+              <path
+                d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"
+              />
+              <path
+                d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"
+              />
+            </svg>
+            <span class="ms-3">Create Company</span>
+          </button>
+        </li>
+      </ul>
+    </div>
 
+    <button
+      id="collapse-btn"
+      class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-custom-blue text-white p-3 rounded-full"
+    >
+      <i id="sidebar-toggle-icon" class="fas fa-chevron-left"></i>
+    </button>
+  </aside>
     <div id="right-panel" class="p-4 pt-10 lg:ml-10 transition-all">
       <div class="flex h-screen">
         <div class="p-6 bg-gray-50 text-medium text-gray-500 rounded-lg w-full">
@@ -220,10 +258,12 @@
                     class="block mb-2 text-sm font-medium text-gray-900"
                     >Country</label
                   >
-                  <select
+                  <input
+                    type="text"
                     id="country"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  ></select>
+                    required
+                  />
                 </div>
                 <div>
                   <label
@@ -231,10 +271,12 @@
                     class="block mb-2 text-sm font-medium text-gray-900"
                     >State</label
                   >
-                  <select
+                  <input
+                    type="text"
                     id="state"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  ></select>
+                    required
+                  />
                 </div>
                 <div>
                   <label
@@ -242,10 +284,12 @@
                     class="block mb-2 text-sm font-medium text-gray-900"
                     >City</label
                   >
-                  <select
+                  <input
+                    type="text"
                     id="city"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  ></select>
+                    required
+                  />
                 </div>
                 <div>
                   <label

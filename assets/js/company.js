@@ -49,6 +49,10 @@ if (
         } else {
           tr.attributes.class = tr.attributes.class.replace(" selected", "");
         }
+        // Ensure tr is a DOM element before setting attributes
+        if (tr instanceof HTMLElement) {
+          tr.setAttribute("data-row-id", row.id || _index);
+        }
         return tr;
       },
     };
@@ -87,35 +91,47 @@ if (
 
   resetTable();
 
-
   const editableCells = document.querySelectorAll('td[contenteditable="true"]');
-console.log(editableCells)
-editableCells.forEach(cell => {
-  cell.addEventListener('click', () => {
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.value = cell.textContent;
+  editableCells.forEach((cell) => {
+    cell.addEventListener("click", () => {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.value = cell.textContent;
+      cell.textContent = "";
+      cell.appendChild(input);
+      input.focus();
+      input.addEventListener("blur", async () => {
+        const newValue = input.value;
+        const rowId = cell.parentElement.getAttribute("data-row-id"); 
+        cell.textContent = newValue;
+        alert(`Row ID: ${rowId}, New Value: ${newValue}`);
+        // try {
+        //   const response = await fetch(`/api/updateRecord/${rowId}`, {
+        //     method: "PUT",
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({ value: newValue }),
+        //   });
 
-    cell.textContent = '';
-    cell.appendChild(input);
+        //   if (!response.ok) {
+        //     throw new Error("Failed to update record");
+        //   }
 
-    input.focus();
+        //   const result = await response.json();
+        //   console.log("Record updated successfully:", result);
+        // } catch (error) {
+        //   console.error("Error updating record:", error);
+        // }
+      });
 
-    input.addEventListener('blur', () => {
-      const newValue = input.value;
-
-      cell.textContent = newValue;
-
-      cell.removeChild(input);
-    });
-
-    input.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
-        input.blur();
-      }
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          input.blur();
+        }
+      });
     });
   });
-});
 }
 
 const analyzeButton = document.getElementById("createCompany");
