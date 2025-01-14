@@ -49,7 +49,6 @@ if (
         } else {
           tr.attributes.class = tr.attributes.class.replace(" selected", "");
         }
-        // Ensure tr is a DOM element before setting attributes
         if (tr instanceof HTMLElement) {
           tr.setAttribute("data-row-id", row.id || _index);
         }
@@ -96,13 +95,14 @@ if (
     cell.addEventListener("click", () => {
       const input = document.createElement("input");
       input.type = "text";
-      input.value = cell.textContent;
+      input.value = cell.textContent.trim();
+      input.classList.add("table-cell-input");
       cell.textContent = "";
       cell.appendChild(input);
       input.focus();
       input.addEventListener("blur", async () => {
-        const newValue = input.value;
-        const rowId = cell.parentElement.getAttribute("data-row-id"); 
+        const newValue = input.value.trim();
+        const rowId = cell.parentElement.getAttribute("data-row-id");
         cell.textContent = newValue;
         alert(`Row ID: ${rowId}, New Value: ${newValue}`);
         // try {
@@ -137,12 +137,14 @@ if (
 const analyzeButton = document.getElementById("createCompany");
 const loadingScreen = document.getElementById("loading-screen");
 
-analyzeButton.addEventListener("click", (event) => {
-  event.preventDefault();
+if (analyzeButton) {
+  analyzeButton.addEventListener("click", (event) => {
+    event.preventDefault();
 
-  loadingScreen.classList.remove("hidden");
+    loadingScreen.classList.remove("hidden");
 
-  setTimeout(() => {
-    window.location.href = "./company-dashboard.html";
-  }, 2000);
-});
+    setTimeout(() => {
+      window.location.href = "./company-dashboard.html";
+    }, 2000);
+  });
+}

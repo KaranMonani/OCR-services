@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Company Dashboard</title>
+    <title>Manage Team</title>
     <link href="../assets/css/style.css" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -15,9 +15,8 @@
     <div
       id="loading-screen"
       class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center"
-    >
-      <div class="loader"></div>
-    </div>
+    ></div>
+    <div class="loader"></div>
 
     <nav
       class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 light:bg-gray-800 light:border-gray-700"
@@ -126,14 +125,14 @@
           <li>
             <a
               href="./company-dashboard.html"
-              class="sidebar-button w-full bg-custom-blue text-white flex items-center p-2 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+              class="sidebar-button w-full text-gray-900 flex items-center p-2 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
             >
               <svg
-                class="w-5 h-5 text-white transition duration-75"
+                class="w-5 h-5 text-gray-900 transition duration-75 light:text-gray-400"
                 aria-hidden="true"
                 viewBox="0 0 48 48"
                 xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
+                fill="#002b49"
               >
                 <g>
                   <path
@@ -149,13 +148,13 @@
           <li>
             <a
               href="./manage-team.html"
-              class="sidebar-button w-full text-gray-900 flex items-center p-2 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+              class="sidebar-button w-full bg-custom-blue text-white flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
             >
               <svg
-                class="w-5 h-5 text-gray-900 transition duration-75"
+                class="w-5 h-5 text-white transition duration-75 light:text-gray-400"
                 aria-hidden="true"
                 viewBox="0 0 512 512"
-                fill="#002b49"
+                fill="currentColor"
               >
                 <g>
                   <path
@@ -183,7 +182,6 @@
           </li>
         </ul>
       </div>
-
       <button
         id="collapse-btn"
         class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-custom-blue text-white p-3 rounded-full"
@@ -191,28 +189,40 @@
         <i id="sidebar-toggle-icon" class="fas fa-chevron-left"></i>
       </button>
     </aside>
-    <div id="right-panel" class="p-4 pt-20 lg:ml-10 transition-all">
+    <div id="right-panel" class="p-4 pt-2 lg:ml-10 transition-all">
+      <div
+        id="success-message"
+        class="fixed right-0 top-10 mt-5 mr-5 bg-green-500 text-white px-4 py-2 rounded shadow-lg transform translate-x-full opacity-0 transition duration-300"
+      >
+        Team member invited successfully!
+      </div>
       <div class="flex h-screen">
         <div class="p-6 bg-gray-50 text-medium text-gray-500 rounded-lg w-full">
           <div class="mb-4">
             <div class="flex items-center justify-between">
               <h2 class="text-lg font-semibold text-custom-blue">
-                <b> Company Dashboard </b>
+                <b> Manage Team </b>
                 <p class="text-sm text-gray-500">
-                  Manage your companies, and develop client deliverables with
-                  AI-assisted application.
+                  Manage your team members and their roles.
                 </p>
               </h2>
               <button
                 type="button"
-                onclick="window.location.href='./create-company.html'"
-                class="menu-button flex items-center px-4 py-2 text-sm text-white bg-custom-blue rounded hover:bg-custom-blue focus:ring-2 focus:ring-blue-400 space-x-2 no-style-change w-50"
+                data-modal-target="invite-modal"
+                data-modal-toggle="invite-modal"
+                class="menu-button flex items-center px-4 py-2 text-sm text-white bg-custom-blue rounded hover:bg-custom-blue focus:ring-2 focus:ring-blue-400 space-x-2 no-style-change"
               >
                 <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
+                  height="20px"
+                  width="20px"
+                  version="1.1"
+                  id="_x32_"
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 512 512"
+                  xml:space="preserve"
+                  fill="#ffffff"
+                  stroke="#ffffff"
                 >
                   <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                   <g
@@ -221,30 +231,31 @@
                     stroke-linejoin="round"
                   ></g>
                   <g id="SVGRepo_iconCarrier">
-                    <path
-                      d="M20.5348 3.46447C19.0704 2 16.7133 2 11.9993 2C7.28525 2 4.92823 2 3.46377 3.46447C2.70628 4.22195 2.3406 5.21824 2.16406 6.65598C2.69473 6.06532 3.33236 5.57328 4.04836 5.20846C4.82984 4.81027 5.66664 4.6488 6.59316 4.5731C7.48829 4.49997 8.58971 4.49998 9.93646 4.5H14.0621C15.4089 4.49998 16.5103 4.49997 17.4054 4.5731C18.332 4.6488 19.1688 4.81027 19.9502 5.20846C20.6662 5.57328 21.3039 6.06532 21.8345 6.65598C21.658 5.21824 21.2923 4.22195 20.5348 3.46447Z"
-                      fill="#ffffff"
-                    ></path>
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M2 14C2 11.1997 2 9.79961 2.54497 8.73005C3.02433 7.78924 3.78924 7.02433 4.73005 6.54497C5.79961 6 7.19974 6 10 6H14C16.8003 6 18.2004 6 19.27 6.54497C20.2108 7.02433 20.9757 7.78924 21.455 8.73005C22 9.79961 22 11.1997 22 14C22 16.8003 22 18.2004 21.455 19.27C20.9757 20.2108 20.2108 20.9757 19.27 21.455C18.2004 22 16.8003 22 14 22H10C7.19974 22 5.79961 22 4.73005 21.455C3.78924 20.9757 3.02433 20.2108 2.54497 19.27C2 18.2004 2 16.8003 2 14ZM12.5303 10.4697C12.3897 10.329 12.1989 10.25 12 10.25C11.8011 10.25 11.6103 10.329 11.4697 10.4697L8.96967 12.9697C8.67678 13.2626 8.67678 13.7374 8.96967 14.0303C9.26256 14.3232 9.73744 14.3232 10.0303 14.0303L11.25 12.8107V17C11.25 17.4142 11.5858 17.75 12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V12.8107L13.9697 14.0303C14.2626 14.3232 14.7374 14.3232 15.0303 14.0303C15.3232 13.7374 15.3232 13.2626 15.0303 12.9697L12.5303 10.4697Z"
-                      fill="#ffffff"
-                    ></path>
+                    <style type="text/css">
+                      .st0 {
+                        fill: #ffffff;
+                      }
+                    </style>
+                    <g>
+                      <path
+                        class="st0"
+                        d="M440.917,67.925H71.083C31.827,67.925,0,99.752,0,139.008v233.984c0,39.256,31.827,71.083,71.083,71.083 h369.834c39.255,0,71.083-31.827,71.083-71.083V139.008C512,99.752,480.172,67.925,440.917,67.925z M178.166,321.72l-99.54,84.92 c-7.021,5.992-17.576,5.159-23.567-1.869c-5.992-7.021-5.159-17.576,1.87-23.567l99.54-84.92c7.02-5.992,17.574-5.159,23.566,1.87 C186.027,305.174,185.194,315.729,178.166,321.72z M256,289.436c-13.314-0.033-26.22-4.457-36.31-13.183l0.008,0.008l-0.032-0.024 c0.008,0.008,0.017,0.008,0.024,0.016L66.962,143.694c-6.98-6.058-7.723-16.612-1.674-23.583c6.057-6.98,16.612-7.723,23.582-1.674 l152.771,132.592c3.265,2.906,8.645,5.004,14.359,4.971c5.706,0.017,10.995-2.024,14.44-5.028l0.074-0.065l152.615-132.469 c6.971-6.049,17.526-5.306,23.583,1.674c6.048,6.97,5.306,17.525-1.674,23.583l-152.77,132.599 C282.211,284.929,269.322,289.419,256,289.436z M456.948,404.771c-5.992,7.028-16.547,7.861-23.566,1.869l-99.54-84.92 c-7.028-5.992-7.861-16.546-1.869-23.566c5.991-7.029,16.546-7.861,23.566-1.87l99.54,84.92 C462.107,387.195,462.94,397.75,456.948,404.771z"
+                      ></path>
+                    </g>
                   </g>
                 </svg>
-                <span>Add Company</span>
+                <span>Invite Team Member</span>
               </button>
             </div>
           </div>
           <hr />
           <br />
-          <table id="selection-table" class="w-full bg-white text-center">
+          <table id="team-table" class="w-full bg-white text-center">
             <thead>
               <tr>
-                <th class="px-6 py-4 border-b border-gray-200 text-center">
+                <th>
                   <span class="flex items-center justify-center">
-                    Company ID
+                    Member ID
                     <svg
                       class="w-4 h-4 ms-1"
                       aria-hidden="true"
@@ -264,9 +275,9 @@
                     </svg>
                   </span>
                 </th>
-                <th class="px-6 py-4 border-b border-gray-200 text-center">
+                <th>
                   <span class="flex items-center justify-center">
-                    Company Name
+                    Member Name
                     <svg
                       class="w-4 h-4 ms-1"
                       aria-hidden="true"
@@ -286,9 +297,9 @@
                     </svg>
                   </span>
                 </th>
-                <th class="px-6 py-4 border-b border-gray-200 text-center">
+                <th>
                   <span class="flex items-center justify-center">
-                    Company Email
+                    Member Email
                     <svg
                       class="w-4 h-4 ms-1"
                       aria-hidden="true"
@@ -308,9 +319,9 @@
                     </svg>
                   </span>
                 </th>
-                <th class="px-6 py-4 border-b border-gray-200 text-center">
+                <th>
                   <span class="flex items-center justify-center">
-                    Reference Number
+                    Role
                     <svg
                       class="w-4 h-4 ms-1"
                       aria-hidden="true"
@@ -330,90 +341,76 @@
                     </svg>
                   </span>
                 </th>
-                <th class="px-6 py-4 border-b border-gray-200 text-center">
-                  Actions
+                <th>
+                  <span class="flex items-center justify-center">
+                    User Status
+                    <svg
+                      class="w-4 h-4 ms-1"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m8 15 4 4 4-4m0-6-4-4-4 4"
+                      />
+                    </svg>
+                  </span>
                 </th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr
                 data-row-id="1"
-                class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
+                class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer border-b"
               >
-                <td class="px-6 py-4 text-center" contenteditable="true">1</td>
-                <td class="px-6 py-4 text-center" contenteditable="true">
-                  Company A
-                </td>
-                <td class="px-6 py-4 text-center" contenteditable="true">
-                  companya@example.com
-                </td>
-                <td class="px-6 py-4 text-center" contenteditable="true">
-                  REF12345
-                </td>
-                <td class="text-center">
-                  <button
-                    type="button"
-                    data-tooltip-target="company-edit-1"
-                    data-tooltip-placement="bottom"
-                    class="project-action-button"
-                    onclick="window.location.href='./edit-company.html'"
+                <td class="px-6 py-4 text-center">1</td>
+                <td class="px-6 py-4 text-center">John Doe</td>
+                <td class="px-6 py-4 text-center">johndoe@example.com</td>
+                <td class="px-6 py-4 text-center">
+                  <select
+                    class="bg-transparent border-none text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white text-center"
                   >
-                    <svg
-                      class="w-6 h-6 text-gray-400 light:text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
-                      />
-                    </svg>
-                  </button>
+                    <option value="Manager">Manager</option>
+                    <option value="Developer">Developer</option>
+                    <option value="Designer">Designer</option>
+                    <option value="Tester">Tester</option>
+                  </select>
                 </td>
-                <div
-                  id="company-edit-1"
-                  role="tooltip"
-                  class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-                >
-                  Edit Company
-                  <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-              </tr>
-              <tr
-                data-row-id="2"
-                class="hover:bg-gray-50 light:hover:bg-gray-800 cursor-pointer"
-              >
-                <td class="px-6 py-4 text-center" contenteditable="true">10</td>
-                <td class="px-6 py-4 text-center" contenteditable="true">
-                  Company K
-                </td>
-                <td class="px-6 py-4 text-center" contenteditable="true">
-                  companyj@example.com
-                </td>
-                <td class="px-6 py-4 text-center" contenteditable="true">
-                  REF12354
+                <td class="px-6 py-4 text-center">
+                  <label
+                    class="relative inline-flex items-center cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      value=""
+                      class="sr-only peer"
+                      checked
+                    />
+                    <div
+                      class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                    ></div>
+                  </label>
                 </td>
                 <td class="px-6 py-4 text-center">
                   <button
                     type="button"
                     class="project-action-button"
-                    data-tooltip-target="company-edit-2"
+                    data-tooltip-target="user-edit-1"
                     data-tooltip-placement="bottom"
-                    onclick="window.location.href='./edit-company.html'"
+                    onclick="window.location.href='./edit-user.html'"
                   >
                     <svg
                       class="w-6 h-6 text-gray-400 light:text-white"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
                       fill="none"
                       viewBox="0 0 24 24"
                     >
@@ -428,11 +425,11 @@
                   </button>
                 </td>
                 <div
-                  id="company-edit-2"
+                  id="user-edit-1"
                   role="tooltip"
                   class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
                 >
-                  Edit Company
+                  Edit User
                   <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
               </tr>
@@ -440,11 +437,100 @@
           </table>
         </div>
       </div>
-
-      <script src="../assets/js/simple-datatables.js"></script>
-      <script src="../assets/js/flowbite.min.js"></script>
-      <script src="../assets/js/company.js"></script>
-      <script src="../assets/js/script.js"></script>
     </div>
+    <div
+      id="invite-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div class="relative w-full max-w-md max-h-full">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <button
+            type="button"
+            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+            data-modal-hide="invite-modal"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+          <div class="px-6 py-6 lg:px-8">
+            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
+              Invite Team Member
+            </h3>
+            <form class="space-y-6" action="#" id="invite-form">
+              <div>
+                <label
+                  for="member-name"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Member Name</label
+                >
+                <input
+                  type="text"
+                  name="member-name"
+                  id="member-name"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="member-email"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Member Email</label
+                >
+                <input
+                  type="email"
+                  name="member-email"
+                  id="member-email"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="member-role"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Member Role</label
+                >
+                <select
+                  name="member-role"
+                  id="member-role"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  required
+                >
+                  <option value="Manager">Manager</option>
+                  <option value="Developer">Developer</option>
+                  <option value="Designer">Designer</option>
+                  <option value="Tester">Tester</option>
+                </select>
+              </div>
+              <button
+                type="submit"
+                class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Send Invitation
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../assets/js/flowbite.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/company.js"></script>
+    <script src="../assets/js/team.js"></script>
   </body>
 </html>
