@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       successMessage.classList.remove("translate-x-full", "opacity-0");
       setTimeout(() => {
         successMessage.classList.add("translate-x-full", "opacity-0");
-        window.location.href = './index.html';
+        window.location.href = './reset-password.html';
       }, 3000);
     }, 1000);
 
