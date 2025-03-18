@@ -1,0 +1,21 @@
+{
+    "short_name": "OCR App",
+    "name": "OCR Services Application",
+    "description": "An app for OCR services like account analysis, restaurant menu analysis, and more.",
+    "icons": [
+      {
+        "src": "assets/icons/icon-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "assets/icons/icon-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#002b49"
+  }
