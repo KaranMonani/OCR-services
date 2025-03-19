@@ -5,23 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
     <link href="../assets/css/style.css" rel="stylesheet" />
-    <link rel="manifest" href="/manifest.json">
-
+    <link rel="manifest" href="/manifest.json" />
     <script src="../assets/js/tailwindcss.js"></script>
+    <style>
+      /* Popup Animation */
+      @keyframes fadeInScale {
+        0% {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .animate-fade-in-scale {
+        animation: fadeInScale 0.3s ease-out;
+      }
+
+      /* Notification Animation */
+      @keyframes slideIn {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      .animate-slide-in {
+        animation: slideIn 0.3s ease-out;
+      }
+      .animate-fade-out {
+        animation: fadeOut 0.5s ease-out;
+      }
+    </style>
   </head>
   <body>
+    <!-- Loading Screen -->
     <div
       id="loading-screen"
       class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center"
     >
       <div class="loader"></div>
     </div>
+
+    <!-- Header -->
     <nav
       class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 light:bg-gray-800 light:border-gray-700"
     >
       <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
           <div class="flex items-center justify-start rtl:justify-end">
+            <!-- Sidebar Toggle and Logo -->
             <button
               data-drawer-target="logo-sidebar"
               data-drawer-toggle="logo-sidebar"
@@ -53,6 +96,31 @@
             </a>
           </div>
           <div class="flex items-center">
+            <!-- Task Progress Section (Hidden by Default) -->
+            <div id="task-progress" class="hidden flex items-center space-x-4">
+              <div>
+                <p class="text-sm text-[#002b49]">
+                  Task: <span id="current-task" class="font-semibold"></span>
+                </p>
+                <p class="text-xs text-gray-500">
+                  Time: <span id="timer" class="font-semibold">00:00:00</span>
+                </p>
+              </div>
+              <button
+                id="stop-task-btn"
+                class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none"
+              >
+                Stop Task
+              </button>
+            </div>
+            <!-- Start Task Button (Hidden When Task is in Progress) -->
+            <button
+              id="start-task-btn"
+              class="px-4 py-2 bg-[#002b49] text-white rounded-lg hover:bg-[#004080] focus:outline-none"
+            >
+              Start Task
+            </button>
+            <!-- User Profile Dropdown -->
             <div class="flex items-center ms-3">
               <div>
                 <button
@@ -66,12 +134,12 @@
                     id="initial-icon"
                     class="flex items-center justify-center w-8 h-8 text-white bg-custom-blue rounded-full"
                   ></div>
-                  <span id="user-name" class="ml-2 text-gray-900 font-medium">
-                    John Doe
-                  </span>
+                  <span id="user-name" class="ml-2 text-gray-900 font-medium"
+                    >John Doe</span
+                  >
                 </button>
               </div>
-
+              <!-- Dropdown Menu -->
               <div
                 class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow light:bg-gray-700 light:divide-gray-600"
                 id="dropdown-user"
@@ -113,12 +181,141 @@
         </div>
       </div>
     </nav>
+
+    <!-- Task Popup Modal -->
+    <div
+      id="task-popup"
+      class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center"
+    >
+      <div class="bg-white rounded-lg p-6 w-96 animate-fade-in-scale">
+        <h2 class="text-xl font-semibold mb-4 text-[#002b49]">Start a Task</h2>
+        <!-- Dropdown for Existing Tasks -->
+        <select
+          id="task-dropdown"
+          class="w-full p-2 border border-gray-300 rounded-lg mb-4"
+        >
+          <option value="">Select a Task</option>
+          <option value="Accounting Analysis">Accounting Analysis</option>
+          <option value="Visiting Card Analysis">Visiting Card Analysis</option>
+          <option value="Menu Analysis">Menu Analysis</option>
+        </select>
+        <!-- Horizontal Ruler -->
+        <hr class="my-4 border-gray-300" />
+        <!-- Create New Task Button -->
+        <button
+          id="create-task-btn"
+          class="w-full px-4 py-2 bg-[#002b49] text-white rounded-lg hover:bg-[#004080] focus:outline-none flex items-center justify-center"
+        >
+          <svg
+            class="w-5 h-5 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4v16m8-8H4"
+            ></path>
+          </svg>
+          Create New Task
+        </button>
+        <!-- New Task Input Fields (Hidden by Default) -->
+        <div id="new-task-fields" class="hidden mt-4">
+          <input
+            type="text"
+            id="new-task-name"
+            placeholder="Task Name"
+            class="w-full p-2 border border-gray-300 rounded-lg mb-4"
+          />
+          <textarea
+            id="new-task-description"
+            placeholder="Task Description"
+            class="w-full p-2 border border-gray-300 rounded-lg mb-4"
+            rows="3"
+          ></textarea>
+          <select
+            id="new-task-category"
+            class="w-full p-2 border border-gray-300 rounded-lg mb-4"
+          >
+            <option value="">Select Category</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Learning">Learning</option>
+          </select>
+        </div>
+        <!-- Action Buttons -->
+        <div class="flex justify-end mt-4">
+          <button
+            id="start-timer-btn"
+            class="px-4 py-2 bg-[#002b49] text-white rounded-lg hover:bg-[#004080]"
+          >
+            Start
+          </button>
+          <button
+            id="close-popup-btn"
+            class="ml-2 px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task Description Popup -->
+    <div
+      id="description-popup"
+      class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center"
+    >
+      <div class="bg-white rounded-lg p-6 w-96 animate-fade-in-scale">
+        <h2 class="text-xl font-semibold mb-4 text-[#002b49]">
+          Task Description
+        </h2>
+        <textarea
+          id="task-description"
+          placeholder="Enter task description (minimum 5 words)..."
+          class="w-full p-2 border border-gray-300 rounded-lg mb-4"
+          rows="4"
+          oninput="validateDescription()"
+        ></textarea>
+        <!-- Error Message -->
+        <p id="description-error" class="text-red-500 text-sm mb-4 hidden">
+          Please enter at least 5 words.
+        </p>
+        <!-- Save Button -->
+        <button
+          id="save-description-btn"
+          class="w-full px-4 py-2 bg-[#002b49] text-white rounded-lg hover:bg-[#004080] focus:ring-2 focus:ring-blue-400 disabled:bg-gray-300 disabled:cursor-not-allowed"
+          disabled
+        >
+          Save
+        </button>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
     <div class="pt-24 services-card">
       <h3 class="card-title">Choose a Service to Get Started</h3>
       <hr
         class="w-48 h-1 mx-auto bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"
       />
       <div class="icon-container">
+        <!-- My Activity -->
+        <div
+          class="icon"
+          id="my-activity-icon"
+          onclick="loadService('../my-activity/my-activity.html')"
+        >
+          <img
+            src="../assets/img/homepage/activity.png"
+            alt="My Activity"
+            style="width: 45px; height: 45px"
+          />
+          <div class="icon-label text-custom-blue text-center">My Activity</div>
+        </div>
+        <!-- Account Analysis -->
         <div
           class="icon"
           id="visiting-card-icon"
@@ -133,20 +330,22 @@
             Account Analysis
           </div>
         </div>
+        <!-- Visiting Card Analysis -->
         <div
           class="icon"
-          id="document-icon"
+          id="visiting-card-icon"
           onclick="loadService('../visiting-card-analysis/visiting-card-analysis.html')"
         >
           <img
             src="../assets/img/homepage/identity-card.png"
-            alt="Account Analysis"
+            alt="Visiting Card Analysis"
             style="width: 45px; height: 45px"
           />
           <div class="icon-label text-custom-blue text-center">
             Visiting Card Analysis
           </div>
         </div>
+        <!-- Restaurant Menu Analysis -->
         <div
           class="icon"
           id="resume-icon"
@@ -154,13 +353,14 @@
         >
           <img
             src="../assets/img/homepage/menu.png"
-            alt="Account Analysis"
+            alt="Restaurant Menu Analysis"
             style="width: 45px; height: 45px"
           />
           <div class="icon-label text-custom-blue text-center">
             Restaurant Menu Analysis
           </div>
         </div>
+        <!-- Companies -->
         <div
           class="icon"
           id="resume-icon"
@@ -171,10 +371,9 @@
             alt="Companies"
             style="width: 50px; height: 50px"
           />
-          <div class="icon-label text-custom-blue text-center">
-            Companies
-          </div>
+          <div class="icon-label text-custom-blue text-center">Companies</div>
         </div>
+        <!-- Manage Teams -->
         <div
           class="icon"
           id="resume-icon"
@@ -182,18 +381,152 @@
         >
           <img
             src="../assets/img/homepage/manage-team.png"
-            alt="Companies"
+            alt="Manage Teams"
             style="width: 50px; height: 50px"
           />
           <div class="icon-label text-custom-blue text-center">
             Manage Teams
           </div>
         </div>
-        
       </div>
     </div>
 
+    <!-- Notification Toast -->
+    <div
+      id="notification"
+      class="hidden fixed top-4 right-4 p-4 bg-green-500 text-white rounded-lg shadow-lg z-[1000]"
+    >
+      Task details saved successfully!
+    </div>
+
+    <!-- Scripts -->
     <script src="../assets/js/flowbite.min.js"></script>
     <script src="../assets/js/script.js"></script>
+    <script>
+      let timerInterval;
+      let startTime;
+
+      // Open Task Popup with Animation
+      document
+        .getElementById("start-task-btn")
+        .addEventListener("click", () => {
+          const popup = document.getElementById("task-popup");
+          popup.classList.remove("hidden");
+          popup.classList.add("animate-fade-in-scale");
+        });
+
+      // Close Task Popup
+      document
+        .getElementById("close-popup-btn")
+        .addEventListener("click", () => {
+          document.getElementById("task-popup").classList.add("hidden");
+          document.getElementById("new-task-fields").classList.add("hidden");
+        });
+
+      // Show New Task Fields
+      document
+        .getElementById("create-task-btn")
+        .addEventListener("click", () => {
+          document.getElementById("new-task-fields").classList.remove("hidden");
+        });
+
+      // Start Timer
+      document
+        .getElementById("start-timer-btn")
+        .addEventListener("click", () => {
+          const taskName =
+            document.getElementById("task-dropdown").value ||
+            document.getElementById("new-task-name").value;
+          if (!taskName) return alert("Please select or create a task.");
+
+          document.getElementById("task-popup").classList.add("hidden");
+          document.getElementById("start-task-btn").classList.add("hidden");
+          document.getElementById("task-progress").classList.remove("hidden");
+          document.getElementById("current-task").textContent = taskName;
+
+          startTime = new Date();
+          timerInterval = setInterval(updateTimer, 1000);
+        });
+
+      // Update Timer
+      function updateTimer() {
+        const now = new Date();
+        const timeDiff = now - startTime;
+        const hours = Math.floor(timeDiff / 3600000);
+        const minutes = Math.floor((timeDiff % 3600000) / 60000);
+        const seconds = Math.floor((timeDiff % 60000) / 1000);
+        document.getElementById("timer").textContent = `${String(
+          hours
+        ).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(
+          seconds
+        ).padStart(2, "0")}`;
+      }
+
+      // Stop Task
+      document.getElementById("stop-task-btn").addEventListener("click", () => {
+        clearInterval(timerInterval);
+        document.getElementById("task-progress").classList.add("hidden");
+        document.getElementById("start-task-btn").classList.remove("hidden");
+        const descriptionPopup = document.getElementById("description-popup");
+        descriptionPopup.classList.remove("hidden");
+        descriptionPopup.classList.add("animate-fade-in-scale");
+      });
+
+      // Validate Description
+      function validateDescription() {
+        const description = document.getElementById("task-description").value;
+        const wordCount = description.trim().split(/\s+/).length; // Count words
+        const saveButton = document.getElementById("save-description-btn");
+        const errorMessage = document.getElementById("description-error");
+
+        if (wordCount >= 5) {
+          saveButton.disabled = false;
+          errorMessage.classList.add("hidden");
+        } else {
+          saveButton.disabled = true;
+          errorMessage.classList.remove("hidden");
+        }
+      }
+
+      // Save Task Description
+      document
+        .getElementById("save-description-btn")
+        .addEventListener("click", () => {
+          const taskName = document.getElementById("current-task").textContent;
+          const timeSpent = document.getElementById("timer").textContent;
+          const description = document.getElementById("task-description").value;
+
+          // Save task details (e.g., to localStorage or an API)
+          console.log({ taskName, timeSpent, description });
+
+          // Clear inputs and close modal
+          document.getElementById("description-popup").classList.add("hidden");
+          document.getElementById("task-description").value = "";
+
+          // Show Notification
+          const notification = document.getElementById("notification");
+          notification.classList.remove("hidden");
+          notification.classList.add("animate-slide-in");
+
+          // Hide Notification after 3 seconds
+          setTimeout(() => {
+            notification.classList.add("animate-fade-out");
+            setTimeout(() => {
+              notification.classList.remove(
+                "animate-slide-in",
+                "animate-fade-out"
+              );
+              notification.classList.add("hidden");
+            }, 500); // Match the duration of the fadeOut animation
+          }, 3000); // Display for 3 seconds
+        });
+
+      // Cancel Task Description
+      document
+        .getElementById("cancel-description-btn")
+        .addEventListener("click", () => {
+          document.getElementById("description-popup").classList.add("hidden");
+        });
+    </script>
   </body>
 </html>
