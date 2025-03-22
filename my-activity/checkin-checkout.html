@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check-In/Check-Out Logs</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <link href="../assets/css/flowbite.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
+    />
+    <style>
+      #checkin-checkout-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      #checkin-checkout-table th,
+      #checkin-checkout-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      #checkin-checkout-table th {
+        background-color: #002b49;
+        color: white;
+        font-weight: 600;
+      }
+      #checkin-checkout-table tbody tr:nth-child(odd) {
+        background-color: #f9fafb;
+      }
+      #checkin-checkout-table tbody tr:hover {
+        background-color: #f3f4f6;
+      }
+      .dataTables_wrapper .dataTables_filter {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .dataTables_wrapper .dataTables_filter input {
+        padding: 0.5rem; 
+        border: 1px solid #002b49;
+        border-radius: 0.375rem;
+        width: auto; 
+        max-width: 300px; 
+      }
+
+      .dataTables_wrapper .dataTables_filter label {
+        margin-bottom: 0; 
+        font-weight: 500; 
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div
+      id="loading-screen"
+      class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center"
+    ></div>
+    <div class="loader"></div>
+
+    <nav
+      class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 light:bg-gray-800 light:border-gray-700"
+    >
+      <div class="px-3 py-3 lg:px-5 lg:pl-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center justify-start rtl:justify-end">
+            <button
+              data-drawer-target="logo-sidebar"
+              data-drawer-toggle="logo-sidebar"
+              aria-controls="logo-sidebar"
+              type="button"
+              class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 light:text-gray-400 light:hover:bg-gray-700 light:focus:ring-gray-600"
+            >
+              <span class="sr-only">Open sidebar</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                ></path>
+              </svg>
+            </button>
+            <a href="../dashboard/dashboard.html" class="flex ms-2 md:me-24">
+              <img src="../assets/img/login.svg" class="h-8 me-3" alt="Logo" />
+              <span
+                class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap light:text-white"
+                >OCR SERVICES</span
+              >
+            </a>
+          </div>
+          <div class="flex items-center">
+            <div class="flex items-center ms-3">
+              <div>
+                <button
+                  type="button"
+                  class="flex items-center text-sm bg-white-800 rounded-full focus:ring-4 focus:ring-gray-300 light:focus:ring-gray-600"
+                  aria-expanded="false"
+                  data-dropdown-toggle="dropdown-user"
+                >
+                  <span class="sr-only">Open user menu</span>
+                  <div
+                    id="initial-icon"
+                    class="flex items-center justify-center w-8 h-8 text-white bg-custom-blue rounded-full"
+                  ></div>
+                  <span id="user-name" class="ml-2 text-gray-900 font-medium">
+                    John Doe
+                  </span>
+                </button>
+              </div>
+              <div
+                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow light:bg-gray-700 light:divide-gray-600"
+                id="dropdown-user"
+              >
+                <div class="px-4 py-3" role="none">
+                  <p class="text-sm text-gray-900 light:text-white" role="none">
+                    John Doe
+                  </p>
+                  <p
+                    class="text-sm font-medium text-gray-900 truncate light:text-gray-300"
+                    role="none"
+                  >
+                    John@admin.com
+                  </p>
+                </div>
+                <ul class="py-1" role="none">
+                  <li>
+                    <a
+                      href="../settings/edit-user.html"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
+                      role="menuitem"
+                    >
+                      Settings
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="../index.html"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 light:text-gray-300 light:hover:bg-gray-600 light:hover:text-white"
+                      role="menuitem"
+                    >
+                      Sign out
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <aside
+      id="logo-sidebar"
+      class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-all duration-300 bg-white border-r border-gray-200 sm:translate-x-0 light:bg-gray-800 light:border-gray-700"
+      aria-label="Sidebar"
+    >
+      <div class="h-full px-3 pb-4 overflow-y-auto bg-white light:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+          <li>
+            <a
+              href="./task-activity.html"
+              class="sidebar-button w-full flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+            >
+              <svg
+                class="w-5 h-5 text-gray-500 transition duration-75 light:text-gray-400"
+                aria-hidden="true"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    fill="#002b49"
+                    d="M2,11 L4,11 C4.51283143,11 4.93550653,11.386027 4.9932722,11.8833761 L5,12 L5,14 C5,14.51285 4.61395571,14.9355092 4.11662025,14.9932725 L4,15 L2,15 C1.48716857,15 1.06449347,14.613973 1.0067278,14.1166239 L1,14 L1,12 C1,11.48715 1.38604429,11.0644908 1.88337975,11.0067275 L2,11 L4,11 L2,11 Z M14,12 C14.5523,12 15,12.4477 15,13 C15,13.5523 14.5523,14 14,14 L8,14 C7.44772,14 7,13.5523 7,13 C7,12.4477 7.44772,12 8,12 L14,12 Z M4,12 L2,12 L2,14 L4,14 L4,12 Z M4,6 C4.55228,6 5,6.44772 5,7 L5,9 C5,9.55228 4.55228,10 4,10 L2,10 C1.44772,10 1,9.55228 1,9 L1,7 C1,6.44772 1.44772,6 2,6 L4,6 Z M14,7 C14.5523,7 15,7.44772 15,8 C15,8.51283143 14.613973,8.93550653 14.1166239,8.9932722 L14,9 L8,9 C7.44772,9 7,8.55228 7,8 C7,7.48716857 7.38604429,7.06449347 7.88337975,7.0067278 L8,7 L14,7 Z M4,7 L2,7 L2,9 L4,9 L4,7 Z M4.77466,1.22614 C5.04092364,1.49240364 5.06512942,1.90907223 4.84727736,2.20268222 L4.77466,2.2868 L2.28033,4.78113 C2.13968,4.92179 1.94891,5.0008 1.75,5.0008 C1.590872,5.0008 1.4369536,4.9502336 1.30973856,4.85798912 L1.21967,4.78113 L0.21967,3.78113 C-0.0732233,3.48824 -0.0732233,3.01337 0.21967,2.72047 C0.485936364,2.45420636 0.902600248,2.43000058 1.19621162,2.64785264 L1.28033,2.72047 L1.75,3.19014 L3.714,1.22614 C4.00689,0.933247 4.48176,0.933246 4.77466,1.22614 Z M14,2 C14.5523,2 15,2.44772 15,3 C15,3.51283143 14.613973,3.93550653 14.1166239,3.9932722 L14,4 L8,4 C7.44772,4 7,3.55228 7,3 C7,2.48716857 7.38604429,2.06449347 7.88337975,2.0067278 L8,2 L14,2 Z"
+                  ></path>
+                </g>
+              </svg>
+              <span class="ms-3">Task Activity</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="./checkin-checkout.html"
+              class="sidebar-button w-full bg-custom-blue text-white flex items-center p-2 text-gray-900 rounded-lg light:text-white hover:bg-gray-100 light:hover:bg-gray-700 group"
+            >
+              ⏱️
+              <span class="ms-3">Check-In Logs</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <button
+        id="collapse-btn"
+        class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-custom-blue text-white p-3 rounded-full"
+      >
+        <i id="sidebar-toggle-icon" class="fas fa-chevron-left"></i>
+      </button>
+    </aside>
+
+    <div id="right-panel" class="p-4 pt-2 lg:ml-10 transition-all">
+      <div class="flex h-screen">
+        <div class="p-6 bg-gray-50 text-medium text-gray-500 rounded-lg w-full">
+          <div class="mb-4">
+            <div class="flex items-center justify-between">
+              <h2 class="text-lg font-semibold text-custom-blue">
+                <b> Check-In/Check-Out Logs </b>
+                <p class="text-sm text-gray-500">
+                  Manage your Check-In & Check-Out Logs
+                </p>
+              </h2>
+            </div>
+          </div>
+          <hr />
+          <div class="datatable-container">
+            <table
+              id="checkin-checkout-table"
+              class="w-full bg-white text-center"
+            >
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Dummy Data -->
+                <tr>
+                  <td>2023-10-01</td>
+                  <td>09:00 AM</td>
+                  <td>Check-In</td>
+                  <td>Started work for the day</td>
+                </tr>
+                <tr>
+                  <td>2023-10-01</td>
+                  <td>06:00 PM</td>
+                  <td>Check-Out</td>
+                  <td>Completed work for the day</td>
+                </tr>
+                <tr>
+                  <td>2023-10-02</td>
+                  <td>09:15 AM</td>
+                  <td>Check-In</td>
+                  <td>Started work for the day</td>
+                </tr>
+                <tr>
+                  <td>2023-10-02</td>
+                  <td>06:30 PM</td>
+                  <td>Check-Out</td>
+                  <td>Completed work for the day</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="../assets/js/flowbite.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/my-activity.js"></script>
+  </body>
+</html>
